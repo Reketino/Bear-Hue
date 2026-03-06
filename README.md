@@ -4,14 +4,14 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ---
 
-Learning Aspect:
+### Learning Aspect:
 
 - Learning how to use  API's w/ real world electronics 
 - Building software applications for practical use
 
 ---
 
-Future plans:
+### Future plans:
 
 - PC application w/ settings
 - UI for controlling lights
@@ -20,7 +20,7 @@ Future plans:
 
 ---
 
-🟢 Working on:
+### 🟢 Working on:
 
 - Connecting IP & setting up API 
 
