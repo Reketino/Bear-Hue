@@ -20,7 +20,7 @@ Future plans:
 
 ---
 
-Working on:
+🟢 Working on:
 
 - Connecting IP & setting up API 
 
