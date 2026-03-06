@@ -19,3 +19,9 @@ Future plans:
 - Setting up different light modes
 
 ---
+
+Working on:
+
+- Connecting IP & setting up API 
+
+---
