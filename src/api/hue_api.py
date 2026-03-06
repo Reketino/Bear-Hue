@@ -6,3 +6,5 @@ load_dotenv()
 
 class hueAPI:
     
+    def __init__(self):
+    
