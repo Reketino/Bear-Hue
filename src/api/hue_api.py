@@ -15,4 +15,10 @@ class HueAPI:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
-    
+        
+    def get_lights(self):
+        """Get all lights connected to Hue Bridge"""
+        url = f"{self.base_url}/lights"
+        response = requests.get(url)
+        
+        return response.json()    
