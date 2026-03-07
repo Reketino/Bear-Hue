@@ -6,8 +6,9 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### Learning Aspect:
 
-- Learning how to use  API's w/ real world electronics 
-- Building software applications for practical use
+- Learning how to connect to and control smart home devices through the Philips Hue API
+- Learning how to work with APIs that interact with real-world electronics
+- Building software applications for practical, real-world use
 
 ---
 
