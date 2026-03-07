@@ -1,6 +1,6 @@
 import os
-from dotenv import load_dotenv
 import requests
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -15,4 +15,21 @@ class HueAPI:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
+        
+    def get_lights(self):
+        """ Json returning all lights connected to Hue Bridge """
+        url = f"{self.base_url}/lights"
+        response = requests.get(url)
+        
+        return response.json()
     
+    def set_light(self, light_id: int, on: bool):
+        """ Function for turning lights on or off """   
+        
+        url = f"{self.base_url}/lights/{light_id}/state"
+        
+        payload = {
+            "on": on
+        } 
+        
+        requests.put(url, json=payload)
