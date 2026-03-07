@@ -22,6 +22,6 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Setting up API
+- Writing logic behind hue_api.py
 
 ---
