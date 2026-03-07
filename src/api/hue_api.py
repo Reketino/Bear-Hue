@@ -17,8 +17,11 @@ class HueAPI:
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
         
     def get_lights(self):
-        """Get all lights connected to Hue Bridge"""
+        """ Get all lights connected to Hue Bridge """
         url = f"{self.base_url}/lights"
         response = requests.get(url)
         
-        return response.json()    
+        return response.json()
+    
+    def set_light(self, light_id: int, on: bool):
+        """ Turn Lights on or off """    
