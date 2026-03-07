@@ -18,6 +18,8 @@ def run_test():
     for light_id, light in lights.items():
         print(f"{light_id}: {light['name']}")
         
+
+# Run script w/ python -m tests.test_api
 if __name__ == "__main__":
     run_test()
     
