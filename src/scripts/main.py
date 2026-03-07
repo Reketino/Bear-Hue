@@ -5,6 +5,10 @@ def main():
     
     bridge_ip = discover_bridge_ip()
     
+    if bridge_ip is None:
+        print("No Hue Bridge found on the network.")
+        return
+    
     hue = HueAPI(bridge_ip)
     
     lights = hue.get_lights()
