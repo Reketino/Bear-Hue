@@ -23,6 +23,6 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Hue Service script 
+- Hue Service script integration in main
 
 ---
