@@ -28,8 +28,6 @@ class HueAPI:
         
         url = f"{self.base_url}/lights/{light_id}/state"
         
-        payload = {
-            "on": on
-        } 
+        payload = {"on": on} 
         
         requests.put(url, json=payload)
