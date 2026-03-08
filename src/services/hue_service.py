@@ -1,4 +1,4 @@
-from api.hue_api import HueAPI
+from src.api.hue_api import HueAPI
 
 class HueService: 
     

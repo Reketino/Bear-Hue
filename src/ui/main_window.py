@@ -1,5 +1,5 @@
 import customtkinter as ctk # type: ignore
-from services.hue_service import HueService
+from src.services.hue_service import HueService
 
 class MainWindow(ctk.CTk):
     
