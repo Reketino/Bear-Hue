@@ -16,7 +16,7 @@ def run_test():
     
     hue = HueAPI(bridge_ip)
     
-    lights = hue.get_lights()
+    lights = hue.list_lights()
     
     print("\nWe Found your lights:\n")
     
