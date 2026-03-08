@@ -16,12 +16,12 @@ def run_test():
     
     hue = HueAPI(bridge_ip)
     
-    lights = hue.get_lights()
+    lights = hue.list_lights()
     
     print("\nWe Found your lights:\n")
     
-    for light_id, light in lights.items():
-        print(f"{light_id}: {light['name']}")
+    for light_id, name in lights.items():
+        print(f"{light_id}: {name}")
         
 
 # Run script w/ python -m tests.test_api
