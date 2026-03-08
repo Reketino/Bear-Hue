@@ -1,5 +1,6 @@
 from api.hue_discovery import discover_bridge_ip
 from api.hue_api import HueAPI
+from services.hue_service import HueService
 
 def main():
     
@@ -9,11 +10,9 @@ def main():
         print("No Hue Bridge found on the network.")
         return
     
-    hue = HueAPI(bridge_ip)
+    hue_api = HueAPI(bridge_ip)
+    hue_service = HueService(hue_api)
     
-    lights = hue.get_lights()
-    
-    print(lights)
     
 if __name__ == "__main__":
     main()
