@@ -17,8 +17,7 @@ def main():
     
     app = MainWindow(hue_service)
     app.mainloop()
-    
-    
+       
 if __name__ == "__main__":
     main()
     
