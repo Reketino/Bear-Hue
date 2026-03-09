@@ -3,8 +3,8 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[1]/"src"))
 
-from api.hue_discovery import discover_bridge_ip
-from api.hue_api import HueAPI
+from src.api.hue_discovery import discover_bridge_ip
+from src.api.hue_api import HueAPI
 
 def run_test():
     
