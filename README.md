@@ -23,6 +23,21 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Improving refresh status to include turn on/off all 
+- Updating readme w/ more information
 
 ---
+
+### Run Scripts:
+
+----
+
+## Test for Philips Hue connection: 
+python -m tests.test_api
+
+----
+
+## Main Script to turn lights on/off:
+python -m src.scripts.main 
+
+---
+
