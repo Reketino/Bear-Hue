@@ -40,4 +40,10 @@ class MainWindow(ctk.CTk):
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
         
+    def turn_all_on(self):
+        self.hue_service.turn_all_on()
+        
+    def turn_all_off(self):
+        self.hue_service.turn_off_all()
+        
     

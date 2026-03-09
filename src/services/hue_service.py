@@ -20,7 +20,7 @@ class HueService:
         
         self.hue_api.set_light(light_id, not is_on)
         
-    def turn_on_all(self):
+    def turn_all_on(self):
         
         lights = self.hue_api.list_lights()
         
