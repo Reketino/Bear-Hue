@@ -23,5 +23,5 @@ class MainWindow(ctk.CTk):
             
             button.pack(pady=10) # type: ignore
             
-    def toggle_light(self, light_id: str):
-        self.hue_service.turn_on(int(light_id))
+    def toggle_light(self, light_id: int):
+        self.hue_service.toggle(light_id)
