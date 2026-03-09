@@ -35,7 +35,7 @@ class MainWindow(ctk.CTk):
             
             button:  ctk.CTkButton = ctk.CTkButton(
                 self,
-                text=name,
+                text=f"{name} {status}",
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
