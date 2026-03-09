@@ -31,12 +31,12 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ----
 
-Test for Philips Hue connection: 
+## Test for Philips Hue connection: 
 python -m tests.test_api
 
 ----
 
-Main Script to turn lights on/off:
+## Main Script to turn lights on/off:
 python -m src.scripts.main 
 
 ---
