@@ -7,6 +7,7 @@ class MainWindow(ctk.CTk):
         super().__init__() # type: ignore
         
         self.hue_service = hue_service
+        self.buttons = {}
         
         self.title("Bear Hue")
         self.geometry("300x300")
@@ -29,16 +30,30 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
+            is_on = self.hue_service.get_light_state(light_id)
+            
+            status = "🟢" if is_on else "🔴"
+            
             button:  ctk.CTkButton = ctk.CTkButton(
                 self,
-                text=name,
+                text=f"{name} {status}",
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
             button.pack(pady=10) # type: ignore
             
+            self.buttons[light_id] = (button, name)
+            
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
+        
+        is_on = self.hue_service.get_light_state(light_id)
+        
+        status = "🟢" if is_on else "🔴"
+        
+        button, name = self.buttons[light_id]
+        
+        button.configure(text=f"{name} {status}")
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()

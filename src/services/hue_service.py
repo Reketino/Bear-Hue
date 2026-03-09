@@ -8,6 +8,9 @@ class HueService:
     def get_lights(self):
         return self.hue_api.list_lights()
     
+    def get_light_state(self, light_id: int) -> bool:
+        return self.hue_api.get_light_state(light_id)
+    
     def turn_on(self, light_id: int):
         self.hue_api.set_light(light_id, True)
         
