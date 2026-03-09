@@ -17,7 +17,8 @@ def main():
     
     app = MainWindow(hue_service)
     app.mainloop()
-       
+    
+# Run script w/: python -m src.scripts.main      
 if __name__ == "__main__":
     main()
     
