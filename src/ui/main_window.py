@@ -18,6 +18,13 @@ class MainWindow(ctk.CTk):
         )
         on_button.pack(pady=10)
         
+        off_button = ctk.CTkButton(
+            self,
+            text="All Lights OFF",
+            command=self.turn_all_off
+        )
+        off_button.pack(pady=10)
+        
         lights = hue_service.get_lights()
         
         for light_id, name in lights.items():
