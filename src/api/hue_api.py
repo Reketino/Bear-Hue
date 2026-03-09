@@ -41,3 +41,12 @@ class HueAPI:
         payload = {"on": on} 
         
         requests.put(url, json=payload)
+        
+    def get_light_state(self, light_id: int) -> bool:
+        """Returning True if light is on, False if not"""
+        
+        url = f"{self.base_url}/lights/{light_id}"
+        
+        response = requests.get(url).json()
+        
+        return response["state"]["on"]
