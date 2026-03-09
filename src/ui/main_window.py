@@ -29,6 +29,10 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
+            is_on = self.hue_service.get_light_state(light_id)
+            
+            status = "🟢" if is_on else "🔴"
+            
             button:  ctk.CTkButton = ctk.CTkButton(
                 self,
                 text=name,
