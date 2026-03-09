@@ -23,6 +23,6 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Toggle mode to switch light on/off
+- Adding button to turn all lights on/off
 
 ---

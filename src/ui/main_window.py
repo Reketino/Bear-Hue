@@ -11,6 +11,20 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
+        on_button = ctk.CTkButton(
+            self,
+            text="All Lights ON",
+            command=self.turn_all_on
+        )
+        on_button.pack(pady=10)
+        
+        off_button = ctk.CTkButton(
+            self,
+            text="All Lights OFF",
+            command=self.turn_all_off
+        )
+        off_button.pack(pady=10)
+        
         lights = hue_service.get_lights()
         
         for light_id, name in lights.items():
@@ -25,3 +39,11 @@ class MainWindow(ctk.CTk):
             
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
+        
+    def turn_all_on(self):
+        self.hue_service.turn_all_on()
+        
+    def turn_all_off(self):
+        self.hue_service.turn_off_all()
+        
+    
