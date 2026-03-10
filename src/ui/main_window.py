@@ -1,11 +1,11 @@
-import customtkinter as ctk # type: ignore
+import customtkinter as ctk 
 import time
 from src.services.hue_service import HueService
 
 class MainWindow(ctk.CTk):
     
     def __init__(self, hue_service: HueService) -> None:
-        super().__init__() # type: ignore
+        super().__init__() 
         
         self.hue_service = hue_service
         self.buttons = {}
@@ -39,7 +39,7 @@ class MainWindow(ctk.CTk):
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(pady=5) # type: ignore
+            button.pack(pady=5) 
             
             is_on = self.hue_service.get_light_state(light_id)
             
