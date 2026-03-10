@@ -50,11 +50,11 @@ class MainWindow(ctk.CTk):
         
         time.sleep(0.2)
         
-        is_on = self.hue_service.get_light_state(light_id)
-        
-        status = "🟢" if is_on else "🔴"
+        self.hue_service.get_light_state(light_id)
         
         button, name = self.buttons[light_id]
+        
+        status = "🔴" if "🟢" in button.cget("text") else "🟢"
         
         button.configure(text=f"{name} {status}")
         
