@@ -64,15 +64,14 @@ class MainWindow(ctk.CTk):
         label.configure(text_color=color) 
         
     def refresh_status(self):
-        for light_id, (button, name) in self.buttons.items():
-            
-            time.sleep(0.2)
+        
+        for light_id, label in self.status_labels.items():
             
             is_on = self.hue_service.get_light_state(light_id)
             
-            status = "🟢" if is_on else "🔴"
+            color = "green" if is_on else "red"
             
-            button.configure(text=f"{name} {status}")
+            label.configure(text_color=color)
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()
