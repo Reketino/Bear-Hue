@@ -31,19 +31,23 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
-            is_on = self.hue_service.get_light_state(light_id)
-            
-            status = "🟢" if is_on else "🔴"
-            
             button:  ctk.CTkButton = ctk.CTkButton(
                 self,
-                text=f"{name} {status}",
+                text=name,
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(pady=10) # type: ignore
+            button.pack(pady=5) # type: ignore
+            
+            is_on = self.hue_service.get_light_state(light_id)
+            
+            color = "green" if is_on else "red"
+            
+            label = ctk.CTkLabel(self, text="●", text_color=color)
+            label.pack()
             
             self.buttons[light_id] = (button, name)
+            self.status_labels[light_id] = label
             
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
