@@ -23,7 +23,7 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Updating readme w/ more information
+- Adding refresh helper
 
 ---
 
