@@ -61,6 +61,8 @@ class MainWindow(ctk.CTk):
     def refresh_status(self):
         for light_id, (button, name) in self.buttons.items():
             
+            time.sleep(0.2)
+            
             is_on = self.hue_service.get_light_state(light_id)
             
             status = "🟢" if is_on else "🔴"
