@@ -1,11 +1,11 @@
-import customtkinter as ctk 
+import customtkinter as ctk # type: ignore
 import time
 from src.services.hue_service import HueService
 
 class MainWindow(ctk.CTk):
     
     def __init__(self, hue_service: HueService) -> None:
-        super().__init__() 
+        super().__init__() # type: ignore
         
         self.hue_service = hue_service
         self.buttons = {}
@@ -39,7 +39,7 @@ class MainWindow(ctk.CTk):
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(pady=5) 
+            button.pack(pady=5) # type: ignore
             
             is_on = self.hue_service.get_light_state(light_id)
             
@@ -55,13 +55,13 @@ class MainWindow(ctk.CTk):
         
         self.hue_service.toggle(light_id)
         
+        is_on = self.hue_service.get_light_state(light_id)
+        
+        color = "green" if is_on else "red"
+        
         label = self.status_labels[light_id]
         
-        current_color = label.cget("text_color")
-        
-        new_color = "red" if current_color == "green" else "green"
-        
-        label.configure(text_color=new_color) 
+        label.configure(text_color=color) 
         
     def refresh_status(self):
         for light_id, (button, name) in self.buttons.items():
