@@ -29,6 +29,8 @@ class MainWindow(ctk.CTk):
         
         lights = hue_service.get_lights()
         
+        self.status_labels = {}
+        
         for light_id, name in lights.items():
             
             button:  ctk.CTkButton = ctk.CTkButton(
@@ -50,17 +52,16 @@ class MainWindow(ctk.CTk):
             self.status_labels[light_id] = label
             
     def toggle_light(self, light_id: int):
+        
         self.hue_service.toggle(light_id)
         
-        time.sleep(0.2)
+        label = self.status_labels[light_id]
         
-        self.hue_service.get_light_state(light_id)
+        current_color = label.cget("text_color")
         
-        button, name = self.buttons[light_id]
+        new_color = "red" if current_color == "green" else "green"
         
-        status = "🔴" if "🟢" in button.cget("text") else "🟢"
-        
-        button.configure(text=f"{name} {status}")
+        label.configure(text_color=new_color) 
         
     def refresh_status(self):
         for light_id, (button, name) in self.buttons.items():
