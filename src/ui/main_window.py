@@ -1,4 +1,5 @@
 import customtkinter as ctk # type: ignore
+import time
 from src.services.hue_service import HueService
 
 class MainWindow(ctk.CTk):
@@ -47,6 +48,8 @@ class MainWindow(ctk.CTk):
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
         
+        time.sleep(0.2)
+        
         is_on = self.hue_service.get_light_state(light_id)
         
         status = "🟢" if is_on else "🔴"
@@ -57,6 +60,8 @@ class MainWindow(ctk.CTk):
         
     def refresh_status(self):
         for light_id, (button, name) in self.buttons.items():
+            
+            time.sleep(0.2)
             
             is_on = self.hue_service.get_light_state(light_id)
             
