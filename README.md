@@ -21,6 +21,26 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ---
 
+### Setup
+
+1. Create a developer account  
+https://developers.meethue.com/develop/hue-api-v2/getting-started/
+
+2. Find your bridge IP  
+https://discovery.meethue.com/
+
+3. Press the button on your Hue Bridge
+
+4. Within 30 seconds run:
+
+```
+bash
+curl -X POST http://<HUE_BRIDGE_IP>/api \
+-H "Content-Type: application/json" \
+-d '{"devicetype":"bear_hue_app"}'
+```
+---
+
 ### 🟢 Working on:
 
 - Improving app UI layout
