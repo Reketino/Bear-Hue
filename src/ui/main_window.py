@@ -33,19 +33,23 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
-            button:  ctk.CTkButton = ctk.CTkButton(
-                self,
+            row = ctk.CTkFrame(self)
+            row.pack(fill="x", padx=20, pady=5)
+            
+            button = ctk.CTkButton(
+                row,
                 text=name,
+                width=200,
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(pady=5) # type: ignore
+            button.pack(side="left", padx=10) 
             
             is_on = self.hue_service.get_light_state(light_id)
             
             color = "green" if is_on else "red"
             
-            label = ctk.CTkLabel(self, text="●", text_color=color)
+            label = ctk.CTkLabel(row, text="●", text_color=color, font=("Arial", 18))
             label.pack()
             
             self.buttons[light_id] = (button, name)
