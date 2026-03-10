@@ -23,7 +23,7 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ### 🟢 Working on:
 
-- Refactoring on/off button
+- Refactoring refresh_status
 
 ---
 
