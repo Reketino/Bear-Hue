@@ -48,6 +48,8 @@ class MainWindow(ctk.CTk):
     def toggle_light(self, light_id: int):
         self.hue_service.toggle(light_id)
         
+        time.sleep(0.2)
+        
         is_on = self.hue_service.get_light_state(light_id)
         
         status = "🟢" if is_on else "🔴"
