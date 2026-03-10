@@ -55,6 +55,15 @@ class MainWindow(ctk.CTk):
         
         button.configure(text=f"{name} {status}")
         
+    def refresh_status(self):
+        for light_id, (button, name) in self.buttons.items():
+            
+            is_on = self.hue_service.get_light_state(light_id)
+            
+            status = "🟢" if is_on else "🔴"
+            
+            button.configure(text=f"{name} {status}")
+        
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         
