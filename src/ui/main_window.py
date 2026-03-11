@@ -45,6 +45,7 @@ class MainWindow(ctk.CTk):
             self,
             from_=0,
             to=100,
+            number_of_steps=100,
             command=self.change_brightness
         )
         
