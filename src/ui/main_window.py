@@ -33,6 +33,24 @@ class MainWindow(ctk.CTk):
         lights_container = ctk.CTkFrame(self)
         lights_container.pack(fill="both", expand=True, padx=20, pady=10)
         
+        brightness_label = ctk.CTkLabel(
+            self, 
+            text="Brightness"
+            )
+        brightness_label.pack(
+            pday=(10, 0)
+            )
+        
+        self.brightness_slider = ctk.CTkSlider(
+            self,
+            from_=0,
+            to_=100,
+            command=self.change_brightness
+        )
+        
+        self.brightness_slider.set(100)
+        self.brightness_slider.pack(fill="x", padx=30, pady=10)
+        
         lights = hue_service.get_lights()
         
         self.status_labels = {}
