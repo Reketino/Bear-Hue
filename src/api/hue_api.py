@@ -50,3 +50,12 @@ class HueAPI:
         response = requests.get(url).json()
         
         return response["state"]["on"]
+    
+    def set_brightness(self, light_id: int, bri: int):
+        """Ajusting Brightness for all lights"""
+        
+        url = f"{self.base_url}/lights/{light_id}/state"
+        
+        payload = {"bri": bri}
+        
+        requests.put(url, json=payload)
