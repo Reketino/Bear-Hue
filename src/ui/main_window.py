@@ -39,8 +39,8 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
-            row = ctk.CTkFrame(self)
-            row.pack(fill="x", padx=20, pady=5)
+            row = ctk.CTkFrame(lights_container)
+            row.pack(fill="x", pady=6)
             
             button = ctk.CTkButton(
                 row,
