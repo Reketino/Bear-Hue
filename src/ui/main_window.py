@@ -30,23 +30,27 @@ class MainWindow(ctk.CTk):
         )
         off_button.pack(side="right", padx=5)
         
+        lights_container = ctk.CTkFrame(self)
+        lights_container.pack(fill="both", expand=True, padx=20, pady=10)
+        
         lights = hue_service.get_lights()
         
         self.status_labels = {}
         
         for light_id, name in lights.items():
             
-            row = ctk.CTkFrame(self)
-            row.pack(fill="x", padx=20, pady=5)
+            row = ctk.CTkFrame(lights_container)
+            row.pack(fill="x", pady=6)
             
             button = ctk.CTkButton(
                 row,
                 text=name,
-                width=200,
+                height=40,
+                anchor="w",
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(side="left", padx=10) 
+            button.pack(side="left", fill= "x", expand=True, padx=10) 
             
             is_on = self.hue_service.get_light_state(light_id)
             
