@@ -13,19 +13,22 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
+        controls = ctk.CTkFrame(self)
+        controls.pack(fill="x", padx=20, pady=20)
+        
         on_button = ctk.CTkButton(
-            self,
+            controls,
             text="All Lights ON",
             command=self.turn_all_on
         )
-        on_button.pack(pady=10)
+        on_button.pack(side="left", padx=10)
         
         off_button = ctk.CTkButton(
-            self,
+            controls,
             text="All Lights OFF",
             command=self.turn_all_off
         )
-        off_button.pack(pady=10)
+        off_button.pack(side="right", padx=5)
         
         lights = hue_service.get_lights()
         
