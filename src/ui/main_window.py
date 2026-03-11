@@ -45,7 +45,8 @@ class MainWindow(ctk.CTk):
             button = ctk.CTkButton(
                 row,
                 text=name,
-                width=200,
+                height=40,
+                anchor="w",
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
