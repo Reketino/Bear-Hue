@@ -86,6 +86,7 @@ class MainWindow(ctk.CTk):
             self.buttons[light_id] = (button, name)
             self.status_labels[light_id] = label
             
+            
     def toggle_light(self, light_id: int):
         
         self.hue_service.toggle(light_id)
@@ -103,6 +104,7 @@ class MainWindow(ctk.CTk):
         
         self.hue_service.set_all_brightness(int(value))
         
+        
     def refresh_status(self):
         
         for light_id, label in self.status_labels.items():
@@ -112,10 +114,12 @@ class MainWindow(ctk.CTk):
             color = "green" if is_on else "red"
             
             label.configure(text_color=color)
+            
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         self.refresh_status()
+        
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
