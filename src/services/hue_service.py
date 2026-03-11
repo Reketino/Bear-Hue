@@ -43,3 +43,13 @@ class HueService:
         
         for light_id in lights.keys():
             self.hue_api.set_light(light_id, False)
+            
+    
+    def set_all_brightness(self, value: int):
+        
+        lights = self.hue_api.list_lights()
+        
+        bri = int(value * 2.54)
+        
+        for light_id in lights.keys():
+            self.hue_api.set_brightness(light_id, bri)
