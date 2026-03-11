@@ -33,6 +33,25 @@ class MainWindow(ctk.CTk):
         lights_container = ctk.CTkFrame(self)
         lights_container.pack(fill="both", expand=True, padx=20, pady=10)
         
+        brightness_label = ctk.CTkLabel(
+            self, 
+            text="Brightness"
+            )
+        brightness_label.pack(
+            pady=(10, 0)
+            )
+        
+        self.brightness_slider = ctk.CTkSlider(
+            self,
+            from_=0,
+            to=100,
+            number_of_steps=100,
+            command=self.change_brightness
+        )
+        
+        self.brightness_slider.set(100)
+        self.brightness_slider.pack(fill="x", padx=30, pady=10)
+        
         lights = hue_service.get_lights()
         
         self.status_labels = {}
@@ -67,6 +86,7 @@ class MainWindow(ctk.CTk):
             self.buttons[light_id] = (button, name)
             self.status_labels[light_id] = label
             
+            
     def toggle_light(self, light_id: int):
         
         self.hue_service.toggle(light_id)
@@ -79,6 +99,12 @@ class MainWindow(ctk.CTk):
         
         label.configure(text_color=color) 
         
+    
+    def change_brightness(self, value):
+        
+        self.hue_service.set_all_brightness(int(value))
+        
+        
     def refresh_status(self):
         
         for light_id, label in self.status_labels.items():
@@ -88,10 +114,12 @@ class MainWindow(ctk.CTk):
             color = "green" if is_on else "red"
             
             label.configure(text_color=color)
+            
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         self.refresh_status()
+        
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
