@@ -62,7 +62,7 @@ class MainWindow(ctk.CTk):
                 text_color=color, 
                 font=("Arial", 18)
                 )
-            label.pack()
+            label.pack(side="right", padx=15)
             
             self.buttons[light_id] = (button, name)
             self.status_labels[light_id] = label
