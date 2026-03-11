@@ -16,6 +16,7 @@ class MainWindow(ctk.CTk):
         controls = ctk.CTkFrame(self)
         controls.pack(fill="x", padx=20, pady=20)
         
+        
         on_button = ctk.CTkButton(
             controls,
             text="All Lights ON",
@@ -30,8 +31,10 @@ class MainWindow(ctk.CTk):
         )
         off_button.pack(side="right", padx=5)
         
+        
         lights_container = ctk.CTkFrame(self)
         lights_container.pack(fill="both", expand=True, padx=20, pady=10)
+        
         
         brightness_label = ctk.CTkLabel(
             self, 
@@ -51,6 +54,7 @@ class MainWindow(ctk.CTk):
         
         self.brightness_slider.set(100)
         self.brightness_slider.pack(fill="x", padx=30, pady=10)
+        
         
         lights = hue_service.get_lights()
         
