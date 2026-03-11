@@ -56,8 +56,13 @@ class MainWindow(ctk.CTk):
             
             color = "green" if is_on else "red"
             
-            label = ctk.CTkLabel(row, text="●", text_color=color, font=("Arial", 18))
-            label.pack()
+            label = ctk.CTkLabel(
+                row, 
+                text="●", 
+                text_color=color, 
+                font=("Arial", 18)
+                )
+            label.pack(side="right", padx=15)
             
             self.buttons[light_id] = (button, name)
             self.status_labels[light_id] = label
