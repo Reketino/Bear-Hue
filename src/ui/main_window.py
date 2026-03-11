@@ -38,13 +38,13 @@ class MainWindow(ctk.CTk):
             text="Brightness"
             )
         brightness_label.pack(
-            pday=(10, 0)
+            pady=(10, 0)
             )
         
         self.brightness_slider = ctk.CTkSlider(
             self,
             from_=0,
-            to_=100,
+            to=100,
             command=self.change_brightness
         )
         
@@ -96,6 +96,11 @@ class MainWindow(ctk.CTk):
         label = self.status_labels[light_id]
         
         label.configure(text_color=color) 
+        
+    
+    def change_brightness(self, value):
+        
+        self.hue_service.set_all_brightness(int(value))
         
     def refresh_status(self):
         
