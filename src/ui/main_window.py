@@ -30,6 +30,9 @@ class MainWindow(ctk.CTk):
         )
         off_button.pack(side="right", padx=5)
         
+        lights_container = ctk.CTkFrame(self)
+        lights_container.pack(fill="both", expand=True, padx=20, pady=10)
+        
         lights = hue_service.get_lights()
         
         self.status_labels = {}
