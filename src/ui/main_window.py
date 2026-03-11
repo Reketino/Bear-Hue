@@ -50,7 +50,7 @@ class MainWindow(ctk.CTk):
                 command=lambda i=light_id: self.toggle_light(i)
             )
             
-            button.pack(side="left", padx=10) 
+            button.pack(side="left", fill= "x", expand=True, padx=10) 
             
             is_on = self.hue_service.get_light_state(light_id)
             
