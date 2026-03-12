@@ -10,3 +10,11 @@ class LightRow(ctk.CTkFrame):
         self.light_id = light_id
         
         self.pack(fill="x", pady=6)
+        
+        button = ctk.CTkButton(
+            self,
+            text=name,
+            height=40,
+            anchor="w",
+            command=self.toggle_light
+        )
