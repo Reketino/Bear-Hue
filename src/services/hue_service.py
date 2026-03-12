@@ -23,33 +23,24 @@ class HueService:
         
         
     def toggle(self, light_id: int):
-        
         is_on = self.hue_api.get_light_state(light_id)
-        
         self.hue_api.set_light(light_id, not is_on)
     
         
     def turn_all_on(self):
-        
         lights = self.hue_api.list_lights()
-        
         for light_id in lights.keys():
             self.hue_api.set_light(light_id, True)
       
             
     def turn_off_all(self):
-        
         lights = self.hue_api.list_lights()
-        
         for light_id in lights.keys():
             self.hue_api.set_light(light_id, False)
             
     
     def set_all_brightness(self, value: int):
-        
         lights = self.hue_api.list_lights()
-        
         bri = int(value * 2.54)
-        
         for light_id in lights.keys():
             self.hue_api.set_brightness(light_id, bri)
