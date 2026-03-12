@@ -18,11 +18,9 @@ class LightRow(ctk.CTkFrame):
             anchor="w",
             command=self.toggle_light
         )
-        
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
-        is_on = self.hue_service.get_light_state(light_id)
-            
+        is_on = self.hue_service.get_light_state(light_id)   
         color = "green" if is_on else "red"
             
         self.status = ctk.CTkLabel(
@@ -34,14 +32,18 @@ class LightRow(ctk.CTkFrame):
         
         self.status.pack(side="right", padx=15)
         
+        self.refresh_status()
+     
+        
     def toggle_light(self):
-        
         self.hue_service.toggle(self.light_id)
+   
         
+    def refresh_status(self):
         is_on = self.hue_service.get_light_state(self.light_id)
-        
         color = "green" if is_on else "red"
+        self.status.configure(text_color=color)
+        self.after(1000, self.refresh_status) 
         
-        self.status.configure(text_color=color) 
         
         
