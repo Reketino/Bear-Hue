@@ -33,6 +33,14 @@ class LightRow(ctk.CTkFrame):
         self.status.pack(side="right", padx=15)
         
         self.refresh_status()
+        
+        self.brightness_label = ctk.CTkLabel(
+            self,
+            text="0%",
+            width=40
+        )
+        
+        self.brightness_label.pack(side="right", padx=10)
      
         
     def toggle_light(self):
