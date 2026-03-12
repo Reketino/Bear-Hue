@@ -1,12 +1,11 @@
-import customtkinter as ctk # type: ignore
-import time
+import customtkinter as ctk 
 from src.services.hue_service import HueService
 from src.ui.light_row import LightRow
 
 class MainWindow(ctk.CTk):
     
     def __init__(self, hue_service: HueService) -> None:
-        super().__init__() # type: ignore
+        super().__init__() 
         
         self.hue_service = hue_service
         self.buttons = {}
