@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor Lightrow code into own script
+- Refactor main_window w/ light_row
 
 ---
 

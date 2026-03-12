@@ -1,6 +1,7 @@
 import customtkinter as ctk # type: ignore
 import time
 from src.services.hue_service import HueService
+from src.ui.light_row import LightRow
 
 class MainWindow(ctk.CTk):
     
@@ -58,75 +59,23 @@ class MainWindow(ctk.CTk):
         
         lights = hue_service.get_lights()
         
-        self.status_labels = {}
-        
         for light_id, name in lights.items():
             
-            row = ctk.CTkFrame(lights_container)
-            row.pack(fill="x", pady=6)
-            
-            button = ctk.CTkButton(
-                row,
-                text=name,
-                height=40,
-                anchor="w",
-                command=lambda i=light_id: self.toggle_light(i)
+            LightRow(
+                lights_container,
+                self.hue_service,
+                light_id,
+                name
             )
-            
-            button.pack(side="left", fill= "x", expand=True, padx=10) 
-            
-            is_on = self.hue_service.get_light_state(light_id)
-            
-            color = "green" if is_on else "red"
-            
-            label = ctk.CTkLabel(
-                row, 
-                text="●", 
-                text_color=color, 
-                font=("Arial", 18)
-                )
-            label.pack(side="right", padx=15)
-            
-            self.buttons[light_id] = (button, name)
-            self.status_labels[light_id] = label
-            
-            
-    def toggle_light(self, light_id: int):
-        
-        self.hue_service.toggle(light_id)
-        
-        is_on = self.hue_service.get_light_state(light_id)
-        
-        color = "green" if is_on else "red"
-        
-        label = self.status_labels[light_id]
-        
-        label.configure(text_color=color) 
-        
-    
+                  
     def change_brightness(self, value):
-        
         self.hue_service.set_all_brightness(int(value))
-        
-        
-    def refresh_status(self):
-        
-        for light_id, label in self.status_labels.items():
-            
-            is_on = self.hue_service.get_light_state(light_id)
-            
-            color = "green" if is_on else "red"
-            
-            label.configure(text_color=color)
-            
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()
-        self.refresh_status()
-        
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
-        self.refresh_status()
+        
         
     
