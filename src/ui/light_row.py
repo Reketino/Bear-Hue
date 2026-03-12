@@ -18,3 +18,19 @@ class LightRow(ctk.CTkFrame):
             anchor="w",
             command=self.toggle_light
         )
+        
+        button.pack(side="left", fill="x", expand=True, padx= 10)
+        
+        is_on = self.hue_service.get_light_state(light_id)
+            
+        color = "green" if is_on else "red"
+            
+        label = ctk.CTkLabel(
+            row, 
+            text="●", 
+            text_color=color, 
+            font=("Arial", 18)
+            )
+        label.pack(side="right", padx=15)
+        
+        
