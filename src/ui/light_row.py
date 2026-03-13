@@ -30,7 +30,7 @@ class LightRow(ctk.CTkFrame):
             font=("Arial", 18)
             )
         
-        self.status.pack(side="right", padx=15)
+        self.status.pack(side="right", padx=8)
         
        
         
