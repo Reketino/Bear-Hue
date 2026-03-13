@@ -14,7 +14,8 @@ class LightRow(ctk.CTkFrame):
         button = ctk.CTkButton(
             self,
             text=name,
-            height=40,
+            height=36,
+            width=140,
             anchor="w",
             command=self.toggle_light
         )
@@ -33,7 +34,6 @@ class LightRow(ctk.CTkFrame):
         self.status.pack(side="right", padx=8)
         
        
-        
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
