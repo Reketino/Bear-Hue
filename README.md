@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Adding scrollable frame
+- Fix percentage not showing up when window is minimized
 
 ---
 
