@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Brightness sync w/ hue bridge
+- Optimalizing API calls
 
 ---
 
