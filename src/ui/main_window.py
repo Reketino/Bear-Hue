@@ -66,6 +66,8 @@ class MainWindow(ctk.CTk):
                 light_id,
                 name
             )
+            
+        self.refresh_brightness()
                         
     def refresh_brightness(self):
         brightness = self.hue_service.get_average_brightness()
