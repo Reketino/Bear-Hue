@@ -32,15 +32,16 @@ class LightRow(ctk.CTkFrame):
         
         self.status.pack(side="right", padx=15)
         
-        self.refresh_status()
+       
         
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
             width=40
         )
-        
         self.brightness_label.pack(side="right", padx=10)
+        
+        self.refresh_status()
      
         
     def toggle_light(self):
@@ -51,6 +52,8 @@ class LightRow(ctk.CTkFrame):
         is_on = self.hue_service.get_light_state(self.light_id)
         color = "green" if is_on else "red"
         self.status.configure(text_color=color)
+        brightness = self.hue_service.get_brightness(self.light_id)
+        self.brightness_label.configure(text=f"{brightness}%")
         self.after(1000, self.refresh_status) 
         
         
