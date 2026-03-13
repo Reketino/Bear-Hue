@@ -31,11 +31,7 @@ class MainWindow(ctk.CTk):
         )
         off_button.pack(side="right", padx=5)
         
-        
-        lights_container = ctk.CTkScrollableFrame(self)
-        lights_container.pack(fill="both", expand=True, padx=20, pady=10)
-        
-        
+              
         brightness_label = ctk.CTkLabel(
             self, 
             text="Brightness"
@@ -54,6 +50,10 @@ class MainWindow(ctk.CTk):
         
         self.brightness_slider.set(100)
         self.brightness_slider.pack(fill="x", padx=30, pady=10)
+        
+        
+        lights_container = ctk.CTkScrollableFrame(self)
+        lights_container.pack(fill="both", expand=True, padx=20, pady=10)
         
         
         lights = hue_service.get_lights()
