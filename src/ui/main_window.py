@@ -9,6 +9,7 @@ class MainWindow(ctk.CTk):
         
         self.hue_service = hue_service
         self.buttons = {}
+        self.light_rows = {}
         
         self.title("Bear Hue")
         self.geometry("300x300")
