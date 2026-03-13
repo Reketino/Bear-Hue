@@ -39,7 +39,7 @@ class HueAPI:
         
         
     def get_all_lights_state(self):
-        """One API call instead of many"""
+        """Limit for API"""
         url = f"{self.base_url}/lights"
         response = requests.get(url)
         return response.json()
