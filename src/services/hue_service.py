@@ -14,6 +14,19 @@ class HueService:
         return self.hue_api.get_light_state(light_id)
     
     
+    def get_all_lights_state(self):
+        lights = self.hue_api.get_all_lights_state()
+        result = {}
+        for light_id, data in lights.items():
+            is_on = data["state"]["on"]
+            bri = data["state"]["bri"]
+            result[int(light_id)] = {
+                "on": is_on,
+                "brightness": int(bri / 2.54)
+            }
+            return result
+        
+
     def turn_on(self, light_id: int):
         self.hue_api.set_light(light_id, True)
       
