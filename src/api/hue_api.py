@@ -38,6 +38,13 @@ class HueAPI:
         requests.put(url, json=payload)
         
         
+    def get_all_lights_state(self):
+        """One API call instead of many"""
+        url = f"{self.base_url}/lights"
+        response = requests.get(url)
+        return response.json()
+        
+        
     def get_light_state(self, light_id: int) -> bool:
         """Returning True if light is on, False if not"""
         url = f"{self.base_url}/lights/{light_id}"
