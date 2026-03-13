@@ -37,7 +37,8 @@ class LightRow(ctk.CTkFrame):
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
-            width=40
+            width=50,
+            anchor="e"
         )
         self.brightness_label.pack(side="right", padx=10)
         
