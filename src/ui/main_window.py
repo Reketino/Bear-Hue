@@ -61,13 +61,14 @@ class MainWindow(ctk.CTk):
         
         for light_id, name in lights.items():
             
-            LightRow(
+            row = LightRow(
                 lights_container,
                 self.hue_service,
                 light_id,
                 name
             )
             
+        self.light_rows[light_id] = row
         self.refresh_brightness()
                         
     def refresh_brightness(self):
