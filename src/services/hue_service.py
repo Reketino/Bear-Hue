@@ -1,10 +1,14 @@
 from src.api.hue_api import HueAPI
+import time
 
 class HueService: 
     
     def __init__(self, hue_api: HueAPI):
+        
         self.hue_api = hue_api
         
+        self._lights_cache = None
+        self._cache_time = 0 
         
     def get_lights(self):
         return self.hue_api.list_lights()
