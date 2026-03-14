@@ -29,6 +29,16 @@ class HueService:
                 "brightness": int(bri / 2.54)
             }
         return result
+    
+    
+    def _get_lights_cached(self):
+        now = time.time()
+        if self._lights_cache and (now - self._cache_time) < 0.5:
+            return self._lights_cache
+        lights = self.hue_api.get_all_lights_state
+        self._lights_cache = lights
+        self._cache_time = now
+        return lights
         
 
     def turn_on(self, light_id: int):
