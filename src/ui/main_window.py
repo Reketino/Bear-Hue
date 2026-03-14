@@ -23,6 +23,10 @@ class MainWindow(ctk.CTk):
         self.lights_container = ctk.CTkScrollableFrame(self)
         self.lights_container.pack(fill="both", expand=True, padx=20, pady=10)
         
+        self._build_lights()
+        
+        self.refresh_lights()
+        self.refresh_brightness()
         
         lights = hue_service.get_lights()
         
