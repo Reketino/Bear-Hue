@@ -54,7 +54,7 @@ class MainWindow(ctk.CTk):
                             
     def refresh_brightness(self):
         brightness = self.hue_service.get_average_brightness()
-        self.brightness_slider.set(brightness)
+        self.brightness.slider.set(brightness)
         self.after(1000, self.refresh_brightness)
                   
     def change_brightness(self, value):
