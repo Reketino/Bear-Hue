@@ -24,7 +24,7 @@ class HueService:
                 "on": is_on,
                 "brightness": int(bri / 2.54)
             }
-            return result
+        return result
         
 
     def turn_on(self, light_id: int):
