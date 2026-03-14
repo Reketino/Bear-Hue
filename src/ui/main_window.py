@@ -17,47 +17,11 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
-        controls = ctk.CTkFrame(self)
-        controls.pack(fill="x", padx=20, pady=20)
+        ControlsBar(self, self.turn_all_on, self.turn_all_off)
         
-        
-        on_button = ctk.CTkButton(
-            controls,
-            text="All Lights ON",
-            command=self.turn_all_on
-        )
-        on_button.pack(side="left", padx=10)
-        
-        off_button = ctk.CTkButton(
-            controls,
-            text="All Lights OFF",
-            command=self.turn_all_off
-        )
-        off_button.pack(side="right", padx=5)
-        
-              
-        brightness_label = ctk.CTkLabel(
-            self, 
-            text="Brightness"
-            )
-        brightness_label.pack(
-            pady=(10, 0)
-            )
-        
-        self.brightness_slider = ctk.CTkSlider(
-            self,
-            from_=0,
-            to=100,
-            number_of_steps=100,
-            command=self.change_brightness
-        )
-        
-        self.brightness_slider.set(100)
-        self.brightness_slider.pack(fill="x", padx=30, pady=10)
-        
-        
-        lights_container = ctk.CTkScrollableFrame(self)
-        lights_container.pack(fill="both", expand=True, padx=20, pady=10)
+        self.brightness = BrightnessSlider(self, self.change_brightness)
+        self.lights_container = ctk.CTkScrollableFrame(self)
+        self.lights_container.pack(fill="both", expand=True, padx=20, pady=10)
         
         
         lights = hue_service.get_lights()
