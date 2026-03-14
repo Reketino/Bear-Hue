@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Optimalizing API calls
+- cache requests to make slider & GUI use same data
 
 ---
 
