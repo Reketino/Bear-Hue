@@ -62,15 +62,27 @@ class MainWindow(ctk.CTk):
         for light_id, name in lights.items():
             
             row = LightRow(
-                lights_container,
-                self.hue_service,
-                light_id,
-                name
+            lights_container,
+            self.hue_service,
+            light_id,
+            name
             )
             
-        self.light_rows[light_id] = row
+            self.light_rows[light_id] = row
+            
+        self.refresh_lights()
         self.refresh_brightness()
-                        
+        
+    
+        
+    def refresh_lights(self):
+        states= self.hue_service.get_all_lights_state()
+        for light_id, data in states.items():
+            row = self.light_rows.get(light_id)
+            if row:
+                row.update_state(data["on"], data["brightness"])
+        self.after(1000, self.refresh_lights)
+                            
     def refresh_brightness(self):
         brightness = self.hue_service.get_average_brightness()
         self.brightness_slider.set(brightness)
