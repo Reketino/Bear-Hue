@@ -73,8 +73,7 @@ class MainWindow(ctk.CTk):
         self.refresh_lights()
         self.refresh_brightness()
         
-    
-        
+            
     def refresh_lights(self):
         states= self.hue_service.get_all_lights_state()
         for light_id, data in states.items():
