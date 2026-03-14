@@ -28,12 +28,14 @@ class MainWindow(ctk.CTk):
         self.refresh_lights()
         self.refresh_brightness()
         
-        lights = hue_service.get_lights()
+    def _build_lights(self):
+        
+        lights = self.hue_service.get_lights()
         
         for light_id, name in lights.items():
             
             row = LightRow(
-            lights_container,
+            self.lights_container,
             self.hue_service,
             light_id,
             name
