@@ -10,3 +10,17 @@ class LightsPanel(ctk.CTkScrollableFrame):
         
         self.hue_service = hue_service 
         self.light_rows = {}
+        
+        self.pack(fill="both", expand=True, padx=20, pady=10)
+        
+        lights = self.hue_service.get_lights()
+        
+        for light_id, name in lights.items():
+            
+            row = LightRow(
+            self,
+            self.hue_service,
+            light_id,
+            name
+            )
+            self.light_rows[light_id] = row
