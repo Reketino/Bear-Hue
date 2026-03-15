@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Transitiontime on brightness api
+- setting "scene" with one click in app
 
 ---
 
