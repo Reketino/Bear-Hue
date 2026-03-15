@@ -12,7 +12,6 @@ class MainWindow(ctk.CTk):
         super().__init__() 
         
         self.hue_service = hue_service
-
         self.title("Bear Hue")
         self.geometry("300x300")
         
@@ -27,7 +26,7 @@ class MainWindow(ctk.CTk):
         self.lights_panel.update_lights(states)
         brightness = self.hue_service.get_average_brightness()
         self.brightness.slider.set(brightness)
-        self.after(1000, self.refresh)
+        self.after(500, self.refresh)
                                              
     def change_brightness(self, value):
         self.hue_service.set_all_brightness(int(value))
