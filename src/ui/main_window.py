@@ -21,24 +21,9 @@ class MainWindow(ctk.CTk):
         ControlsBar(self, self.turn_all_on, self.turn_all_off)
         
         self.brightness = BrightnessSlider(self, self.change_brightness)
-        self.lights_container = ctk.CTkScrollableFrame(self)
-        self.lights_container.pack(fill="both", expand=True, padx=20, pady=10)
-        
-        self._build_lights()
-        
-        self.refresh_lights()
-        self.refresh_brightness()
-        
-    def _build_lights(self):
-        lights = self.hue_service.get_lights()
-        for light_id, name in lights.items():
-            row = LightRow(
-            self.lights_container,
-            self.hue_service,
-            light_id,
-            name
-            )
-            self.light_rows[light_id] = row
+        self.lights_panel = LightsPanel(self, self.hue_service)
+        self.refresh()
+       
         
     def refresh_lights(self):
         states= self.hue_service.get_all_lights_state()
