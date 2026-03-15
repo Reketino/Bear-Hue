@@ -25,13 +25,12 @@ class MainWindow(ctk.CTk):
         self.refresh()
        
         
-    def refresh_lights(self):
+    def refresh(self):
         states= self.hue_service.get_all_lights_state()
-        for light_id, data in states.items():
-            row = self.light_rows.get(light_id)
-            if row:
-                row.update_state(data["on"], data["brightness"])
-        self.after(1000, self.refresh_lights)
+        self.lights_panel.update_lights(states)
+        brightness = self.hue_service.get_average_brightness
+        self.lights_panel = LightsPanel(self, self.hue_service)
+        self.after(1000, self.refresh)
                             
     def refresh_brightness(self):
         brightness = self.hue_service.get_average_brightness()
