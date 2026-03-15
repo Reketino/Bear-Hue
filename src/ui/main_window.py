@@ -12,9 +12,7 @@ class MainWindow(ctk.CTk):
         super().__init__() 
         
         self.hue_service = hue_service
-        self.buttons = {}
-        self.light_rows = {}
-        
+
         self.title("Bear Hue")
         self.geometry("300x300")
         
@@ -23,8 +21,7 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
-       
-        
+           
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
         self.lights_panel.update_lights(states)
