@@ -29,7 +29,7 @@ class MainWindow(ctk.CTk):
         states= self.hue_service.get_all_lights_state()
         self.lights_panel.update_lights(states)
         brightness = self.hue_service.get_average_brightness
-        self.lights_panel = LightsPanel(self, self.hue_service)
+        self.brightness.slider.set(brightness)
         self.after(1000, self.refresh)
                             
     def refresh_brightness(self):
