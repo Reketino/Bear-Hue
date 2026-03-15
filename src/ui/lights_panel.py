@@ -26,6 +26,7 @@ class LightsPanel(ctk.CTkScrollableFrame):
             self.light_rows[light_id] = row
             
     def update_lights(self, states): 
+        
         for light_id, data in states.items():
             
             row = self.light_rows.get(light_id)
