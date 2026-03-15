@@ -86,3 +86,15 @@ class HueService:
         bri = int(value * 2.54)
         for light_id in lights.keys():
             self.hue_api.set_brightness(light_id, bri)
+            
+            
+    def set_scene(self, scene: str):
+        scenes = {
+            "movie": 30,
+            "relax": 60,
+            "bright": 100
+        }
+        brightness = scenes.get(scene)
+        if brightness is None:
+            return
+        self.set_all_brightness(brightness)
