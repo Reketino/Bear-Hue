@@ -33,6 +33,11 @@ class LightRow(ctk.CTkFrame):
         
         self.status.pack(side="right", padx=8)
         
+        self.brightness_bar = ctk.CTkProgressBar(
+            self, 
+            width=80
+        )
+        
        
         self.brightness_label = ctk.CTkLabel(
             self,
