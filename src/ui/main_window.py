@@ -47,5 +47,8 @@ class MainWindow(ctk.CTk):
     def scene_movie(self):
         self.hue_service.set_scene("movie")
         
+    def scene_relax(self):
+        self.hue_service.set_scene("relax")
+        
         
     
