@@ -6,3 +6,10 @@ class ScenesBar(ctk.CTkFrame):
         super().__init__(master)
         
         self.pack(fill="x", padx=20, pady=10)
+        
+        movie_btn = ctk.CTk(
+            self,
+            text="Movie",
+            command=movie
+        )
+        movie_btn.pack(side="left", expand=True, padx=5)
