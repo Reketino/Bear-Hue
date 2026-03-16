@@ -17,6 +17,13 @@ class MainWindow(ctk.CTk):
         
         ControlsBar(self, self.turn_all_on, self.turn_all_off)
         
+        ScenesBar(
+            self,
+            self.scene_movie,
+            self.scene_relax,
+            self.scene_bright
+        )
+        
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
