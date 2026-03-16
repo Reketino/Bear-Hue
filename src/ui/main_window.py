@@ -1,10 +1,10 @@
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
-from src.ui.light_row import LightRow
 from src.ui.controls_bar import ControlsBar
 from src.ui.brightness_slider import BrightnessSlider
 from src.ui.lights_panel import LightsPanel
+from src.ui.scenes_bar import ScenesBar
 
 class MainWindow(ctk.CTk):
     
