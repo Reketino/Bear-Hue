@@ -17,6 +17,13 @@ class MainWindow(ctk.CTk):
         
         ControlsBar(self, self.turn_all_on, self.turn_all_off)
         
+        ScenesBar(
+            self,
+            self.scene_movie,
+            self.scene_relax,
+            self.scene_bright
+        )
+        
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
@@ -36,6 +43,15 @@ class MainWindow(ctk.CTk):
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
+        
+    def scene_movie(self):
+        self.hue_service.set_scene("movie")
+        
+    def scene_relax(self):
+        self.hue_service.set_scene("relax")
+        
+    def scene_bright(self):
+        self.hue_service.set_scene("bright")
         
         
     
