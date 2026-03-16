@@ -44,5 +44,8 @@ class MainWindow(ctk.CTk):
     def turn_all_off(self):
         self.hue_service.turn_off_all()
         
+    def scene_movie(self):
+        self.hue_service.set_scene("movie")
+        
         
     
