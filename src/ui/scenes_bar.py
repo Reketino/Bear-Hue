@@ -16,7 +16,7 @@ class ScenesBar(ctk.CTkFrame):
         
         relax_btn = ctk.CTkButton(
             self,
-            text="Bright",
+            text="Relax",
             command=bright
         )
         relax_btn.pack(side="left", expand=True, padx=5)
