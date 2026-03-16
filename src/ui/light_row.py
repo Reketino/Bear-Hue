@@ -41,7 +41,6 @@ class LightRow(ctk.CTkFrame):
         self.brightness_bar.pack(side="right", padx=10)
         self.brightness_bar.set(0)
         
-       
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
@@ -49,7 +48,6 @@ class LightRow(ctk.CTkFrame):
             anchor="e"
         )
         self.brightness_label.pack(side="right", padx=10)
-        
         self.refresh_status()
      
         
@@ -70,6 +68,7 @@ class LightRow(ctk.CTkFrame):
         color = "green" if is_on else "red"
         self.status.configure(text_color=color)
         self.brightness_label.configure(text=f"{brightness}%")
+        self.brightness_bar.set(brightness / 100)
         
         
         
