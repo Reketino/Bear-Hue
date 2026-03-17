@@ -6,7 +6,6 @@ load_dotenv()
 
 class HueAPI:
     
-    
     def __init__(self, bridge_ip: str):
         self.bridge_ip = bridge_ip
         self.username = os.getenv("HUE_USERNAME")
