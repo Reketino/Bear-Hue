@@ -34,7 +34,10 @@ class HueAPI:
     def set_light(self, light_id: int, on: bool):
         """Function for turning lights on or off"""   
         url = f"{self.base_url}/lights/{light_id}/state"
-        payload = {"on": on} 
+        payload = {
+            "on": on,
+            "transitiontime": 2 if on else 6
+            } 
         requests.put(url, json=payload)
         
         
