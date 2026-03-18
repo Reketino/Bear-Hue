@@ -49,8 +49,9 @@ class HueService:
         
         
     def toggle(self, light_id: int):
-        is_on = self.hue_api.get_light_state(light_id)
+        is_on = self.get_light_state(light_id)
         self.hue_api.set_light(light_id, not is_on)
+        self._invalidate_cache()
     
         
     def turn_all_on(self):
