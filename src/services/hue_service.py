@@ -106,4 +106,5 @@ class HueService:
     
     
     def _invalidate_cache(self):
+        self._lights_cache = None
         self._cache_time = 0
