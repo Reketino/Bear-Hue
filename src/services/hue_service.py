@@ -32,7 +32,7 @@ class HueService:
     
     def _get_lights_cached(self):
         now = time.time()
-        if self._lights_cache and (now - self._cache_time) < 0.5:
+        if self._lights_cache is not None and (now - self._cache_time) < 0.5:
             return self._lights_cache
         lights = self.hue_api.get_all_lights_state()
         self._lights_cache = lights
