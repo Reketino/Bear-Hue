@@ -58,7 +58,7 @@ class HueService:
         lights = self._get_lights_cached()
         for light_id in lights.keys():
             self.hue_api.set_light(light_id, True)
-        self._invalidate_cache
+        self._invalidate_cache()
       
             
     def turn_off_all(self):
@@ -102,3 +102,7 @@ class HueService:
         if brightness is None:
             return
         self.set_all_brightness(brightness)
+    
+    
+    def _invalidate_cache(self):
+        self._cache_time = 0
