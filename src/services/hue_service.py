@@ -55,9 +55,10 @@ class HueService:
     
         
     def turn_all_on(self):
-        lights = self.hue_api.list_lights()
+        lights = self._get_lights_cached()
         for light_id in lights.keys():
             self.hue_api.set_light(light_id, True)
+        self._invalidate_cache
       
             
     def turn_off_all(self):
