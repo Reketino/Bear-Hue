@@ -43,7 +43,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Cleaning up architecture in API calls
+- Adding bear_mode to UI
 
 ---
 
