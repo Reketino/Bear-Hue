@@ -18,6 +18,7 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 - UI for controlling lights
 - Button for turning on/off lights
 - Setting up different light modes
+- "Bear Mode" UI toggle
 
 ---
 
