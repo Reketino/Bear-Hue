@@ -38,14 +38,14 @@ class MainWindow(ctk.CTk):
         self.bear_label.place_forget()
         
         ControlsBar(
-            self, 
+            self.ui_layer, 
             self.turn_all_on, 
             self.turn_all_off, 
             self.toggle_bear_mode
             )
         
         ScenesBar(
-            self,
+            self.ui_layer,
             self.scene_movie,
             self.scene_relax,
             self.scene_bright
