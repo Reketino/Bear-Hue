@@ -2,7 +2,7 @@ import customtkinter as ctk
 
 class ControlsBar(ctk.CTkFrame):
     
-    def __init__(self, master, on_all, off_all):
+    def __init__(self, master, on_all, off_all, toggle_bear_mode):
         super().__init__(master)
         
         self.pack(fill="x", padx=20, pady=20)
@@ -20,3 +20,12 @@ class ControlsBar(ctk.CTkFrame):
             command=off_all
         )
         off_button.pack(side="right", padx=10)
+        
+        bear_button = ctk.CTkButton(
+            self,
+            text="🐻Bear Mode",
+            command=toggle_bear_mode,
+            fg_color="#8B5A2B",
+            hover_color="#6E4420"
+        )
+        bear_button.pack(side="right", padx=10)
