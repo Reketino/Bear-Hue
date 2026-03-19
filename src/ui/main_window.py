@@ -18,8 +18,8 @@ class MainWindow(ctk.CTk):
         self.geometry("300x300")
         
         self.bear_image = ctk.CTkImage(
-            light_image=Image.open("assets/bearhue.png"),
-            dark_image=Image.open("assets/bearhue.png"),
+            light_image=Image.open("src/assets/bearhue.png"),
+            dark_image=Image.open("src/assets/bearhue.png"),
             size=(220, 220)
         )
         
