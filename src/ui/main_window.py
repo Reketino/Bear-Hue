@@ -44,6 +44,13 @@ class MainWindow(ctk.CTk):
     def change_brightness(self, value):
         self.hue_service.set_all_brightness(int(value))
         
+    def toggle_bear_mode(self):
+        self.bear_mode = not self.bear_mode
+        if self.bear_mode:
+            self.enable_bear_mode()
+        else:
+            self.disable_bear_mode()
+        
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         
