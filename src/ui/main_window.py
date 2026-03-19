@@ -15,7 +15,8 @@ class MainWindow(ctk.CTk):
         self.hue_service = hue_service
         self.bear_mode = False
         self.title("Bear Hue")
-        self.geometry("300x300")
+        self.geometry("400x500")
+        self.minsize(300, 400)
         
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
@@ -28,9 +29,7 @@ class MainWindow(ctk.CTk):
             image=self.bear_image,
             text=""
         )
-        self.bear_label.place(relx=0.5, rely=0.5, anchor="center")
-        self.bear_label.configure(fg_color="transparent")
-        self.bear_label.lower()
+        self.bear_label.place_forget()
         
         ControlsBar(
             self, 
