@@ -18,10 +18,13 @@ class MainWindow(ctk.CTk):
         self.geometry("400x500")
         self.minsize(300, 400)
         
+        self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
+        self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
-            size=(200, 200)
+            size=(800, 800)
         )
         
         self.bear_label = ctk.CTkLabel(
@@ -58,7 +61,7 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
-        self.bear_label.place(relx=0.7, rely=0.85, anchor="center")
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.bear_label.lower()
         self.update_idletasks()
             
