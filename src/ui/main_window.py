@@ -17,6 +17,12 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
+        self.bear_image = ctk.CTkImage(
+            light_image=Image.open("assets/bearhue.png"),
+            dark_image=Image.open("assets/bearhue.png"),
+            size=(220, 220)
+        )
+        
         ControlsBar(
             self, 
             self.turn_all_on, 
