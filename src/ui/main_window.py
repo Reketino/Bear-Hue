@@ -67,7 +67,8 @@ class MainWindow(ctk.CTk):
             button_color="#FFC107"
         ) 
         for row in self.lights_panel.light_rows.values():
-            row.configure(fg_color="#2B2B2B")     
+            row.configure(fg_color="#2B2B2B") 
+        self.bear_label.place_forget()    
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
