@@ -57,7 +57,9 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
-        self.bear_label.place(relx=0.8, rely=0.8)
+        self.bear_label.place(relx=0.7, rely=0.85, anchor="center")
+        self.bear_label.lower()
+        self.update_idletasks()
             
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
