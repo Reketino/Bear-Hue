@@ -21,6 +21,9 @@ class MainWindow(ctk.CTk):
         self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
+        self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
+        self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
@@ -35,14 +38,14 @@ class MainWindow(ctk.CTk):
         self.bear_label.place_forget()
         
         ControlsBar(
-            self, 
+            self.ui_layer, 
             self.turn_all_on, 
             self.turn_all_off, 
             self.toggle_bear_mode
             )
         
         ScenesBar(
-            self,
+            self.ui_layer,
             self.scene_movie,
             self.scene_relax,
             self.scene_bright
@@ -52,7 +55,6 @@ class MainWindow(ctk.CTk):
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
         
-        self.bg_layer.lower()
     
     def enable_bear_mode(self):
         self.configure(fg_color="#1B2A1F")
