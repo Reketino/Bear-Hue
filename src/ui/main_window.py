@@ -21,7 +21,7 @@ class MainWindow(ctk.CTk):
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
-            size=(220, 220)
+            size=(200, 200)
         )
         
         self.bear_label = ctk.CTkLabel(
@@ -48,6 +48,7 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
+    
             
     def enable_bear_mode(self):
         self.configure(fg_color="#1B2A1F")
@@ -69,7 +70,15 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2B2B2B") 
-        self.bear_label.place_forget()    
+        self.bear_label.place_forget()
+        
+    def toggle_bear_mode(self):
+        self.bear_mode = not self.bear_mode
+        if self.bear_mode:
+            self.enable_bear_mode()
+        else:
+            self.disable_bear_mode()    
+    
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
@@ -77,17 +86,11 @@ class MainWindow(ctk.CTk):
         brightness = self.hue_service.get_average_brightness()
         self.brightness.slider.set(brightness)
         self.after(500, self.refresh)
+    
                                              
     def change_brightness(self, value):
         self.hue_service.set_all_brightness(int(value))
-        
-    def toggle_bear_mode(self):
-        self.bear_mode = not self.bear_mode
-        if self.bear_mode:
-            self.enable_bear_mode()
-        else:
-            self.disable_bear_mode()
-        
+               
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         
