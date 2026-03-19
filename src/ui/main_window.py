@@ -55,7 +55,10 @@ class MainWindow(ctk.CTk):
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
         
-    
+        self.bg_layer.lower()
+        self.ui_layer.lift()
+        
+        
     def enable_bear_mode(self):
         self.configure(fg_color="#1B2A1F")
         self.brightness.slider.configure(
