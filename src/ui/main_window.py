@@ -16,7 +16,12 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
-        ControlsBar(self, self.turn_all_on, self.turn_all_off)
+        ControlsBar(
+            self, 
+            self.turn_all_on, 
+            self.turn_all_off, 
+            self.toggle_bear_mode
+            )
         
         ScenesBar(
             self,
