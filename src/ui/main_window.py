@@ -33,6 +33,16 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
+        
+        
+    def enable_bear_mode(self):
+        self.configure(fg_color="#1B2A1F")
+        self.brightness.slider.configure(
+            progress_color="#A3B18A",
+            button_color="#588157"
+        ) 
+        for row in self.lights_panel.light_rows.values():
+            row.configure(fg_color="#2D3E2F")      
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
