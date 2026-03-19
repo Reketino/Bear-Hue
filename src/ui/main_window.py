@@ -16,7 +16,12 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("300x300")
         
-        ControlsBar(self, self.turn_all_on, self.turn_all_off)
+        ControlsBar(
+            self, 
+            self.turn_all_on, 
+            self.turn_all_off, 
+            self.toggle_bear_mode
+            )
         
         ScenesBar(
             self,
@@ -28,6 +33,24 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
+            
+    def enable_bear_mode(self):
+        self.configure(fg_color="#1B2A1F")
+        self.brightness.slider.configure(
+            progress_color="#A3B18A",
+            button_color="#588157"
+        ) 
+        for row in self.lights_panel.light_rows.values():
+            row.configure(fg_color="#2D3E2F")
+            
+    def disable_bear_mode(self):
+        self.configure(fg_color="#1E1E1E")
+        self.brightness.slider.configure(
+            progress_color="#FFD54F",
+            button_color="#FFC107"
+        ) 
+        for row in self.lights_panel.light_rows.values():
+            row.configure(fg_color="#2B2B2B")     
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
@@ -38,6 +61,13 @@ class MainWindow(ctk.CTk):
                                              
     def change_brightness(self, value):
         self.hue_service.set_all_brightness(int(value))
+        
+    def toggle_bear_mode(self):
+        self.bear_mode = not self.bear_mode
+        if self.bear_mode:
+            self.enable_bear_mode()
+        else:
+            self.disable_bear_mode()
         
     def turn_all_on(self):
         self.hue_service.turn_all_on()
