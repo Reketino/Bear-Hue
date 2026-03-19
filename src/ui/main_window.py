@@ -1,3 +1,4 @@
+from PIL import Image
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
@@ -15,6 +16,21 @@ class MainWindow(ctk.CTk):
         self.bear_mode = False
         self.title("Bear Hue")
         self.geometry("300x300")
+        
+        self.bear_image = ctk.CTkImage(
+            light_image=Image.open("assets/bearhue.png"),
+            dark_image=Image.open("assets/bearhue.png"),
+            size=(220, 220)
+        )
+        
+        self.bear_label = ctk.CTkLabel(
+            self,
+            image=self.bear_image,
+            text=""
+        )
+        self.bear_label.place(relx=0.5, rely=0.5, anchor="center")
+        self.bear_label.configure(fg_color="transparent")
+        self.bear_label.lower()
         
         ControlsBar(
             self, 
@@ -42,6 +58,7 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
+        self.bear_label.place(relx=0.8, rely=0.8)
             
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
@@ -50,7 +67,8 @@ class MainWindow(ctk.CTk):
             button_color="#FFC107"
         ) 
         for row in self.lights_panel.light_rows.values():
-            row.configure(fg_color="#2B2B2B")     
+            row.configure(fg_color="#2B2B2B") 
+        self.bear_label.place_forget()    
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
