@@ -22,6 +22,9 @@ class MainWindow(ctk.CTk):
             dark_image=Image.open("assets/bearhue.png"),
             size=(220, 220)
         )
+        self.bear_label.place(relx=0.5, rely=0.5, anchor="center")
+        self.bear_label.configure(fg_color="transparent")
+        self.bear_label.lower()
         
         ControlsBar(
             self, 
