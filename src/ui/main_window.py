@@ -15,22 +15,24 @@ class MainWindow(ctk.CTk):
         self.hue_service = hue_service
         self.bear_mode = False
         self.title("Bear Hue")
-        self.geometry("300x300")
+        self.geometry("400x500")
+        self.minsize(300, 400)
+        
+        self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
+        self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
-            size=(220, 220)
+            size=(800, 800)
         )
         
         self.bear_label = ctk.CTkLabel(
-            self,
+            self.bg_layer,
             image=self.bear_image,
             text=""
         )
-        self.bear_label.place(relx=0.5, rely=0.5, anchor="center")
-        self.bear_label.configure(fg_color="transparent")
-        self.bear_label.lower()
+        self.bear_label.place_forget()
         
         ControlsBar(
             self, 
@@ -49,7 +51,9 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
-            
+        
+        self.bg_layer.lower()
+    
     def enable_bear_mode(self):
         self.configure(fg_color="#1B2A1F")
         self.brightness.slider.configure(
@@ -58,7 +62,8 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
-        self.bear_label.place(relx=0.8, rely=0.8)
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+      
             
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
@@ -68,7 +73,15 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2B2B2B") 
-        self.bear_label.place_forget()    
+        self.bear_label.place_forget()
+        
+    def toggle_bear_mode(self):
+        self.bear_mode = not self.bear_mode
+        if self.bear_mode:
+            self.enable_bear_mode()
+        else:
+            self.disable_bear_mode()    
+    
            
     def refresh(self):
         states= self.hue_service.get_all_lights_state()
@@ -76,17 +89,11 @@ class MainWindow(ctk.CTk):
         brightness = self.hue_service.get_average_brightness()
         self.brightness.slider.set(brightness)
         self.after(500, self.refresh)
+    
                                              
     def change_brightness(self, value):
         self.hue_service.set_all_brightness(int(value))
-        
-    def toggle_bear_mode(self):
-        self.bear_mode = not self.bear_mode
-        if self.bear_mode:
-            self.enable_bear_mode()
-        else:
-            self.disable_bear_mode()
-        
+               
     def turn_all_on(self):
         self.hue_service.turn_all_on()
         
