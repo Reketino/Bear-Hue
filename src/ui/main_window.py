@@ -28,7 +28,7 @@ class MainWindow(ctk.CTk):
         )
         
         self.bear_label = ctk.CTkLabel(
-            self,
+            self.bg_layer,
             image=self.bear_image,
             text=""
         )
@@ -51,8 +51,9 @@ class MainWindow(ctk.CTk):
         self.brightness = BrightnessSlider(self, self.change_brightness)
         self.lights_panel = LightsPanel(self, self.hue_service)
         self.refresh()
+        
+        self.bg_layer.lower()
     
-            
     def enable_bear_mode(self):
         self.configure(fg_color="#1B2A1F")
         self.brightness.slider.configure(
@@ -62,8 +63,7 @@ class MainWindow(ctk.CTk):
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
         self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-        self.bear_label.lower()
-        self.update_idletasks()
+      
             
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
