@@ -46,12 +46,11 @@ class HueAPI:
             "transitiontime": 2 if on else 6
         }
         self._put(f"lights/{light_id}/state", payload)
+        
     
     def set_brightness(self, light_id: int, bri: int):
-        """Ajusting Brightness for all lights"""
-        url = f"{self.base_url}/lights/{light_id}/state"
         payload = {
             "bri": bri,
             "transitiontime": 5
-            }
-        requests.put(url, json=payload)
+        }
+        self._put(f"lights/{light_id}/state",payload)
