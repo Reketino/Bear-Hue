@@ -13,59 +13,46 @@ class HueAPI:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
         
+   # ------ Internal Helpers, when Superman needs help -------
         
-    def get_lights(self):
-        """Json returning raw lights connected to Hue Bridge"""
-        url = f"{self.base_url}/lights"
-        response = requests.get(url)
+    def _get(self, endpoint: str):
+        url = f"{self.base_url}/{endpoint}"
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
         return response.json()
     
     
+    def _put(self, endpoint: str, payload: dict):
+         url = f"{self.base_url}/{endpoint}"
+         response = requests.put(url, json=payload, timeout=5)
+         response.raise_for_status()
+         return response.json()
+        
+    # ------- Public API'S ----------
+        
+    def get_all_lights_state(self):  
+        return self._get("lights")
+        
+        
     def list_lights(self):
-        """Json returning light id w/ name"""
-        lights = self.get_lights()
+        lights = self.get_all_lights_state()
         return {
-            light_id: light["name"]
-            for light_id, light in lights.items()
+            int(light_id): data["name"]
+            for light_id, data in lights.items()
         }
         
-    
+        
     def set_light(self, light_id: int, on: bool):
-        """Function for turning lights on or off"""   
-        url = f"{self.base_url}/lights/{light_id}/state"
         payload = {
             "on": on,
             "transitiontime": 2 if on else 6
-            } 
-        requests.put(url, json=payload)
+        }
+        self._put(f"lights/{light_id}/state", payload)
         
-        
-    def get_all_lights_state(self):
-        """Limit for API"""
-        url = f"{self.base_url}/lights"
-        response = requests.get(url)
-        return response.json()
-        
-        
-    def get_light_state(self, light_id: int) -> bool:
-        """Returning True if light is on, False if not"""
-        url = f"{self.base_url}/lights/{light_id}"
-        response = requests.get(url).json()
-        return response["state"]["on"]
-    
-    
-    def get_brightness(self, light_id: int) -> int:
-        """Collecting brightness from hue bridge"""
-        url = f"{self.base_url}/lights/{light_id}"
-        response = requests.get(url).json()
-        return response["state"]["bri"]
-    
     
     def set_brightness(self, light_id: int, bri: int):
-        """Ajusting Brightness for all lights"""
-        url = f"{self.base_url}/lights/{light_id}/state"
         payload = {
             "bri": bri,
             "transitiontime": 5
-            }
-        requests.put(url, json=payload)
+        }
+        self._put(f"lights/{light_id}/state",payload)
