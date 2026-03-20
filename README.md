@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor cache for GUI polling
+- Refactore Hue_discover
 
 ---
 
