@@ -12,6 +12,8 @@ class HueAPI:
         if not self.username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
+        self._cache = None
+        self._cache_time = 0
         
    # ------ Internal Helpers, when Superman needs help -------
         
