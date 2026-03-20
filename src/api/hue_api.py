@@ -28,21 +28,16 @@ class HueAPI:
          return response.json()
         
         
-    def set_light(self, light_id: int, on: bool):
-        """Function for turning lights on or off"""   
-        url = f"{self.base_url}/lights/{light_id}/state"
-        payload = {
-            "on": on,
-            "transitiontime": 2 if on else 6
-            } 
-        requests.put(url, json=payload)
+    def get_all_lights_state(self):  
+        return self._get("lights")
         
         
-    def get_all_lights_state(self):
-        """Limit for API"""
-        url = f"{self.base_url}/lights"
-        response = requests.get(url)
-        return response.json()
+    def list_lights(self):
+        lights = self.get_all_lights_state()
+        return {
+            int(light_id): data["name"]
+            for light_id, data in lights.items()
+        }
         
         
     def get_light_state(self, light_id: int) -> bool:
