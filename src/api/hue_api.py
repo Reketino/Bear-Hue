@@ -1,3 +1,4 @@
+import time
 import os
 import requests
 from dotenv import load_dotenv
@@ -31,9 +32,16 @@ class HueAPI:
          return response.json()
         
     # ------- Public API'S ----------
+    
         
-    def get_all_lights_state(self):  
-        return self._get("lights")
+    def get_all_lights_state(self):
+        now = time.time()
+        if self._cache is not None and (now - self._cache_time) < 0.5:
+            return self._cache
+        data = self._get("lights")
+        self._cache = data
+        self._cache_time = now
+        return data
         
         
     def list_lights(self):
