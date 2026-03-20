@@ -27,11 +27,11 @@ class MainWindow(ctk.CTk):
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
-            size=(800, 800)
+            size=(400, 400)
         )
         
         self.bear_label = ctk.CTkLabel(
-            self.bg_layer,
+            self,
             image=self.bear_image,
             text=""
         )
@@ -67,7 +67,9 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
-        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.bear_label.place(relx=0.5, rely=1, anchor="center")
+        self.bear_label.configure(fg_color="transparent")
+        self.bear_label.lift(self.ui_layer)
       
             
     def disable_bear_mode(self):
