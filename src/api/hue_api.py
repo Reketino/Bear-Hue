@@ -40,19 +40,12 @@ class HueAPI:
         }
         
         
-    def get_light_state(self, light_id: int) -> bool:
-        """Returning True if light is on, False if not"""
-        url = f"{self.base_url}/lights/{light_id}"
-        response = requests.get(url).json()
-        return response["state"]["on"]
-    
-    
-    def get_brightness(self, light_id: int) -> int:
-        """Collecting brightness from hue bridge"""
-        url = f"{self.base_url}/lights/{light_id}"
-        response = requests.get(url).json()
-        return response["state"]["bri"]
-    
+    def set_light(self, light_id: int, on: bool):
+        payload = {
+            "on": on,
+            "transitiontime": 2 if on else 6
+        }
+        self._put(f"lights/{light_id}/state", payload)
     
     def set_brightness(self, light_id: int, bri: int):
         """Ajusting Brightness for all lights"""
