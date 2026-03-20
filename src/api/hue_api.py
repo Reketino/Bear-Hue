@@ -1,3 +1,4 @@
+import time
 import os
 import requests
 from dotenv import load_dotenv
@@ -12,6 +13,8 @@ class HueAPI:
         if not self.username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
+        self._cache = None
+        self._cache_time = 0
         
    # ------ Internal Helpers, when Superman needs help -------
         
@@ -27,11 +30,23 @@ class HueAPI:
          response = requests.put(url, json=payload, timeout=5)
          response.raise_for_status()
          return response.json()
+    
+     
+    def _invalidate_cache(self):
+        self._cache = None
+    
         
     # ------- Public API'S ----------
+    
         
-    def get_all_lights_state(self):  
-        return self._get("lights")
+    def get_all_lights_state(self):
+        now = time.time()
+        if self._cache is not None and (now - self._cache_time) < 0.5:
+            return self._cache
+        data = self._get("lights")
+        self._cache = data
+        self._cache_time = now
+        return data
         
         
     def list_lights(self):
@@ -48,6 +63,7 @@ class HueAPI:
             "transitiontime": 2 if on else 6
         }
         self._put(f"lights/{light_id}/state", payload)
+        self._invalidate_cache()
         
     
     def set_brightness(self, light_id: int, bri: int):
@@ -56,9 +72,10 @@ class HueAPI:
             "transitiontime": 5
         }
         self._put(f"lights/{light_id}/state",payload)
+        self._invalidate_cache()
     
         
     def set_group_brightness(self, bri: int):
         lights = self.get_all_lights_state()
-        for light_id in lights():
+        for light_id in lights:
             self.set_brightness(int(light_id), bri)
