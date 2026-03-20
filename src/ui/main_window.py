@@ -22,16 +22,16 @@ class MainWindow(ctk.CTk):
         self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
-        self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         self.bear_image = ctk.CTkImage(
             light_image=Image.open("src/assets/bearhue.png"),
             dark_image=Image.open("src/assets/bearhue.png"),
-            size=(800, 800)
+            size=(400, 400)
         )
         
         self.bear_label = ctk.CTkLabel(
-            self.bg_layer,
+            self,
             image=self.bear_image,
             text=""
         )
@@ -51,8 +51,8 @@ class MainWindow(ctk.CTk):
             self.scene_bright
         )
         
-        self.brightness = BrightnessSlider(self, self.change_brightness)
-        self.lights_panel = LightsPanel(self, self.hue_service)
+        self.brightness = BrightnessSlider(self.ui_layer, self.change_brightness)
+        self.lights_panel = LightsPanel(self.ui_layer, self.hue_service)
         self.refresh()
         
         self.bg_layer.lower()
@@ -67,7 +67,9 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2D3E2F")
-        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.bear_label.place(relx=0.5, rely=1, anchor="center")
+        self.bear_label.configure(fg_color="transparent")
+        self.bear_label.lift(self.ui_layer)
       
             
     def disable_bear_mode(self):
