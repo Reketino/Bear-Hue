@@ -60,5 +60,5 @@ class HueAPI:
         
     def set_group_brightness(self, bri: int):
         lights = self.get_all_lights_state()
-        for light_id in lights.keys():
+        for light_id in lights():
             self.set_brightness(int(light_id), bri)
