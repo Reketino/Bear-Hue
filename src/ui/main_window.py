@@ -51,8 +51,8 @@ class MainWindow(ctk.CTk):
             self.scene_bright
         )
         
-        self.brightness = BrightnessSlider(self, self.change_brightness)
-        self.lights_panel = LightsPanel(self, self.hue_service)
+        self.brightness = BrightnessSlider(self.ui_layer, self.change_brightness)
+        self.lights_panel = LightsPanel(self.ui_layer, self.hue_service)
         self.refresh()
         
         self.bg_layer.lower()
