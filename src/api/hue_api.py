@@ -63,6 +63,7 @@ class HueAPI:
             "transitiontime": 2 if on else 6
         }
         self._put(f"lights/{light_id}/state", payload)
+        self._invalidate_cache()
         
     
     def set_brightness(self, light_id: int, bri: int):
@@ -71,6 +72,7 @@ class HueAPI:
             "transitiontime": 5
         }
         self._put(f"lights/{light_id}/state",payload)
+        self._invalidate_cache()
     
         
     def set_group_brightness(self, bri: int):
