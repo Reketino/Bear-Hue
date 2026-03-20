@@ -14,10 +14,11 @@ class HueAPI:
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
         
         
-    def get_lights(self):
+    def _get(self, endpoint: str):
         """Json returning raw lights connected to Hue Bridge"""
-        url = f"{self.base_url}/lights"
-        response = requests.get(url)
+        url = f"{self.base_url}/{endpoint}"
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
         return response.json()
     
     
