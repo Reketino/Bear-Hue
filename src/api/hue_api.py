@@ -56,3 +56,9 @@ class HueAPI:
             "transitiontime": 5
         }
         self._put(f"lights/{light_id}/state",payload)
+    
+        
+    def set_group_brightness(self, bri: int):
+        lights = self.get_all_lights_state()
+        for light_id in lights.keys():
+            self.set_brightness(int(light_id), bri)
