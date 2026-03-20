@@ -30,6 +30,11 @@ class HueAPI:
          response = requests.put(url, json=payload, timeout=5)
          response.raise_for_status()
          return response.json()
+    
+     
+    def _invalidate_cache(self):
+        self._cache = None
+    
         
     # ------- Public API'S ----------
     
