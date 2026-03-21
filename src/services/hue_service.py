@@ -60,8 +60,7 @@ class HueService:
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
             self.hue_api.set_light(int(light_id), True)
-      
-            
+              
     def turn_off_all(self):
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
@@ -72,8 +71,6 @@ class HueService:
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
             self.hue_api.set_brightness(int(light_id), bri)
-    
-            
             
     def set_scene(self, scene: str):
         scenes = {
