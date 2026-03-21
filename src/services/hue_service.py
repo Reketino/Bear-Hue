@@ -59,13 +59,13 @@ class HueService:
     def turn_all_on(self):
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
-            self.hue_api.set_light(light_id, True)
+            self.hue_api.set_light(int(light_id), True)
       
             
     def turn_off_all(self):
-        lights = self.hue_api.list_lights()
+        lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
-            self.hue_api.set_light(light_id, False)
+            self.hue_api.set_light(int(light_id), False)
             
     
 
