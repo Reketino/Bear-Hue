@@ -91,7 +91,7 @@ class MainWindow(ctk.CTk):
     
            
     def refresh(self):
-        states= self.hue_service.get_all_lights_state()
+        states= self.hue_service.get_all_light_state()
         self.lights_panel.update_lights(states)
         brightness = self.hue_service.get_average_brightness()
         self.brightness.slider.set(brightness)
