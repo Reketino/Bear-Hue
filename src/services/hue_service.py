@@ -31,6 +31,17 @@ class HueService:
         lights = self.hue_api.get_all_lights_state()
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
+    
+    def get_average_brightness(self) -> int:
+        lights = self.hue_api.get_all_lights_state()
+        values = [
+            data["state"]["bri"]
+            for data in lights.values() 
+        ]
+        if not values:
+            return 0
+        avg = sum(values) / len(values)
+        return int(avg / 2.54)
 
     
     def _get_lights_cached(self):
@@ -73,16 +84,7 @@ class HueService:
 
     
     
-    def get_average_brightness(self) -> int:
-        lights = self._get_lights_cached()
-        values = [
-            data["state"]["bri"]
-            for data in lights.values() 
-        ]
-        if not values:
-            return 0
-        avg = sum(values) / len(values)
-        return int(avg / 2.54)
+   
             
     
     def set_all_brightness(self, value: int):
