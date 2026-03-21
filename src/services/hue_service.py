@@ -27,6 +27,12 @@ class HueService:
     def get_lights_state(self, light_id: int) -> bool:
        lights = self.hue_api.get_all_lights_state()
        return lights[str(light_id)]["state"]["on"]
+   
+    def get_brightness(self, light_id: int) -> int:
+        lights = self.hue_api.get_all_lights_state()
+        bri = lights[str(light_id)]["state"]["bri"]
+        return int(bri / 2.54)   
+
     
     def _get_lights_cached(self):
         now = time.time()
@@ -65,10 +71,7 @@ class HueService:
             self.hue_api.set_light(light_id, False)
             
     
-    def get_brightness(self, light_id: int) -> int:
-        lights = self._get_lights_cached()
-        bri = lights[str(light_id)]["state"]["bri"]
-        return int(bri / 2.54)
+
     
     
     def get_average_brightness(self) -> int:
