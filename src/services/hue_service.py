@@ -24,16 +24,9 @@ class HueService:
     
     
     
-    def get_all_lights_state(self):
-        lights = self._get_lights_cached()
-        result = {}
-        for light_id, data in lights.items():
-            result[int(light_id)] = {
-                "on": data["state"]["on"],
-                "brightness": int(data["state"]["bri"] / 2.54)
-            }
-        return result
-    
+    def get_lights_state(self, light_id: int) -> bool:
+       lights = self.hue_api.get_all_lights_state()
+       return lights[str(light_id)]["state"]["on"]
     
     def _get_lights_cached(self):
         now = time.time()
