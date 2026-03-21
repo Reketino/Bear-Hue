@@ -86,7 +86,3 @@ class HueService:
             return
         self.set_all_brightness(brightness)
     
-    
-    def _invalidate_cache(self):
-        self._lights_cache = None
-        self._cache_time = 0
