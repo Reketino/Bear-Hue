@@ -68,11 +68,11 @@ class HueService:
             self.hue_api.set_light(int(light_id), False)
         
     def set_all_brightness(self, value: int):
-        lights = self._get_lights_cached()
         bri = int(value * 2.54)
+        lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
             self.hue_api.set_brightness(int(light_id), bri)
-            self._invalidate_cache()
+    
             
             
     def set_scene(self, scene: str):
