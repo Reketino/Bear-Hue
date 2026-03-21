@@ -44,8 +44,6 @@ class HueService:
         return int(avg / 2.54)
 
     
-        
-
     def turn_on(self, light_id: int):
         self.hue_api.set_light(light_id, True)
       
