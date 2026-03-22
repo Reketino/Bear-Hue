@@ -25,7 +25,8 @@ def run_test():
         print(f"{light_id}: {name}")
         
     
-    # TEST 2: Scenes    
+    # TEST 2: Scenes
+    print("\nWe Found your scenes:\n")    
     
         
 # Run script w/ python -m tests.test_api
