@@ -78,13 +78,13 @@ class HueAPI:
         
     def set_group_brightness(self, bri: int):
         lights = self.get_all_lights_state()
+        payload = {
+            "bri": bri,
+            "transitiontime": 5
+        }
         for light_id in lights:
-            payload = {
-                "bri": bri,
-                "transitiontime": 5
-            }
             self._put(f"lights/{light_id}/state", payload)
-            self._invalidate_cache()
+        self._invalidate_cache()
             
             
     # ------- Philip's Hue Scenes ----------
