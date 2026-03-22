@@ -52,6 +52,8 @@ class LightRow(ctk.CTkFrame):
      
         
     def toggle_light(self):
+        current_color = self.status.cget("text_color")
+        is_on = current_color == "green"
         self.hue_service.toggle(self.light_id)
    
         
