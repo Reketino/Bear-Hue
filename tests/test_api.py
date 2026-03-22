@@ -16,6 +16,7 @@ def run_test():
     
     hue = HueAPI(bridge_ip)
     
+    
     # TEST 1: Lights
     lights = hue.list_lights()
     
