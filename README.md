@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor UI toggle w/ instant update
+- Collecting & adding Hue scenes from Philips Hue
 
 ---
 
