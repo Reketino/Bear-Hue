@@ -6,6 +6,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]/"src"))
 from src.api.hue_discovery import discover_bridge_ip
 from src.api.hue_api import HueAPI
 
+
 def run_test():
     
     bridge_ip = discover_bridge_ip()
