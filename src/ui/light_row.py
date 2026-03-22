@@ -56,6 +56,7 @@ class LightRow(ctk.CTkFrame):
         is_on = current_color == "green"
         new_is_on = not is_on
         new_color = "green" if new_is_on else "red"
+        self.status.configure(text_color=new_color)
         self.hue_service.toggle(self.light_id)
    
         
