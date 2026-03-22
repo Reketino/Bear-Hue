@@ -6,10 +6,11 @@ class HueService:
     def __init__(self, hue_api: HueAPI):
         self.hue_api = hue_api
         
-    # -------- READ LOGIC --------
+    # -------- READ Lights Logic --------
          
     def get_lights(self):
         return self.hue_api.list_lights()
+    
     
     def get_all_light_state(self):
         lights = self.hue_api.get_all_lights_state()
@@ -22,14 +23,18 @@ class HueService:
             for light_id, data in lights.items()
         }
     
+    
     def get_lights_state(self, light_id: int) -> bool:
        lights = self.hue_api.get_all_lights_state()
        return lights[str(light_id)]["state"]["on"]
+   
+     # -------- READ Brightness Logic --------
    
     def get_brightness(self, light_id: int) -> int:
         lights = self.hue_api.get_all_lights_state()
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
+   
     
     def get_average_brightness(self) -> int:
         lights = self.hue_api.get_all_lights_state()
@@ -42,7 +47,22 @@ class HueService:
         avg = sum(values) / len(values)
         return int(avg / 2.54)
     
-    # -------- WRITE LOGIC --------
+      # -------- READ Scenes Logic --------
+    
+    def get_scenes(self):
+        scenes = self.hue_api.get_scenes()
+        result = []
+        for scene_id, data in scenes.items():
+            if data.get("type") != "GroupScene":
+                continue
+            result.append({
+                "id": scene_id,
+                "name": data["name"]
+            })
+        return sorted(result, key=lambda x: x["name"])
+    
+    
+    # -------- WRITE ON/OFF LOGIC --------
     
     def turn_on(self, light_id: int):
         self.hue_api.set_light(light_id, True)
@@ -63,12 +83,16 @@ class HueService:
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
             self.hue_api.set_light(int(light_id), False)
+            
+    # -------- WRITE BRIGHTNESS LOGIC --------
         
     def set_all_brightness(self, value: int):
         bri = int(value * 2.54)
         lights = self.hue_api.get_all_lights_state()
         for light_id in lights.keys():
             self.hue_api.set_brightness(int(light_id), bri)
+            
+    # -------- WRITE SCENE LOGIC --------
        
     def set_scene(self, scene: str):
         scenes = {
