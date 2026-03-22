@@ -85,3 +85,9 @@ class HueAPI:
             }
             self._put(f"lights/{light_id}/state", payload)
             self._invalidate_cache()
+            
+            
+    # ------- Philip's Hue Scenes ----------
+    
+    def get_scenes(self):
+        return self._get("scenes")
