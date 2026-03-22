@@ -42,6 +42,18 @@ class HueService:
         avg = sum(values) / len(values)
         return int(avg / 2.54)
     
+    def get_scenes(self):
+        scenes = self.hue_api.get_scenes()
+        result = []
+        for scene_id, data in scenes.items():
+            if data.get("type") != "GroupScene":
+                continue
+            result.append({
+                "id": scene_id,
+                "name": data["name"]
+            })
+        return sorted(result, key=lambda x: x["name"])
+    
     # -------- WRITE LOGIC --------
     
     def turn_on(self, light_id: int):
