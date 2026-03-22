@@ -28,6 +28,7 @@ class HueService:
        lights = self.hue_api.get_all_lights_state()
        return lights[str(light_id)]["state"]["on"]
    
+     # -------- READ Brightness Logic --------
    
     def get_brightness(self, light_id: int) -> int:
         lights = self.hue_api.get_all_lights_state()
@@ -46,6 +47,7 @@ class HueService:
         avg = sum(values) / len(values)
         return int(avg / 2.54)
     
+      # -------- READ Scenes Logic --------
     
     def get_scenes(self):
         scenes = self.hue_api.get_scenes()
