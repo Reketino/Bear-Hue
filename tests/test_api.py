@@ -26,7 +26,9 @@ def run_test():
         
     
     # TEST 2: Scenes
-    print("\nWe Found your scenes:\n")    
+    print("\nWe Found your scenes:\n")
+    
+    scenes = hue.get_scenes()    
     
         
 # Run script w/ python -m tests.test_api
