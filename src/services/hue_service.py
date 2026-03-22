@@ -6,10 +6,11 @@ class HueService:
     def __init__(self, hue_api: HueAPI):
         self.hue_api = hue_api
         
-    # -------- READ LOGIC --------
+    # -------- READ Lights Logic --------
          
     def get_lights(self):
         return self.hue_api.list_lights()
+    
     
     def get_all_light_state(self):
         lights = self.hue_api.get_all_lights_state()
@@ -22,14 +23,17 @@ class HueService:
             for light_id, data in lights.items()
         }
     
+    
     def get_lights_state(self, light_id: int) -> bool:
        lights = self.hue_api.get_all_lights_state()
        return lights[str(light_id)]["state"]["on"]
+   
    
     def get_brightness(self, light_id: int) -> int:
         lights = self.hue_api.get_all_lights_state()
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
+   
     
     def get_average_brightness(self) -> int:
         lights = self.hue_api.get_all_lights_state()
@@ -41,6 +45,7 @@ class HueService:
             return 0
         avg = sum(values) / len(values)
         return int(avg / 2.54)
+    
     
     def get_scenes(self):
         scenes = self.hue_api.get_scenes()
@@ -54,7 +59,9 @@ class HueService:
             })
         return sorted(result, key=lambda x: x["name"])
     
+    
     # -------- WRITE LOGIC --------
+    
     
     def turn_on(self, light_id: int):
         self.hue_api.set_light(light_id, True)
