@@ -16,12 +16,17 @@ def run_test():
     
     hue = HueAPI(bridge_ip)
     
+    # TEST 1: Lights
     lights = hue.list_lights()
     
     print("\nWe Found your lights:\n")
     
     for light_id, name in lights.items():
         print(f"{light_id}: {name}")
+        
+    
+    # TEST 2: Scenes    
+    
         
 # Run script w/ python -m tests.test_api
 if __name__ == "__main__":
