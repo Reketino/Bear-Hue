@@ -91,3 +91,9 @@ class HueAPI:
     
     def get_scenes(self):
         return self._get("scenes")
+    
+    
+    def activate_scene(self, scene_id: str):
+        payload = {"scene": scene_id}
+        self._put("groups/0/action", payload)
+        self._invalidate_cache()
