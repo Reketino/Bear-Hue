@@ -84,7 +84,7 @@ class HueAPI:
                 "transitiontime": 5
             }
             self._put(f"lights/{light_id}/state", payload)
-            self._invalidate_cache()
+        self._invalidate_cache()
             
             
     # ------- Philip's Hue Scenes ----------
