@@ -92,7 +92,7 @@ class HueService:
         for light_id in lights.keys():
             self.hue_api.set_brightness(int(light_id), bri)
             
-    # -------- WRITE SCENER LOGIC --------
+    # -------- WRITE SCENE LOGIC --------
        
     def set_scene(self, scene: str):
         scenes = {
