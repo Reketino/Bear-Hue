@@ -28,7 +28,11 @@ def run_test():
     # TEST 2: Scenes
     print("\nWe Found your scenes:\n")
     
-    scenes = hue.get_scenes()    
+    scenes = hue.get_scenes()
+    
+    for scene_id, data in scenes.items():
+        name = data.get("name", "Unknown")
+        print(f"{scene_id}: {name}")    
     
         
 # Run script w/ python -m tests.test_api
