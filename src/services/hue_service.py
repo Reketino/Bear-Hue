@@ -19,7 +19,7 @@ class HueService:
         return self.hue_api.list_lights()
     
     def get_all_light_state(self):
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         
         return {
             int(light_id): {
@@ -30,19 +30,19 @@ class HueService:
         }
     
     def get_light_state(self, light_id: int) -> bool:
-       lights = self.hue_api.get_all_lights_state()
+       lights = self._get_lights()
        return lights[str(light_id)]["state"]["on"]
    
    
      # -------- READ Brightness Logic --------
    
     def get_brightness(self, light_id: int) -> int:
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
    
     def get_average_brightness(self) -> int:
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         values = [
             data["state"]["bri"]
             for data in lights.values() 
@@ -81,12 +81,12 @@ class HueService:
         self.hue_api.set_light(light_id, not is_on)
          
     def turn_all_on(self):
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         for light_id in lights.keys():
             self.hue_api.set_light(int(light_id), True)
               
     def turn_off_all(self):
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         for light_id in lights.keys():
             self.hue_api.set_light(int(light_id), False)
             
@@ -94,7 +94,7 @@ class HueService:
         
     def set_all_brightness(self, value: int):
         bri = int(value * 2.54)
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         for light_id in lights.keys():
             self.hue_api.set_brightness(int(light_id), bri)
             
