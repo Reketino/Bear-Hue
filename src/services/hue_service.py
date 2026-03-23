@@ -42,7 +42,7 @@ class HueService:
         return int(bri / 2.54)   
    
     def get_average_brightness(self) -> int:
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         values = [
             data["state"]["bri"]
             for data in lights.values() 
