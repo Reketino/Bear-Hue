@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor service w/ internal hepler
+- Refactor scene w/ scene collecting from Hue
 
 ---
 
