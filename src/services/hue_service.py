@@ -5,6 +5,7 @@ class HueService:
     
     def __init__(self, hue_api: HueAPI):
         self.hue_api = hue_api
+    
         
     # -------- INTERNAL HELPERS --------  
         
