@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Add new scenes_bar logic
+- Refactor scenes_bar.py w/ hue_service logic
 
 ---
 
