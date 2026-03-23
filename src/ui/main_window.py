@@ -46,9 +46,7 @@ class MainWindow(ctk.CTk):
         
         ScenesBar(
             self.ui_layer,
-            self.scene_movie,
-            self.scene_relax,
-            self.scene_bright
+            self.hue_service
         )
         
         self.brightness = BrightnessSlider(self.ui_layer, self.change_brightness)
