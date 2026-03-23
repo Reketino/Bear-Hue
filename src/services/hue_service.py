@@ -99,15 +99,17 @@ class HueService:
             self.hue_api.set_brightness(int(light_id), bri)
             
     # -------- WRITE SCENE LOGIC --------
-       
-    def set_scene(self, scene: str):
-        scenes = {
-            "movie": 30,
-            "relax": 60,
-            "bright": 100
-        }
-        brightness = scenes.get(scene)
-        if brightness is None:
-            return
-        self.set_all_brightness(brightness)
     
+    def activate_scene(self, scene_id: str):
+        self.hue_api.activate_scene(scene_id)
+        
+    def activate_scene_by_name(self, name: str):
+        scenes = self.get_scenes()
+        for scene in scenes:
+            if scene["name"].lower() == name.lower():
+                self.hue_api.activate_scene(scene["id"])
+                return
+            print(f"Scene '{name}' not found")
+            
+       
+ 
