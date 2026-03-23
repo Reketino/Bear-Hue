@@ -37,7 +37,7 @@ class HueService:
      # -------- READ Brightness Logic --------
    
     def get_brightness(self, light_id: int) -> int:
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
    
