@@ -7,6 +7,12 @@ class HueService:
         self.hue_api = hue_api
     
         
+    # -------- INTERNAL HELPERS --------  
+        
+    def _get_lights(self):
+       return self.hue_api.get_all_lights_state() 
+    
+      
     # -------- READ Lights Logic --------
          
     def get_lights(self):
@@ -23,7 +29,7 @@ class HueService:
             for light_id, data in lights.items()
         }
     
-    def get_lights_state(self, light_id: int) -> bool:
+    def get_light_state(self, light_id: int) -> bool:
        lights = self.hue_api.get_all_lights_state()
        return lights[str(light_id)]["state"]["on"]
    
@@ -71,7 +77,7 @@ class HueService:
         self.hue_api.set_light(light_id, False)
            
     def toggle(self, light_id: int):
-        is_on = self.get_lights_state(light_id)
+        is_on = self.get_light_state(light_id)
         self.hue_api.set_light(light_id, not is_on)
          
     def turn_all_on(self):

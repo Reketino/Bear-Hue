@@ -21,7 +21,7 @@ class LightRow(ctk.CTkFrame):
         )
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
-        is_on = self.hue_service.get_lights_state(light_id)   
+        is_on = self.hue_service.get_light_state(light_id)   
         color = "green" if is_on else "red"
             
         self.status = ctk.CTkLabel(
@@ -62,7 +62,7 @@ class LightRow(ctk.CTkFrame):
    
         
     def refresh_status(self):
-        is_on = self.hue_service.get_lights_state(self.light_id)
+        is_on = self.hue_service.get_light_state(self.light_id)
         color = "green" if is_on else "red"
         self.status.configure(text_color=color)
         brightness = self.hue_service.get_brightness(self.light_id)

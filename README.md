@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Scenes collecting from Philips Hue
+- Refactor service w/ internal hepler
 
 ---
 
