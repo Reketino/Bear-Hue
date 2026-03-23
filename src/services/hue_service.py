@@ -5,6 +5,9 @@ class HueService:
     
     def __init__(self, hue_api: HueAPI):
         self.hue_api = hue_api
+        
+    def _get_lights(self):
+       return self.hue_api.get_all_lights_state() 
     
         
     # -------- READ Lights Logic --------
