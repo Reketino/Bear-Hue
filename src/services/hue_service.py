@@ -99,5 +99,8 @@ class HueService:
             self.hue_api.set_brightness(int(light_id), bri)
             
     # -------- WRITE SCENE LOGIC --------
+    
+    def activate_scene(self, scene_id: str):
+        self.hue_api.activate_scene(scene_id)
        
  
