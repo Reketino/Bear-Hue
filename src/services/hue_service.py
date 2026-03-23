@@ -19,7 +19,7 @@ class HueService:
         return self.hue_api.list_lights()
     
     def get_all_light_state(self):
-        lights = self.hue_api.get_all_lights_state()
+        lights = self._get_lights()
         
         return {
             int(light_id): {
@@ -30,7 +30,7 @@ class HueService:
         }
     
     def get_light_state(self, light_id: int) -> bool:
-       lights = self.hue_api.get_all_lights_state()
+       lights = self._get_lights()
        return lights[str(light_id)]["state"]["on"]
    
    
