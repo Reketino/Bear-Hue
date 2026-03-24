@@ -24,8 +24,7 @@ class HueService:
             int(b * 255),
         )
         
-    
-      
+
     # -------- READ Lights Logic --------
          
     def get_lights(self):
