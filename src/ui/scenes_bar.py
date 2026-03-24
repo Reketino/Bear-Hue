@@ -6,7 +6,10 @@ class ScenesBar(ctk.CTkFrame):
         super().__init__(master)
         self.pack(fill="x", padx=20, pady=10)
         scenes = hue_service.get_scenes()
-        for scene in scenes:
+        columns = 2
+        for i, scene in enumerate(scenes):
+            row = i // columns
+            col = i % columns
             btn = ctk.CTkButton(
                 self,
                 text=scene["name"],
