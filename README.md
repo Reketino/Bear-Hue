@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Connecting scene_color in scenes_bar
+- Adding nice hover feel to Scenes bar
 
 ---
 
