@@ -4,26 +4,13 @@ class ScenesBar(ctk.CTkFrame):
     
     def __init__(self, master, hue_service):
         super().__init__(master)
-        
         self.pack(fill="x", padx=20, pady=10)
+        scenes = hue_service.get_scenes()
+        for scene in scenes:
+            btn = ctk.CTkButton(
+                self,
+                text=scene["name"],
+                command=lambda s=scene["id"]: hue_service.activate_scene(s)
+            )
+            btn.pack(side="left", expand=True, padx=5)
         
-        movie_btn = ctk.CTkButton(
-            self,
-            text="Movie",
-            command=movie
-        )
-        movie_btn.pack(side="left", expand=True, padx=5)
-        
-        relax_btn = ctk.CTkButton(
-            self,
-            text="Relax",
-            command=relax
-        )
-        relax_btn.pack(side="left", expand=True, padx=5)
-        
-        bright_btn = ctk.CTkButton(
-            self,
-            text="Bright",
-            command=bright
-        )
-        bright_btn.pack(side="left", expand=True, padx=5)
