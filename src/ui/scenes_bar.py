@@ -16,4 +16,6 @@ class ScenesBar(ctk.CTkFrame):
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+            for col in range(columns):
+                self.grid_columnconfigure(col, weight=1)
         
