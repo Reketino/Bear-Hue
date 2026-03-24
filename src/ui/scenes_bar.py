@@ -23,4 +23,7 @@ class ScenesBar(ctk.CTkFrame):
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
             for col in range(columns):
                 self.grid_columnconfigure(col, weight=1)
+                
+        
+    def _darken(self, hex_color, factor =0.8):
         
