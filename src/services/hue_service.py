@@ -72,6 +72,12 @@ class HueService:
         lights = scene.get("lightstates", {})
         if not lights:
             return "#4444"
+        
+        first = next(iter(lights.values()))
+        hue = first.get("hue", 0)
+        sat = first.get("sat", 0)
+        bri = first.get("bri", 254)
+        return self._hue_to_hex(hue, sat, bri)
     
     
     # -------- WRITE ON/OFF LOGIC --------
