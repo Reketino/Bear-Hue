@@ -67,6 +67,12 @@ class HueService:
             })
         return sorted(result, key=lambda x: x["name"])
     
+    def get_scene_color(self, scene_id: str):
+        scene = self.hue_api.get_scene(scene_id)
+        lights = scene.get("lightstates", {})
+        if not lights:
+            return "#4444"
+    
     
     # -------- WRITE ON/OFF LOGIC --------
     
@@ -110,6 +116,8 @@ class HueService:
                 self.hue_api.activate_scene(scene["id"])
                 return
             print(f"Scene '{name}' not found")
+            
+    
             
        
  
