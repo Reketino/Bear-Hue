@@ -12,5 +12,5 @@ class ScenesBar(ctk.CTkFrame):
                 text=scene["name"],
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
-            
+            btn.pack(side="left", expand=True, padx=5)
         
