@@ -8,6 +8,7 @@ class ScenesBar(ctk.CTkFrame):
         scenes = hue_service.get_scenes()
         columns = 2
         for i, scene in enumerate(scenes):
+            color = hue_service.get_scene_color(scene["id"])
             row = i // columns
             col = i % columns
             btn = ctk.CTkButton(
@@ -15,7 +16,7 @@ class ScenesBar(ctk.CTkFrame):
                 text=scene["name"],
                 height=70,
                 corner_radius=15,
-                fg_color="#2B2B2B",
+                fg_color=color,
                 hover_color="#3A3A3A",
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
