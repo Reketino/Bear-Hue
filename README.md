@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor grid layout on scenes_bar
+- Adding color to each scene from API
 
 ---
 

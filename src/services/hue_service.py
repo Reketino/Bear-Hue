@@ -10,9 +10,21 @@ class HueService:
     # -------- INTERNAL HELPERS --------  
         
     def _get_lights(self):
-       return self.hue_api.get_all_lights_state() 
-    
-      
+       return self.hue_api.get_all_lights_state()
+   
+    def _hue_to_hex(self, hue, sat, bri):
+        import colorsys
+        h = hue / 65536
+        s = sat / 254
+        v = bri / 254
+        r, g, b = colorsys.hsv_to_rgb(h, s, v)
+        return "#{:02x}{:02x}{:02x}".format(
+            int(r * 255),
+            int(g * 255),
+            int(b * 255),
+        )
+        
+
     # -------- READ Lights Logic --------
          
     def get_lights(self):
@@ -67,6 +79,18 @@ class HueService:
             })
         return sorted(result, key=lambda x: x["name"])
     
+    def get_scene_color(self, scene_id: str):
+        scene = self.hue_api.get_scene(scene_id)
+        lights = scene.get("lightstates", {})
+        if not lights:
+            return "#4444"
+        
+        first = next(iter(lights.values()))
+        hue = first.get("hue", 0)
+        sat = first.get("sat", 0)
+        bri = first.get("bri", 254)
+        return self._hue_to_hex(hue, sat, bri)
+    
     
     # -------- WRITE ON/OFF LOGIC --------
     
@@ -110,6 +134,8 @@ class HueService:
                 self.hue_api.activate_scene(scene["id"])
                 return
             print(f"Scene '{name}' not found")
+            
+    
             
        
  

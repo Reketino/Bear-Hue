@@ -93,6 +93,10 @@ class HueAPI:
         return self._get("scenes")
     
     
+    def get_scene(self, scene_id: str):
+        return self._get(f"scene/{scene_id}")
+    
+    
     def activate_scene(self, scene_id: str):
         payload = {"scene": scene_id}
         self._put("groups/0/action", payload)
