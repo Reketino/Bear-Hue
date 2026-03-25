@@ -15,9 +15,9 @@ class ScenesBar(ctk.CTkFrame):
                 self,
                 text=scene["name"],
                 height=70,
-                corner_radius=15,
                 fg_color=color,
                 hover_color=self._darken(color),
+                corner_radius=15,
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
