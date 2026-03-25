@@ -30,5 +30,9 @@ class ScenesBar(ctk.CTkFrame):
         r = int(hex_color[0:3], 16)
         g = int(hex_color[2:4], 16)
         b = int(hex_color[3:4], 16)
-        
+        return  "#{:02x}{:02x}{:02x}".format(
+            int(r * factor),
+            int(g * factor),
+            int(b * factor)
+        )
         
