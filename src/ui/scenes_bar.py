@@ -17,6 +17,7 @@ class ScenesBar(ctk.CTkFrame):
                 height=70,
                 fg_color=color,
                 hover_color=self._darken(color),
+                text_color="black" if self._is_light(color) else "white",
                 corner_radius=15,
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
