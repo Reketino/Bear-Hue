@@ -15,9 +15,10 @@ class ScenesBar(ctk.CTkFrame):
                 self,
                 text=scene["name"],
                 height=70,
-                corner_radius=15,
                 fg_color=color,
                 hover_color=self._darken(color),
+                text_color="black" if self._is_light(color) else "white",
+                corner_radius=15,
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
@@ -35,4 +36,13 @@ class ScenesBar(ctk.CTkFrame):
             int(g * factor),
             int(b * factor)
         )
+    
+        
+    def _is_light(self, hex_color):
+        hex_color = hex_color.lstrips("#")
+        r = int(hex_color[0:2], 16)
+        g = int(hex_color[2:4], 16)
+        b = int(hex_color[4:6], 16)
+        luminance = (0.299 * r + 0.587 * g + 0.1114 * b)
+        return luminance > 140
         
