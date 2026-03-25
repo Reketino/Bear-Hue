@@ -42,4 +42,5 @@ class ScenesBar(ctk.CTkFrame):
         g = int(hex_color[2:4], 16)
         b = int(hex_color[4:6], 16)
         luminance = (0.299 * r + 0.587 * g + 0.1114 * b)
+        return luminance > 140
         
