@@ -27,4 +27,8 @@ class ScenesBar(ctk.CTkFrame):
         
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
+        r = int(hex_color[0:3], 16)
+        g = int(hex_color[2:4], 16)
+        b = int(hex_color[3:4], 16)
+        
         
