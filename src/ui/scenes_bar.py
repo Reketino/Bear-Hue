@@ -36,6 +36,7 @@ class ScenesBar(ctk.CTkFrame):
             int(g * factor),
             int(b * factor)
         )
+    
         
     def _is_light(self, hex_color):
         hex_color = hex_color.lstrips("#")
