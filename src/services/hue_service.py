@@ -81,6 +81,8 @@ class HueService:
     
     def get_scene_color(self, scene_id: str):
         scene = self.hue_api.get_scene(scene_id)
+        if not scene:
+            return "#444444"
         lights = scene.get("lightstates", {})
         if not lights:
             return "#4444"
