@@ -17,7 +17,7 @@ class ScenesBar(ctk.CTkFrame):
                 height=70,
                 corner_radius=15,
                 fg_color=color,
-                hover_color="#3A3A3A",
+                hover_color=self._darken(color),
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
@@ -27,4 +27,12 @@ class ScenesBar(ctk.CTkFrame):
         
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
+        r = int(hex_color[0:3], 16)
+        g = int(hex_color[2:4], 16)
+        b = int(hex_color[3:4], 16)
+        return  "#{:02x}{:02x}{:02x}".format(
+            int(r * factor),
+            int(g * factor),
+            int(b * factor)
+        )
         
