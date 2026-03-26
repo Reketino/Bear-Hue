@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Fix not collecting valid hex_color from API
+- Adding "active scene highlight" in scenes bar
 
 ---
 

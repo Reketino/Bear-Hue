@@ -4,8 +4,11 @@ class ScenesBar(ctk.CTkFrame):
     
     def __init__(self, master, hue_service):
         super().__init__(master)
-        self.pack(fill="x", padx=20, pady=10)
         
+        self.active_scene = None
+        self.buttons = {}
+        self.pack(fill="x", padx=20, pady=10)
+       
         scenes = hue_service.get_scenes()
         columns = 2
         
@@ -27,9 +30,30 @@ class ScenesBar(ctk.CTkFrame):
                 corner_radius=15,
                 border_width=2,
                 border_color=self._darken(color, 0.6),
-                command=lambda s=scene["id"]: hue_service.activate_scene(s)
+                command=lambda s=scene["id"]: self._on_scene_click(s, hue_service)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+            self.buttons[scene["id"]] = btn
+            
+            
+    def _on_scene_click(self, scene_id, hue_service):
+        hue_service.activate_scene(scene_id)
+        self.set_active(scene_id)
+        for sid, btn in self.buttons.items():
+            if sid == scene_id:
+                btn.configure(
+                    border_width=4,
+                    border_color="#FFFFFF"
+                )
+            else:
+                btn.configure(
+                    border_width=2,
+                    border_color=self._darken(btn.cget("fg_color"), 0.6)
+                )
+        
+        
+    def set_active(self, scene_id):
+        self.active_scene = scene_id
            
         
     def _darken(self, hex_color, factor =0.8):
