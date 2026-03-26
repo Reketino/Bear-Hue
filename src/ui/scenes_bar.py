@@ -39,11 +39,15 @@ class ScenesBar(ctk.CTkFrame):
     def _on_scene_click(self, scene_id, hue_service):
         hue_service.activate_scene(scene_id)
         self.set_active(scene_id)
+       
+        
+    def set_active(self, scene_id):
+        self.active_scene = scene_id
         for sid, btn in self.buttons.items():
             if sid == scene_id:
                 btn.configure(
                     border_width=4,
-                    border_color="#FFFFFF"
+                    border_color=self._lighten(btn.cget("fg_color"), 1.4)
                 )
             else:
                 btn.configure(
@@ -51,9 +55,6 @@ class ScenesBar(ctk.CTkFrame):
                     border_color=self._darken(btn.cget("fg_color"), 0.6)
                 )
         
-        
-    def set_active(self, scene_id):
-        self.active_scene = scene_id
            
         
     def _darken(self, hex_color, factor =0.8):
@@ -66,6 +67,22 @@ class ScenesBar(ctk.CTkFrame):
             int(g * factor),
             int(b * factor)
         )
+        
+        
+    def _lighten(self, hex_color, factor=1.3):
+        hex_color = hex_color.lstrip("#")
+        if len(hex_color) != 6:
+            return "#AAAAAA"
+        try:
+            r = int(hex_color[0:2], 16)
+            g = int(hex_color[2:4], 16)
+            b = int(hex_color[4:6], 16)
+        except ValueError:
+            return "#AAAAAA"
+        r = min(int(r * factor), 255)
+        g = min(int(g * factor), 255)
+        b = min(int(b * factor), 255)
+        return "#{:02x}{:02x}{:02x}".format(r, g, b)
     
         
     def _is_light(self, hex_color):
