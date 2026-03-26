@@ -83,9 +83,11 @@ class HueService:
         scene = self.hue_api.get_scene(scene_id)
         if not scene:
             return "#444444"
+        if isinstance(scene, list):
+            scene = scene[0]
         lights = scene.get("lightstates", {})
         if not lights:
-            return "#4444"
+            return "#444444"
         
         first = next(iter(lights.values()))
         hue = first.get("hue", 0)
