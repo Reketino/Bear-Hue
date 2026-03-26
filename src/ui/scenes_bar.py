@@ -13,7 +13,7 @@ class ScenesBar(ctk.CTkFrame):
         columns = 2
         
         for col in range(columns):
-                self.grid_columnconfigure(col, weight=1)        
+            self.grid_columnconfigure(col, weight=1)        
         for i, scene in enumerate(scenes):
             color = hue_service.get_scene_color(scene["id"])
             
