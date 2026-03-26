@@ -45,6 +45,11 @@ class ScenesBar(ctk.CTkFrame):
                     border_width=4,
                     border_color="#FFFFFF"
                 )
+            else:
+                btn.configure(
+                    border_width=2,
+                    border_color=self._darken(btn.cget("fg_color"), 0.6)
+                )
         
         
     def set_active(self, scene_id):
