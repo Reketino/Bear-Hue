@@ -9,8 +9,6 @@ class ScenesBar(ctk.CTkFrame):
         self.buttons = {}
         self.pack(fill="x", padx=20, pady=10)
        
-        
-        
         scenes = hue_service.get_scenes()
         columns = 2
         
@@ -35,6 +33,8 @@ class ScenesBar(ctk.CTkFrame):
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+            self.buttons[scene["id"]] = btn
+            
            
         
     def _darken(self, hex_color, factor =0.8):
