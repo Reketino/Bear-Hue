@@ -39,6 +39,10 @@ class ScenesBar(ctk.CTkFrame):
     def _on_scene_click(self, scene_id, hue_service):
         hue_service.activate_scene(scene_id)
         self.set_active(scene_id)
+       
+        
+    def set_active(self, scene_id):
+        self.active_scene = scene_id
         for sid, btn in self.buttons.items():
             if sid == scene_id:
                 btn.configure(
@@ -51,9 +55,6 @@ class ScenesBar(ctk.CTkFrame):
                     border_color=self._darken(btn.cget("fg_color"), 0.6)
                 )
         
-        
-    def set_active(self, scene_id):
-        self.active_scene = scene_id
            
         
     def _darken(self, hex_color, factor =0.8):
