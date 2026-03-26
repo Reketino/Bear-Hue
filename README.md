@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Setup lighten mode instead for border_color in active state
+- Small improvements in scenes_bar.py
 
 ---
 
