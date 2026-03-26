@@ -5,14 +5,18 @@ class ScenesBar(ctk.CTkFrame):
     def __init__(self, master, hue_service):
         super().__init__(master)
         self.pack(fill="x", padx=20, pady=10)
+        
         scenes = hue_service.get_scenes()
         columns = 2
+        
         for col in range(columns):
                 self.grid_columnconfigure(col, weight=1)        
         for i, scene in enumerate(scenes):
             color = hue_service.get_scene_color(scene["id"])
+            
             row = i // columns
             col = i % columns
+            
             btn = ctk.CTkButton(
                 self,
                 text=scene["name"],
@@ -21,6 +25,8 @@ class ScenesBar(ctk.CTkFrame):
                 hover_color=self._darken(color),
                 text_color="black" if self._is_light(color) else "white",
                 corner_radius=15,
+                border_width=2,
+                border_color=self._darken(color, 0.6),
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
