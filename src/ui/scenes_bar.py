@@ -30,7 +30,7 @@ class ScenesBar(ctk.CTkFrame):
                 corner_radius=15,
                 border_width=2,
                 border_color=self._darken(color, 0.6),
-                command=lambda s=scene["id"]: hue_service.activate_scene(s)
+                command=lambda s=scene["id"]: self._on_scene_click(s, hue_service)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
             self.buttons[scene["id"]] = btn
