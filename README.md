@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Adding "active scene highlight" in scenes bar
+- Setup lighten mode instead for border_color in active state
 
 ---
 
