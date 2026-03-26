@@ -81,6 +81,7 @@ class ScenesBar(ctk.CTkFrame):
         r = min(int(r * factor), 255)
         g = min(int(g * factor), 255)
         b = min(int(b * factor), 255)
+        return "#{:02x}{:02x}{:02x}".format(r, g, b)
     
         
     def _is_light(self, hex_color):
