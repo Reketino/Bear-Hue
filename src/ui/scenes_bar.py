@@ -7,6 +7,8 @@ class ScenesBar(ctk.CTkFrame):
         self.pack(fill="x", padx=20, pady=10)
         scenes = hue_service.get_scenes()
         columns = 2
+        for col in range(columns):
+                self.grid_columnconfigure(col, weight=1)        
         for i, scene in enumerate(scenes):
             color = hue_service.get_scene_color(scene["id"])
             row = i // columns
@@ -22,9 +24,7 @@ class ScenesBar(ctk.CTkFrame):
                 command=lambda s=scene["id"]: hue_service.activate_scene(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
-            for col in range(columns):
-                self.grid_columnconfigure(col, weight=1)
-                
+           
         
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
