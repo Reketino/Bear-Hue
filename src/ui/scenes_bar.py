@@ -42,9 +42,12 @@ class ScenesBar(ctk.CTkFrame):
         if not hex_color or len(hex_color) < 7:
             return False
         hex_color = hex_color.lstrip("#")
-        r = int(hex_color[0:2], 16)
-        g = int(hex_color[2:4], 16)
-        b = int(hex_color[4:6], 16)
+        try:
+            r = int(hex_color[0:2], 16)
+            g = int(hex_color[2:4], 16)
+            b = int(hex_color[4:6], 16)
+        except ValueError:
+            return False
         luminance = (0.299 * r + 0.587 * g + 0.1114 * b)
         return luminance > 140
         
