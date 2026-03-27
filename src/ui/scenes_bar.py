@@ -65,11 +65,12 @@ class ScenesBar(ctk.CTkFrame):
         r = int(hex_color[0:2], 16)
         g = int(hex_color[2:4], 16)
         b = int(hex_color[4:6], 16)
-        return  "#{:02x}{:02x}{:02x}".format(
+        except ValueError:
+            return "#333333"
             int(r * factor),
             int(g * factor),
             int(b * factor)
-        )
+        
         
         
     def _lighten(self, hex_color, factor=1.3):
