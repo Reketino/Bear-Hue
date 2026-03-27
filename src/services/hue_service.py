@@ -82,19 +82,17 @@ class HueService:
     def get_scene_color(self, scene_id: str):
         scene = self.hue_api.get_scene(scene_id)
         if not scene:
-            return "#444444"
+            return "#888888"
         if isinstance(scene, list):
             scene = scene[0]
-        lights = scene.get("lightstates", {})
-        if not lights:
-            return "#444444"
-        first = next(iter(lights.values()))
+        lights = scene.get("lightstates")
+        if lights:
+            first = next(iter(lights.values()))
         hue = first.get("hue", 0)
         sat = first.get("sat", 0)
         bri = first.get("bri", 254)
-        if hue is None or sat is None or bri is None:
-            return "#444444"
-        return self._hue_to_hex(hue, sat, bri)
+        if hue is not None or sat is not None or bri is not None:
+            return self._hue_to_hex(hue, sat, bri)
     
     
     # -------- WRITE ON/OFF LOGIC --------
