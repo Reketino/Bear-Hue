@@ -25,8 +25,8 @@ class ScenesBar(ctk.CTkFrame):
                 self,
                 text=scene["name"],
                 height=70,
-                fg_color=color,
-                hover_color=self._darken(color),
+                fg_color=self._darken(color, 0.75),
+                hover_color=self._lighten(color, 1.1),
                 text_color="black" if self._is_light(color) else "white",
                 corner_radius=15,
                 border_width=2,
@@ -74,7 +74,7 @@ class ScenesBar(ctk.CTkFrame):
         r = max(int(r * factor), 0)
         g = max(int(g * factor), 0)
         b = max(int(b * factor), 0)
-        return "#{:02}{:02}{:02}".format(r, g, b)   
+        return "#{:02x}{:02x}{:02x}".format(r, g, b)   
         
         
         
