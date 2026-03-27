@@ -72,8 +72,8 @@ class ScenesBar(ctk.CTkFrame):
             return "#333333"
         
         r = max(int(r * factor), 0)
-        g = max(int(r * factor), 0)
-        b = max(int(r * factor), 0)
+        g = max(int(g * factor), 0)
+        b = max(int(b * factor), 0)
         return "#{:02}{:02}{:02}".format(r, g, b)   
         
         
