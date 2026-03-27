@@ -62,9 +62,9 @@ class ScenesBar(ctk.CTkFrame):
         if len(hex_color) != 6:
             return "#333333"
         try:
-        r = int(hex_color[0:2], 16)
-        g = int(hex_color[2:4], 16)
-        b = int(hex_color[4:6], 16)
+            r = int(hex_color[0:2], 16)
+            g = int(hex_color[2:4], 16)
+            b = int(hex_color[4:6], 16)
         except ValueError:
             return "#333333"
         
