@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Small improvements in scenes_bar.py
+- Refactor buttons w/ hover showing real color
 
 ---
 
