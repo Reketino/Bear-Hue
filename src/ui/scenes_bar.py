@@ -67,9 +67,10 @@ class ScenesBar(ctk.CTkFrame):
         b = int(hex_color[4:6], 16)
         except ValueError:
             return "#333333"
-            int(r * factor),
-            int(g * factor),
-            int(b * factor)
+        
+        r = max(int(r * factor), 0)
+        r = max(int(r * factor), 0)
+        r = max(int(r * factor), 0)    
         
         
         
