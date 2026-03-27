@@ -59,14 +59,20 @@ class ScenesBar(ctk.CTkFrame):
         
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
-        r = int(hex_color[0:2], 16)
-        g = int(hex_color[2:4], 16)
-        b = int(hex_color[4:6], 16)
-        return  "#{:02x}{:02x}{:02x}".format(
-            int(r * factor),
-            int(g * factor),
-            int(b * factor)
-        )
+        if len(hex_color) != 6:
+            return "#333333"
+        try:
+            r = int(hex_color[0:2], 16)
+            g = int(hex_color[2:4], 16)
+            b = int(hex_color[4:6], 16)
+        except ValueError:
+            return "#333333"
+        
+        r = max(int(r * factor), 0)
+        r = max(int(r * factor), 0)
+        r = max(int(r * factor), 0)
+        return "#{:02}{:02}{:02}".format(r, g, b)   
+        
         
         
     def _lighten(self, hex_color, factor=1.3):
