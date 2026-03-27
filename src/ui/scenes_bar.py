@@ -72,8 +72,8 @@ class ScenesBar(ctk.CTkFrame):
             return "#333333"
         
         r = max(int(r * factor), 0)
-        r = max(int(r * factor), 0)
-        r = max(int(r * factor), 0)
+        g = max(int(r * factor), 0)
+        b = max(int(r * factor), 0)
         return "#{:02}{:02}{:02}".format(r, g, b)   
         
         
@@ -104,6 +104,6 @@ class ScenesBar(ctk.CTkFrame):
             b = int(hex_color[4:6], 16)
         except ValueError:
             return False
-        luminance = (0.299 * r + 0.587 * g + 0.1114 * b)
+        luminance = (0.299 * r + 0.587 * g + 0.114 * b)
         return luminance > 140
         
