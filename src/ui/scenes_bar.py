@@ -35,6 +35,8 @@ class ScenesBar(ctk.CTkFrame):
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
             self.buttons[scene["id"]] = btn
+        if scenes and len(self.buttons) > 0:
+            self.set_active(scenes[0]["id"])
             
             
     def _on_scene_click(self, scene_id):
