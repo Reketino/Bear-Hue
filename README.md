@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor buttons w/ hover showing real color
+- Refactor get_scene_color
 
 ---
 
