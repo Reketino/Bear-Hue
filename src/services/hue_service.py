@@ -13,6 +13,10 @@ class HueService:
     def _get_lights(self):
        return self.hue_api.get_all_lights_state()
    
+    def _log(self, *args):
+        if self.debug:
+            print(*args)
+   
     def _hue_to_hex(self, hue, sat, bri):
         import colorsys
         h = hue / 65536
