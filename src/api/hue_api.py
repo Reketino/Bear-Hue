@@ -26,6 +26,7 @@ class HueAPI:
         
     def _get(self, endpoint: str):
         url = f"{self.base_url}/{endpoint}"
+        self._log("GET", endpoint)
         response = requests.get(url, timeout=5)
         response.raise_for_status()
         return response.json()
