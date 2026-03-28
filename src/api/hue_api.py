@@ -94,7 +94,7 @@ class HueAPI:
     
     
     def get_scene(self, scene_id: str):
-        return self._get(f"scene/{scene_id}")
+        return self._get(f"scenes/{scene_id}")
     
     
     def activate_scene(self, scene_id: str):
