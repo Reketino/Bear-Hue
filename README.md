@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor get_scene_color in hue service
+- Refactor activate_scene in hue_api
 
 ---
 

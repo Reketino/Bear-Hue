@@ -167,7 +167,7 @@ class HueService:
             if scene["name"].lower() == name.lower():
                 self.hue_api.activate_scene(scene["id"])
                 return
-            print(f"Scene '{name}' not found")
+            self._log(f"Scene '{name}' not found")
             
     
             

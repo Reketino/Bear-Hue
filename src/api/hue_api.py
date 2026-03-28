@@ -98,6 +98,12 @@ class HueAPI:
     
     
     def activate_scene(self, scene_id: str):
-        payload = {"scene": scene_id}
-        self._put("groups/0/action", payload)
+        scene = self.get_scene(scene_id)
+        if isinstance(scene, list):
+            scene = scene[0]
+        group = scene.get("group")
+        if not group:
+            return
+        payload ={"scene": scene_id}
+        self._put(f"groups/{group}/action", payload)
         self._invalidate_cache()
