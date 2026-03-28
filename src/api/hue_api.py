@@ -7,8 +7,9 @@ load_dotenv()
 
 class HueAPI:
     
-    def __init__(self, bridge_ip: str):
+    def __init__(self, bridge_ip: str, debug: bool = False):
         self.bridge_ip = bridge_ip
+        self.debug = debug
         self.username = os.getenv("HUE_USERNAME")
         if not self.username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
@@ -17,12 +18,20 @@ class HueAPI:
         self._cache_time = 0
         
    # ------ Internal Helpers, when Superman needs help -------
+   
+    def _log(self, *args):
+        if self.debug:
+            print("[HUEAPI]", *args)
+   
         
     def _get(self, endpoint: str):
         url = f"{self.base_url}/{endpoint}"
+        self._log("GET", endpoint)
         response = requests.get(url, timeout=5)
         response.raise_for_status()
-        return response.json()
+        data = response.json()
+        self._log("RESPONSE", data)
+        return data
     
     
     def _put(self, endpoint: str, payload: dict):
