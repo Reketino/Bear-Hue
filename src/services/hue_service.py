@@ -100,7 +100,9 @@ class HueService:
                 hue = state.get("hue")
                 sat = state.get("sat")
                 bri = state.get("bri")
-                    
+                if hue and sat and bri:
+                    return self._hue_to_hex(hue, sat, bri)
+        return "#888888"    
                 
                 
     
