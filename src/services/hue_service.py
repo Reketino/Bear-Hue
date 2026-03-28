@@ -97,6 +97,11 @@ class HueService:
         for light in all_lights.values():
             state = light.get("state", {})
             if state.get("on"):
+                hue = state.get("hue")
+                sat = state.get("sat")
+                bri = state.get("bri")
+                    
+                
                 
     
     
