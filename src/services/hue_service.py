@@ -88,23 +88,29 @@ class HueService:
         lights = scene.get("lightstates")
         if lights:
             first = next(iter(lights.values()))
+            
             hue = first.get("hue")
             sat = first.get("sat")
             bri = first.get("bri")
             if hue is not None and sat is not None and bri is not None:
                 return self._hue_to_hex(hue, sat, bri)
+       
         all_lights = self._get_lights()
         for light in all_lights.values():
             state = light.get("state", {})
+           
             if state.get("on"):
                 hue = state.get("hue")
                 sat = state.get("sat")
                 bri = state.get("bri")
+                
                 if hue is not None and sat is not None and bri is not None:
                     return self._hue_to_hex(hue, sat, bri)
-        return "#888888"    
+        return "#88888"    
                 
                 
+    
+    
     # -------- WRITE ON/OFF LOGIC --------
     
     def turn_on(self, light_id: int):
