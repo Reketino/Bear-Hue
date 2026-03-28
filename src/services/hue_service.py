@@ -3,8 +3,9 @@ from src.api.hue_api import HueAPI
 
 class HueService: 
     
-    def __init__(self, hue_api: HueAPI):
+    def __init__(self, hue_api: HueAPI, debug: bool = False):
         self.hue_api = hue_api
+        self.debug = debug
     
         
     # -------- INTERNAL HELPERS --------  
