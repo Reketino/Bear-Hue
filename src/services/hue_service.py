@@ -87,13 +87,13 @@ class HueService:
     def get_scene_color(self, scene_id: str):
         scene = self.hue_api.get_scene(scene_id)
         if not scene:
-            print("No scene found:", scene_id)
+            self._log("No scene found:", scene_id)
             return "#888888"
         
         if isinstance(scene, list):
             scene = scene[0]
             
-        print("RAW SCENE:", scene_id, scene)
+        self._log("RAW SCENE:", scene_id, scene)
         lights = scene.get("lightstates")
         if lights:
             first = next(iter(lights.values()))
@@ -101,13 +101,13 @@ class HueService:
             hue = first.get("hue")
             sat = first.get("sat")
             bri = first.get("bri")
-            print("SCENE DATA:", scene_id, "->", hue, sat, bri)
+            self._log("SCENE DATA:", scene_id, "->", hue, sat, bri)
             if hue is not None and sat is not None and bri is not None:
                 hex_color = self._hue_to_hex(hue, sat, bri)
-                print("USING SCENE COLOR:", hex_color)
+                self._log("USING SCENE COLOR:", hex_color)
                 return hex_color
             
-        print ("FALLBACK triggered for scene:", scene_id)
+        self._log("FALLBACK triggered for scene:", scene_id)
        
         all_lights = self._get_lights()
         for light in all_lights.values():
@@ -120,10 +120,10 @@ class HueService:
                 
                 if hue is not None and sat is not None and bri is not None:
                     hex_color = self._hue_to_hex(hue, sat, bri)
-                    print("USING SCENE COLOR:", hex_color)
+                    self._log("USING SCENE COLOR:", hex_color)
                     return hex_color
-        print("NO COLOR FOUND -> returning to default")
-        return "#88888"    
+        self._log("NO COLOR FOUND -> returning to default")
+        return "#888888"    
                 
                 
     # -------- WRITE ON/OFF LOGIC --------
