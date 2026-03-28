@@ -7,8 +7,9 @@ load_dotenv()
 
 class HueAPI:
     
-    def __init__(self, bridge_ip: str):
+    def __init__(self, bridge_ip: str, debug: bool = False):
         self.bridge_ip = bridge_ip
+        self.debug = debug
         self.username = os.getenv("HUE_USERNAME")
         if not self.username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
