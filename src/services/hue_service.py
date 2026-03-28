@@ -93,6 +93,8 @@ class HueService:
         bri = first.get("bri", 254)
         if hue is not None or sat is not None or bri is not None:
             return self._hue_to_hex(hue, sat, bri)
+        all_lights = self._get_lights()
+        
     
     
     # -------- WRITE ON/OFF LOGIC --------
