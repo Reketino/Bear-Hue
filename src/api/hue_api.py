@@ -36,9 +36,12 @@ class HueAPI:
     
     def _put(self, endpoint: str, payload: dict):
          url = f"{self.base_url}/{endpoint}"
+         self._log("PUT", endpoint, payload)
          response = requests.put(url, json=payload, timeout=5)
          response.raise_for_status()
-         return response.json()
+         data = response.json()
+         self._log("RESPONSE", data)
+         return data
     
      
     def _invalidate_cache(self):
