@@ -9,3 +9,8 @@ def main():
         return
     api = HueAPI(bridge_ip)
     service = HueService(api, debug=True)
+    
+    print ("\n--- SCENES ---")
+    scenes = service.get_scenes()
+    for scene in scenes:
+        print(scene)
