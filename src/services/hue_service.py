@@ -29,6 +29,10 @@ class HueService:
             int(b * 255),
         )
         
+    def _xy_to_hex(self, x, y, bri):
+        z = 1.0 - x - y
+        Y = bri / 254
+        
 
     # -------- READ Lights Logic --------
          
