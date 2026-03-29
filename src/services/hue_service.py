@@ -48,6 +48,13 @@ class HueService:
             int (min(b * 255, 255)),
         )
         
+    def _ct_to_hex(self, ct, bri):
+        ratio = (ct - 153) / (500 - 153)
+        r = int (255 * (1 - ratio * 0.3))
+        g = int (244 * (1 - ratio * 0.2))
+        b = int (255 * (1- ratio))
+        return "#{:02x}{:02x}{:02x}".format(r, g, b)
+        
         
         
 
