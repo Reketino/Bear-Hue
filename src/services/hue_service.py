@@ -50,9 +50,9 @@ class HueService:
         
     def _ct_to_hex(self, ct, bri):
         ratio = (ct - 153) / (500 - 153)
-        r = int (255 * (1 - ratio * 0.3))
-        g = int (244 * (1 - ratio * 0.2))
-        b = int (255 * (1- ratio))
+        r = int(255 * (1 - ratio * 0.3))
+        g = int(244 * (1 - ratio * 0.2))
+        b = int(255 * (1 - ratio))
         return "#{:02x}{:02x}{:02x}".format(r, g, b)
         
         
@@ -126,7 +126,7 @@ class HueService:
             
             hue = first.get("hue")
             sat = first.get("sat")
-            bri = first.get("bri")
+            bri = first.get("bri", 254)
             self._log("SCENE DATA:", scene_id, "->", hue, sat, bri)
             if hue is not None and sat is not None:
                 hex_color = self._hue_to_hex(hue, sat, bri)
@@ -148,7 +148,7 @@ class HueService:
         self._log("FALLBACK triggered for scene:", scene_id)
        
         all_lights = self._get_lights()
-        for light in all_lights.values():
+        for light_id, light in all_lights.items():
             state = light.get("state", {})
            
             if state.get("on"):
@@ -158,7 +158,7 @@ class HueService:
                 
                 if hue is not None and sat is not None and bri is not None:
                     hex_color = self._hue_to_hex(hue, sat, bri)
-                    self._log("USING SCENE COLOR:", hex_color)
+                    self._log(f"USING LIGHT{light_id} COLOR:", hex_color)
                     return hex_color
         self._log("NO COLOR FOUND -> returning to default")
         return "#888888"    
@@ -205,7 +205,7 @@ class HueService:
             if scene["name"].lower() == name.lower():
                 self.activate_scene(scene["id"])
                 return
-            self._log(f"Scene '{name}' not found")
+        self._log(f"Scene '{name}' not found")
             
     
             
