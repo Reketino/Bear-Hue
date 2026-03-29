@@ -48,6 +48,9 @@ class HueService:
             int (min(b * 255, 255)),
         )
         
+    def _ct_to_hex(self, ct, bri):
+        ratio = (ct - 153) / (500 - 153)
+        
         
         
 
