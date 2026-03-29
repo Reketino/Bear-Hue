@@ -14,3 +14,8 @@ def main():
     scenes = service.get_scenes()
     for scene in scenes:
         print(scene)
+        
+    print ("\n--- SCENE COLORS ---")
+    for scene in scenes:
+        color = service.get_scene_color(scene["id"])
+        print(scene["name"], "->", color)
