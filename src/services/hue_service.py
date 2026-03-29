@@ -32,6 +32,8 @@ class HueService:
     def _xy_to_hex(self, x, y, bri):
         z = 1.0 - x - y
         Y = bri / 254
+        if y == 0:
+            return "#888888"
         
 
     # -------- READ Lights Logic --------
