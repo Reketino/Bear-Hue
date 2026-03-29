@@ -56,8 +56,6 @@ class HueService:
         return "#{:02x}{:02x}{:02x}".format(r, g, b)
         
         
-        
-
     # -------- READ Lights Logic --------
          
     def get_lights(self):
@@ -130,9 +128,9 @@ class HueService:
             sat = first.get("sat")
             bri = first.get("bri")
             self._log("SCENE DATA:", scene_id, "->", hue, sat, bri)
-            if hue is not None and sat is not None and bri is not None:
+            if hue is not None and sat is not None:
                 hex_color = self._hue_to_hex(hue, sat, bri)
-                self._log("USING SCENE COLOR:", hex_color)
+                self._log("USING HSV:", hex_color)
                 return hex_color
             
         self._log("FALLBACK triggered for scene:", scene_id)
