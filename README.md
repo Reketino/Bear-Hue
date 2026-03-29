@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Adding XY helpers in HueService
+- Test script for hue_service
 
 ---
 
