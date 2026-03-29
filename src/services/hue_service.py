@@ -133,6 +133,12 @@ class HueService:
                 self._log("USING HSV:", hex_color)
                 return hex_color
             
+            xy = first.get("xy")
+            if xy:
+                hex_color = self._xy_to_hex(xy[0], xy[1], bri)
+                self._log("USING XY:", hex_color)
+                return hex_color
+            
         self._log("FALLBACK triggered for scene:", scene_id)
        
         all_lights = self._get_lights()
