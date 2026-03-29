@@ -34,6 +34,8 @@ class HueService:
         Y = bri / 254
         if y == 0:
             return "#888888"
+        X = (Y / y) * x
+        Z = (Y / y) * z
         
 
     # -------- READ Lights Logic --------
