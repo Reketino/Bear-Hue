@@ -130,19 +130,19 @@ class HueService:
             bri = first.get("bri", 254)
             self._log("SCENE DATA:", scene_id, "->", hue, sat, bri)
             if hue is not None and sat is not None:
-                hex_color = self._hue_to_hex(hue, sat, bri)
+                hex_color = hue_to_hex(hue, sat, bri)
                 self._log("USING HSV:", hex_color)
                 return hex_color
             
             xy = first.get("xy")
             if xy:
-                hex_color = self._xy_to_hex(xy[0], xy[1], bri)
+                hex_color = xy_to_hex(xy[0], xy[1], bri)
                 self._log("USING XY:", hex_color)
                 return hex_color
             
             ct = first.get("ct")
             if ct:
-                hex_color = self._ct_to_hex(ct, bri)
+                hex_color = ct_to_hex(ct, bri)
                 self._log("USING CT:", hex_color)
                 return hex_color
             
@@ -158,7 +158,7 @@ class HueService:
                 bri = state.get("bri")
                 
                 if hue is not None and sat is not None and bri is not None:
-                    hex_color = self._hue_to_hex(hue, sat, bri)
+                    hex_color = hue_to_hex(hue, sat, bri)
                     self._log(f"USING LIGHT{light_id} COLOR:", hex_color)
                     return hex_color
         self._log("NO COLOR FOUND -> returning to default")
