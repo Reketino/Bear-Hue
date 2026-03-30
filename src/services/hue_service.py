@@ -1,4 +1,5 @@
 from src.api.hue_api import HueAPI
+from src.utils.color_utils import hue_to_hex, xy_to_hex, ct_to_hex
 
 
 class HueService: 
@@ -17,45 +18,7 @@ class HueService:
         if self.debug:
             print(*args)
    
-    def _hue_to_hex(self, hue, sat, bri):
-        import colorsys
-        h = hue / 65536
-        s = sat / 254
-        v = bri / 254
-        r, g, b = colorsys.hsv_to_rgb(h, s, v)
-        return "#{:02x}{:02x}{:02x}".format(
-            int(r * 255),
-            int(g * 255),
-            int(b * 255),
-        )
-        
-    def _xy_to_hex(self, x, y, bri):
-        z = 1.0 - x - y
-        Y = bri / 254
-        if y == 0:
-            return "#888888"
-        X = (Y / y) * x
-        Z = (Y / y) * z
-        r = X * 1.656492 - Y * 0.354851 - Z * 0.255038
-        g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152
-        b = X * 0.051713 - Y * 0.121364 + Z * 1.011530
-        r = max(0, r)
-        g = max(0, g)
-        b = max(0, b)
-        return "#{:02x}{:02x}{:02x}".format(
-            int (min(r * 255, 255)),
-            int (min(g * 255, 255)),
-            int (min(b * 255, 255)),
-        )
-        
-    def _ct_to_hex(self, ct, bri):
-        ratio = (ct - 153) / (500 - 153)
-        r = int(255 * (1 - ratio * 0.3))
-        g = int(244 * (1 - ratio * 0.2))
-        b = int(255 * (1 - ratio))
-        return "#{:02x}{:02x}{:02x}".format(r, g, b)
-        
-        
+                           
     # -------- READ Lights Logic --------
          
     def get_lights(self):
@@ -129,19 +92,19 @@ class HueService:
             bri = first.get("bri", 254)
             self._log("SCENE DATA:", scene_id, "->", hue, sat, bri)
             if hue is not None and sat is not None:
-                hex_color = self._hue_to_hex(hue, sat, bri)
+                hex_color = hue_to_hex(hue, sat, bri)
                 self._log("USING HSV:", hex_color)
                 return hex_color
             
             xy = first.get("xy")
             if xy:
-                hex_color = self._xy_to_hex(xy[0], xy[1], bri)
+                hex_color = xy_to_hex(xy[0], xy[1], bri)
                 self._log("USING XY:", hex_color)
                 return hex_color
             
             ct = first.get("ct")
             if ct:
-                hex_color = self._ct_to_hex(ct, bri)
+                hex_color = ct_to_hex(ct, bri)
                 self._log("USING CT:", hex_color)
                 return hex_color
             
@@ -157,7 +120,7 @@ class HueService:
                 bri = state.get("bri")
                 
                 if hue is not None and sat is not None and bri is not None:
-                    hex_color = self._hue_to_hex(hue, sat, bri)
+                    hex_color = hue_to_hex(hue, sat, bri)
                     self._log(f"USING LIGHT{light_id} COLOR:", hex_color)
                     return hex_color
         self._log("NO COLOR FOUND -> returning to default")
