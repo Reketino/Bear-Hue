@@ -29,26 +29,7 @@ class HueService:
             int(g * 255),
             int(b * 255),
         )
-        
-    def _xy_to_hex(self, x, y, bri):
-        z = 1.0 - x - y
-        Y = bri / 254
-        if y == 0:
-            return "#888888"
-        X = (Y / y) * x
-        Z = (Y / y) * z
-        r = X * 1.656492 - Y * 0.354851 - Z * 0.255038
-        g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152
-        b = X * 0.051713 - Y * 0.121364 + Z * 1.011530
-        r = max(0, r)
-        g = max(0, g)
-        b = max(0, b)
-        return "#{:02x}{:02x}{:02x}".format(
-            int (min(r * 255, 255)),
-            int (min(g * 255, 255)),
-            int (min(b * 255, 255)),
-        )
-        
+                
               
     # -------- READ Lights Logic --------
          
