@@ -26,7 +26,7 @@ class ScenesBar(ctk.CTkFrame):
                 text=scene["name"],
                 height=70,
                 fg_color="#2B2B2B",
-                hover_color=self._lighten(color, 1.1),
+                hover_color=color,
                 text_color="black" if self._is_light(color) else "white",
                 corner_radius=15,
                 border_width=2,
