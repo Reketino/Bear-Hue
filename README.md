@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Test script for hue_service
+- Refactor service scrippt to be more modular and reusable
 
 ---
 
