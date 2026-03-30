@@ -55,6 +55,9 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 ## Test for Philips Hue connection: 
 python -m tests.test_api
 
+## Test for Philips Hue Service: 
+python -m tests.test_service
+
 ----
 
 ## Main Script to turn lights on/off:
