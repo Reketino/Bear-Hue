@@ -19,3 +19,13 @@ def main():
     for scene in scenes:
         color = service.get_scene_color(scene["id"])
         print(scene["name"], "->", color)
+        
+    print ("\n--- ACTIVATE TEST ---")
+    if scenes:
+        first = scenes[0]
+        print("Activating:", first["name"])
+        service.activate_scene(first["id"])
+ 
+        
+if __name__ == "__main__":
+    main()
