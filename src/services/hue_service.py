@@ -86,6 +86,8 @@ class HueService:
         lights = scene.get("lightstates")
         if lights:
             first = next(iter(lights.values()))
+            if not first:
+                return "#888888"
             
             hue = first.get("hue")
             sat = first.get("sat")
