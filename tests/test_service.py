@@ -26,6 +26,6 @@ def main():
         print("Activating:", first["name"])
         service.activate_scene(first["id"])
  
-        
+# Run script w/ python -m src.scripts.test_service        
 if __name__ == "__main__":
     main()
