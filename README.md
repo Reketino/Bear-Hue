@@ -44,7 +44,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor service scrippt to be more modular and reusable
+- Making Bear Hue a executable application for easy use on PC
 
 ---
 
