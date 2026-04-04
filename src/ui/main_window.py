@@ -25,9 +25,11 @@ class MainWindow(ctk.CTk):
         self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
+        img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA"),
+        
         self.bear_image = ctk.CTkImage(
-            light_image=Image.open(("src/assets/bearhue.png")),
-            dark_image=Image.open("src/assets/bearhue.png"),
+            light_image=Image.open(resource_path("src/assets/bearhue.png")),
+            dark_image=Image.open(resource_path("src/assets/bearhue.png")),
             size=(400, 400)
         )
         
