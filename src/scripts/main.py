@@ -5,7 +5,7 @@ from src.services.hue_service import HueService
 from src.ui.main_window import MainWindow
 
 def main():
-    bridge_ip = discover_bridge_ip()
+    bridge_ip = os.getenv("HUE_BRIDGE_IP") or discover_bridge_ip()
     
     if bridge_ip is None:
         print("No Hue Bridge found on the network.")
