@@ -6,6 +6,7 @@ from src.ui.controls_bar import ControlsBar
 from src.ui.brightness_slider import BrightnessSlider
 from src.ui.lights_panel import LightsPanel
 from src.ui.scenes_bar import ScenesBar
+from src.utils.path_utils import resource_path
 
 class MainWindow(ctk.CTk):
     
@@ -25,7 +26,7 @@ class MainWindow(ctk.CTk):
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         self.bear_image = ctk.CTkImage(
-            light_image=Image.open("src/assets/bearhue.png"),
+            light_image=Image.open(("src/assets/bearhue.png")),
             dark_image=Image.open("src/assets/bearhue.png"),
             size=(400, 400)
         )
