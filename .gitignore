@@ -1,20 +1,20 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
 
-# Virtual environments
+# Virtual env
 .venv/
-venv/
-env/
+.venv312/
+
+# Build files
+build/
+dist/
+*.spec
 
 # Environment variables
 .env
-.env.local
-
 # OS
 .DS_Store
-
-# Logs
-*.log
+Thumbs.db
