@@ -12,6 +12,15 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ---
 
+###  Current Status:
+
+- ✅ Desktop UI working
+- ✅ Scene system with color preview
+- ✅ Hue API integration
+- ✅ EXE build working
+
+---
+
 ### Future plans:
 
 - PC application w/ settings
