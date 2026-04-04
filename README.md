@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Making Bear Hue a executable application for easy use on PC
+- Improving Bear Hue layout and design
 
 ---
 
