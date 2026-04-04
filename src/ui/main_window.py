@@ -49,7 +49,7 @@ class MainWindow(ctk.CTk):
         ScenesBar(
             self.ui_layer,
             self.hue_service
-        )
+        ).pack(fill="x", padx=15, pady=5)
         
         self.brightness = BrightnessSlider(self.ui_layer, self.change_brightness)
         self.lights_panel = LightsPanel(self.ui_layer, self.hue_service)
