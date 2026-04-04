@@ -12,6 +12,15 @@ A simple app for controlling my Philips Hue lights from my computer🔦
 
 ---
 
+###  Current Status:
+
+- ✅ Desktop UI working
+- ✅ Scene system with color preview
+- ✅ Hue API integration
+- ✅ EXE build working
+
+---
+
 ### Future plans:
 
 - PC application w/ settings
@@ -42,6 +51,16 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 ```
 ---
 
+### Tech Stack:
+
+- Python 3.12
+- CustomTkinter
+- Pillow
+- Requests
+- Philips Hue API
+
+---
+
 ### 🟢 Working on:
 
 - Making Bear Hue a executable application for easy use on PC
@@ -64,4 +83,5 @@ python -m tests.test_service
 python -m src.scripts.main 
 
 ---
+
 
