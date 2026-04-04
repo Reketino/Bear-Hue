@@ -17,8 +17,11 @@ def main():
     
         app = MainWindow(hue_service)
         app.mainloop()
+        
+    except Exception as e:
+        print("CRASH:", e)
+        input("Press Enter to exit...")
 
-    
 # Run script w/: python -m src.scripts.main      
 if __name__ == "__main__":
     main()
