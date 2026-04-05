@@ -14,10 +14,9 @@ class ControlsBar(ctk.CTkFrame):
         left = ctk.CTkFrame(container, fg_color="transparent")
         left.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         
-        self.pack(fill="x", padx=20, pady=20)
         
         on_button = ctk.CTkButton(
-            self,
+            left,
             text="All Lights ON",
             command=on_all,
             fg_color="#2A2A2A",
@@ -28,7 +27,7 @@ class ControlsBar(ctk.CTkFrame):
         on_button.pack(side="left", padx=10)
         
         off_button = ctk.CTkButton(
-            self,
+            left,
             text="All Lights OFF",
             command=off_all,
             fg_color="#3A2A2A",
