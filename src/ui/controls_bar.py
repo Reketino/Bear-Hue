@@ -21,7 +21,8 @@ class ControlsBar(ctk.CTkFrame):
             fg_color="#81B29A", 
             hover_color="#388E3C",
             text_color="white",
-            corner_radius=12
+            corner_radius=12,
+            width=90
         )
         on_button.pack(side="left")
         
