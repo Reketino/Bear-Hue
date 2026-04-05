@@ -10,14 +10,22 @@ class ControlsBar(ctk.CTkFrame):
         on_button = ctk.CTkButton(
             self,
             text="All Lights ON",
-            command=on_all
+            command=on_all,
+            fg_color="#2A2A2A",
+            hover_color="#3A3A3A",
+            text_color="white",
+            corner_radius=12
         )
         on_button.pack(side="left", padx=10)
         
         off_button = ctk.CTkButton(
             self,
             text="All Lights OFF",
-            command=off_all
+            command=off_all,
+            fg_color="#3A2A2A",
+            hover_color="#4A2F2F",
+            text_color="white",
+            corner_radius=12
         )
         off_button.pack(side="right", padx=10)
         
@@ -26,6 +34,7 @@ class ControlsBar(ctk.CTkFrame):
             text="🐻Bear Mode",
             command=toggle_bear_mode,
             fg_color="#8B5A2B",
-            hover_color="#6E4420"
+            hover_color="#6E4420",
+            corner_radius=12
         )
         bear_button.pack(side="right", padx=10) 
