@@ -60,7 +60,8 @@ class MainWindow(ctk.CTk):
         self.lights_panel = LightsPanel(
             self.ui_layer, 
             self.hue_service
-        )
+        ) 
+        self.lights_panel.pack(fill="both", expand=True, padx=15, pady=(5, 10))
         
         self.refresh()
         
