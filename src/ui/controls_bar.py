@@ -32,7 +32,8 @@ class ControlsBar(ctk.CTkFrame):
             fg_color="#4C191B",
             hover_color="#972D07",
             text_color="white",
-            corner_radius=12
+            corner_radius=12,
+            width=90
         )
         off_button.pack(side="left")
         
