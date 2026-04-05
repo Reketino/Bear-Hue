@@ -10,7 +10,11 @@ class ControlsBar(ctk.CTkFrame):
         on_button = ctk.CTkButton(
             self,
             text="All Lights ON",
-            command=on_all
+            command=on_all,
+            fg_color="#2A2A2A",
+            hover_color="#3A3A3A",
+            text_color="white",
+            corner_radius=12
         )
         on_button.pack(side="left", padx=10)
         
