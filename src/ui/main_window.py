@@ -18,7 +18,9 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("400x500")
         self.minsize(300, 400)
+        
         self.configure(fg_color="#181818")
+        self.attributes("-alpha", 0.98)
         
         self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
