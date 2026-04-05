@@ -23,7 +23,7 @@ class MainWindow(ctk.CTk):
         self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
-        self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
+        self.ui_layer = ctk.CTkFrame(self, fg_color="#1E1E1E")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
