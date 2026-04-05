@@ -79,7 +79,7 @@ class MainWindow(ctk.CTk):
             button_color="#588157"
         ) 
         for row in self.lights_panel.light_rows.values():
-            row.configure(fg_color="#2D3E2F")
+            row.configure(fg_color="#292E1E")
         self.bear_label.place(relx=0.5, rely=1, anchor="center")
         self.bear_label.configure(fg_color="transparent")
         self.bear_label.lift(self.ui_layer)
