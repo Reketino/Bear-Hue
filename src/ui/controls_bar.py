@@ -34,6 +34,7 @@ class ControlsBar(ctk.CTkFrame):
             text="🐻Bear Mode",
             command=toggle_bear_mode,
             fg_color="#8B5A2B",
-            hover_color="#6E4420"
+            hover_color="#6E4420",
+            corner_radius=12
         )
         bear_button.pack(side="right", padx=10) 
