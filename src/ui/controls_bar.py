@@ -21,7 +21,11 @@ class ControlsBar(ctk.CTkFrame):
         off_button = ctk.CTkButton(
             self,
             text="All Lights OFF",
-            command=off_all
+            command=off_all,
+            fg_color="#3A2A2A",
+            hover_color="#4A2F2F",
+            text_color="white",
+            corner_radius=12
         )
         off_button.pack(side="right", padx=10)
         
