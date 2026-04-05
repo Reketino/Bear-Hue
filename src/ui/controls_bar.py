@@ -8,6 +8,9 @@ class ControlsBar(ctk.CTkFrame):
         container = ctk.CTkFrame(self, fg_color="#232323", corner_radius=15)
         container.pack(fill="x", padx=15, pady=10)
         
+        container.grid_columnconfigure(0, weight=1)
+        container.grid_columnconfigure(1, weight=1)
+        
         self.pack(fill="x", padx=20, pady=20)
         
         on_button = ctk.CTkButton(
