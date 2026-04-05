@@ -3,7 +3,10 @@ import customtkinter as ctk
 class ControlsBar(ctk.CTkFrame):
     
     def __init__(self, master, on_all, off_all, toggle_bear_mode):
-        super().__init__(master)
+        super().__init__(master, fg_color="transparent")
+        
+        container = ctk.CTkFrame(self, fg_color="#232323", corner_radius=15)
+        container.pack(fill="x", padx=15, pady=10)
         
         self.pack(fill="x", padx=20, pady=20)
         
