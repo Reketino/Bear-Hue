@@ -51,7 +51,12 @@ class MainWindow(ctk.CTk):
             self.hue_service
         ).pack(fill="x", padx=15, pady=5)
         
-        self.brightness = BrightnessSlider(self.ui_layer, self.change_brightness)
+        self.brightness = BrightnessSlider(
+            self.ui_layer, 
+            self.change_brightness
+            )
+        self.brightness.pack(fill="x", padx=15, pady=5)
+        
         self.lights_panel = LightsPanel(self.ui_layer, self.hue_service)
         self.refresh()
         
