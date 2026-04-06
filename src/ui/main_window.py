@@ -119,6 +119,13 @@ class MainWindow(ctk.CTk):
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
+    
+    def _set_background_image(self):
+        width = self.winfo_width()
+        height = self.winfo_height()
+        
+        
+        
         
         
     
