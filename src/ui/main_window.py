@@ -39,6 +39,7 @@ class MainWindow(ctk.CTk):
             self.bg_layer,
             text=""
         )
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.bear_label.place_forget()
         
         ControlsBar(
