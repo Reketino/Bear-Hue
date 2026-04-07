@@ -82,9 +82,7 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#292E1E")
-        self.bear_label.place(relx=0.5, rely=1, anchor="center")
-        self.bear_label.configure(fg_color="transparent")
-        self.bear_label.lift(self.ui_layer)
+
       
             
     def disable_bear_mode(self):
