@@ -36,8 +36,7 @@ class MainWindow(ctk.CTk):
         )
         
         self.bear_label = ctk.CTkLabel(
-            self,
-            image=self.bear_image,
+            self.bg_layer,
             text=""
         )
         self.bear_label.place_forget()
