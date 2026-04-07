@@ -83,7 +83,7 @@ class MainWindow(ctk.CTk):
         self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.overlay.configure(fg_color="#0F1A12")
         self.configure(fg_color="#000000")
-        self.bg_layer.lower()
+        self.bg_layer.lift()
         self.overlay.lift()
         self.ui_layer.lift()
         self.attributes("-alpha", 0.95)
