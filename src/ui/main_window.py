@@ -1,4 +1,5 @@
-from PIL import Image
+import tkinter as tk
+from PIL import Image, ImageTk
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
@@ -18,33 +19,22 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("400x500")
         self.minsize(300, 400)
+        self.attributes("-alpha", 0.92)
         
-        self.configure(fg_color="#181818")
-        self.attributes("-alpha", 0.98)
+        self.configure(fg_color="#101010")
         
-        self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
-        self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.canvas = tk.Canvas(self, highlightthickness=0)
+        self.canvas.place(relx=0, rely=0, relwidth=1, relheight=1)
         
-        self.overlay = ctk.CTkFrame(self, fg_color="#111111")
-        self.overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
-        
-        self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
+        self.ui_layer = ctk.CTkFrame(self, fg_color="#000000")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
-        img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
-        self.bear_image = ctk.CTkImage(
-            light_image=img,
-            dark_image=img,
-            size=(400, 400)
-        )
-        
-        self.bear_label = ctk.CTkLabel(
-            self.bg_layer,
-            text="",
-            fg_color="transparent"
-        )
-        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-        self.bear_label.place_forget()
+        # self.overlay = ctk.CTkFrame(self, fg_color="#111111")
+        # self.overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
+                
+
+        self.ui_layer.lift()
+      
         
         ControlsBar(
             self.ui_layer, 
@@ -71,21 +61,16 @@ class MainWindow(ctk.CTk):
         self.lights_panel.pack(fill="both", expand=True, padx=15, pady=(5, 10))
         
         self.refresh()
-        self.overlay.lift()
-        self.bg_layer.lower()
-        self.ui_layer.lift()
         
         
     def enable_bear_mode(self):
         self.update_idletasks()
+        self.after(100,self._activate_bear_mode)
+        
+    def _activate_bear_mode(self):
         self._set_background_image()
-        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-        self.overlay.configure(fg_color="#0F1A12")
-        self.configure(fg_color="#000000")
-        self.bg_layer.lift()
-        self.overlay.lift()
         self.ui_layer.lift()
-        self.attributes("-alpha", 0.95)
+        self.configure(fg_color="#000000")
         self.brightness.slider.configure(
             progress_color="#A3B18A",
             button_color="#588157"
@@ -95,15 +80,15 @@ class MainWindow(ctk.CTk):
 
           
     def disable_bear_mode(self):
-        self.configure(fg_color="#1E1E1E")
-        self.overlay.lower()
+        self.canvas.delete("all")
+        self.configure(fg_color="#101010")
         self.brightness.slider.configure(
             progress_color="#FFD54F",
             button_color="#FFC107"
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#2B2B2B") 
-        self.bear_label.place_forget()
+        
         
     def toggle_bear_mode(self):
         self.bear_mode = not self.bear_mode
@@ -138,18 +123,14 @@ class MainWindow(ctk.CTk):
         img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
         img = img.resize((width, height))
         r, g, b, a = img.split()
-        r = r.point(lambda p: p * 0.7)
-        g = g.point(lambda p: p * 0.7)
-        b = b.point(lambda p: p * 0.7)
+        r = r.point(lambda p: p * 0.8)
+        g = g.point(lambda p: p * 0.8)
+        b = b.point(lambda p: p * 0.8)
         img= Image.merge("RGBA", (r, g, b, a))
-        self.bear_image = ctk.CTkImage(
-            light_image=img,
-            dark_image=img,
-            size=(width, height)
-        )  
-        self.bear_label.configure(image=self.bear_image)
-        self.bear_label.image = self.bear_image #type: ignore
-        print("Bear mode activated", width, height)
+        self.tk_image = ImageTk.PhotoImage(img)
+        self.canvas.delete("all")
+        self.canvas.create_image(0, 0, anchor="nw", image=self.tk_image)
+        print("SIZE:", width, height)
         
         
         

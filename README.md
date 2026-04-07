@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Making Bear image appear as background in bearmode
+- Improve Bearmode
 
 ---
 
