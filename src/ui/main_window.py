@@ -137,6 +137,8 @@ class MainWindow(ctk.CTk):
             size=(width, height)
         )
         
+        self.bear_label.configure(image=self.bear_image)
+        
         
         
         
