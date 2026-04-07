@@ -83,8 +83,7 @@ class MainWindow(ctk.CTk):
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#292E1E")
 
-      
-            
+          
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
         self.brightness.slider.configure(
