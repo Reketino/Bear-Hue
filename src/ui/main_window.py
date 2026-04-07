@@ -76,7 +76,6 @@ class MainWindow(ctk.CTk):
         self.ui_layer.lift()
         
         
-        
     def enable_bear_mode(self):
         self.update_idletasks()
         self._set_background_image()
