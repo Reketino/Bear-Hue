@@ -124,6 +124,9 @@ class MainWindow(ctk.CTk):
         width = self.winfo_width()
         height = self.winfo_height()
         
+        if width < 10 or height < 10:
+            return
+        
         
         
         
