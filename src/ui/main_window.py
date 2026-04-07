@@ -81,6 +81,7 @@ class MainWindow(ctk.CTk):
         self.update_idletasks()
         self._set_background_image()
         self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.overlay.configure(fg_color="#0F1A12")
         self.configure(fg_color="#000000")
         self.bg_layer.lower()
         self.overlay.lift()
