@@ -11,7 +11,7 @@ class ControlsBar(ctk.CTkFrame):
         container.grid_columnconfigure(0, weight=1)
         container.grid_columnconfigure(1, weight=1)
         
-        left = ctk.CTkFrame(container, fg_color="transparent")
+        left = ctk.CTkFrame(container, fg_color="#1A1A1A")
         left.grid(row=0, column=0, sticky="w", padx=10, pady=10)
         
         on_button = ctk.CTkButton(
