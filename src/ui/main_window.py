@@ -131,6 +131,12 @@ class MainWindow(ctk.CTk):
         img = img.resize((width, height))
         img = img.point(lambda p: p * 0.5)
         
+        self.bear_image = ctk.CTkImage(
+            light_image=img,
+            dark_image=img,
+            
+        )
+        
         
         
         
