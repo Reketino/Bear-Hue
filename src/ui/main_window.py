@@ -127,6 +127,10 @@ class MainWindow(ctk.CTk):
         if width < 10 or height < 10:
             return
         
+        img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
+        img = img.resize((width, height))
+        img = img.point(lambda p: p * 0.5)
+        
         
         
         
