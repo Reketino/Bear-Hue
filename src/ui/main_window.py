@@ -73,6 +73,8 @@ class MainWindow(ctk.CTk):
         
         
     def enable_bear_mode(self):
+        self._set_background_image()
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.configure(fg_color="#1B2A1F")
         self.brightness.slider.configure(
             progress_color="#A3B18A",
