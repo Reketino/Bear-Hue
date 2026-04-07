@@ -25,6 +25,9 @@ class MainWindow(ctk.CTk):
         self.bg_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.bg_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
+        self.overlay = ctk.CTkFrame(self, fg_color="#111111")
+        self.overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
+        
         self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
         
@@ -37,7 +40,8 @@ class MainWindow(ctk.CTk):
         
         self.bear_label = ctk.CTkLabel(
             self.bg_layer,
-            text=""
+            text="",
+            fg_color="transparent"
         )
         self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.bear_label.place_forget()
@@ -67,15 +71,21 @@ class MainWindow(ctk.CTk):
         self.lights_panel.pack(fill="both", expand=True, padx=15, pady=(5, 10))
         
         self.refresh()
-        
-        self.bg_layer.lift()
+        self.overlay.lift()
+        self.bg_layer.lower()
         self.ui_layer.lift()
         
         
+        
     def enable_bear_mode(self):
+        self.update_idletasks()
         self._set_background_image()
         self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
-        self.configure(fg_color="#1B2A1F")
+        self.configure(fg_color="#000000")
+        self.bg_layer.lower()
+        self.overlay.lift()
+        self.ui_layer.lift()
+        self.attributes("-alpha", 0.95)
         self.brightness.slider.configure(
             progress_color="#A3B18A",
             button_color="#588157"
@@ -86,6 +96,7 @@ class MainWindow(ctk.CTk):
           
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
+        self.overlay.lower()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
             button_color="#FFC107"
@@ -126,7 +137,11 @@ class MainWindow(ctk.CTk):
             return
         img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
         img = img.resize((width, height))
-        img = img.point(lambda p: p * 0.5)
+        r, g, b, a = img.split()
+        r = r.point(lambda p: p * 0.7)
+        g = g.point(lambda p: p * 0.7)
+        b = b.point(lambda p: p * 0.7)
+        img= Image.merge("RGBA", (r, g, b, a))
         self.bear_image = ctk.CTkImage(
             light_image=img,
             dark_image=img,
@@ -134,6 +149,7 @@ class MainWindow(ctk.CTk):
         )  
         self.bear_label.configure(image=self.bear_image)
         self.bear_label.image = self.bear_image #type: ignore
+        print("Bear mode activated", width, height)
         
         
         
