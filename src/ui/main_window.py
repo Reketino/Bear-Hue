@@ -122,20 +122,16 @@ class MainWindow(ctk.CTk):
     def _set_background_image(self):
         width = self.winfo_width()
         height = self.winfo_height()
-        
         if width < 10 or height < 10:
             return
-        
         img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
         img = img.resize((width, height))
         img = img.point(lambda p: p * 0.5)
-        
         self.bear_image = ctk.CTkImage(
             light_image=img,
             dark_image=img,
             size=(width, height)
-        )
-        
+        )  
         self.bear_label.configure(image=self.bear_image)
         self.bear_label.image = self.bear_image #type: ignore
         
