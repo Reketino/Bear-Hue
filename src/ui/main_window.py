@@ -68,7 +68,7 @@ class MainWindow(ctk.CTk):
         
         self.refresh()
         
-        self.bg_layer.lower()
+        self.bg_layer.lift()
         self.ui_layer.lift()
         
         
@@ -137,6 +137,7 @@ class MainWindow(ctk.CTk):
         )
         
         self.bear_label.configure(image=self.bear_image)
+        self.bear_label.image = self.bear_image
         
         
         
