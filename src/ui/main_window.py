@@ -134,7 +134,7 @@ class MainWindow(ctk.CTk):
         self.bear_image = ctk.CTkImage(
             light_image=img,
             dark_image=img,
-            
+            size=(width, height)
         )
         
         
