@@ -36,10 +36,10 @@ class MainWindow(ctk.CTk):
         )
         
         self.bear_label = ctk.CTkLabel(
-            self,
-            image=self.bear_image,
+            self.bg_layer,
             text=""
         )
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.bear_label.place_forget()
         
         ControlsBar(
@@ -73,6 +73,8 @@ class MainWindow(ctk.CTk):
         
         
     def enable_bear_mode(self):
+        self._set_background_image()
+        self.bear_label.place(relx=0, rely=0, relwidth=1, relheight=1)
         self.configure(fg_color="#1B2A1F")
         self.brightness.slider.configure(
             progress_color="#A3B18A",
@@ -80,11 +82,8 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(fg_color="#292E1E")
-        self.bear_label.place(relx=0.5, rely=1, anchor="center")
-        self.bear_label.configure(fg_color="transparent")
-        self.bear_label.lift(self.ui_layer)
-      
-            
+
+          
     def disable_bear_mode(self):
         self.configure(fg_color="#1E1E1E")
         self.brightness.slider.configure(
