@@ -18,3 +18,9 @@ class BrightnessSlider(ctk.CTkFrame):
             command=command
         )
         self.slider.pack(fill="x", padx=10, pady=10)
+        
+        self.bear_icon = ctk.CTkLabel(
+            self,
+            text="🐻",
+            font=("Segoe UI Emoji", 16)
+        )
