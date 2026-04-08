@@ -32,5 +32,9 @@ class BrightnessSlider(ctk.CTkFrame):
     def _on_slide(self, value):
         if hasattr(self,"bear_icon"):
             self.bear_icon.place(relx=float(value)/100, rely=0.65, anchor="center")
+        if self.external_command:
+            self.external_command(value)
+            
+    
         
         
