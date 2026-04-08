@@ -17,5 +17,4 @@ class BrightnessSlider(ctk.CTkFrame):
             number_of_steps=100,
             command=command
         )
-        
-        self.slider.pack(fill="x")
+        self.slider.pack(fill="x", padx=10, pady=10)
