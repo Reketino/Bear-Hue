@@ -114,6 +114,14 @@ class MainWindow(ctk.CTk):
         
     def turn_all_off(self):
         self.hue_service.turn_off_all()
+        
+    def _get_bear_color(self, vaule: int) -> str:
+        intensity = int (40 + (vaule / 100) * 120)
+        r = int(intensity * 0.3)
+        g = intensity 
+        b = int(intensity * 0.4)
+        return f"#{r:02x}{g:02x}{b:02x}"
+        
     
     def _set_background_image(self):
         width = self.winfo_width()
