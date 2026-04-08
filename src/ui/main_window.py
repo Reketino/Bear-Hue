@@ -115,6 +115,8 @@ class MainWindow(ctk.CTk):
                 progress_color=color,
                 button_color=color
             )
+            for row in self.lights_panel.light_rows.values():
+                row.configure(fg_color=color)
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
