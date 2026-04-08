@@ -120,6 +120,7 @@ class MainWindow(ctk.CTk):
         r = int(intensity * 0.3)
         g = intensity 
         b = int(intensity * 0.4)
+        return f"#{r:02x}{g:02x}{b:02x}"
         
     
     def _set_background_image(self):
