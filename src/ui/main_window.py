@@ -111,6 +111,10 @@ class MainWindow(ctk.CTk):
         self.hue_service.set_all_brightness(value)
         if self.bear_mode:
             color = self._get_bear_color(value)
+            self.brightness.slider.configure(
+                progress_color=color,
+                button_color=color
+            )
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
