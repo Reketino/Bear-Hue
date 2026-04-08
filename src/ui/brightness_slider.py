@@ -24,3 +24,4 @@ class BrightnessSlider(ctk.CTkFrame):
             text="🐻",
             font=("Segoe UI Emoji", 16)
         )
+        self.bear_icon.place(relx=0.0, rely=0.5, anchor="center")
