@@ -5,6 +5,8 @@ class BrightnessSlider(ctk.CTkFrame):
     def __init__(self, master, command):
         super().__init__(master)
         
+        self.external_command = command
+        
         self.pack(fill="x", padx=20, pady=20)
         
         label = ctk.CTkLabel(self, text="Brightness")
