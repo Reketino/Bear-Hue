@@ -107,7 +107,8 @@ class MainWindow(ctk.CTk):
     
                                              
     def change_brightness(self, value):
-        self.hue_service.set_all_brightness(int(value))
+        value = int(value)
+        self.hue_service.set_all_brightness(value)
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
