@@ -17,5 +17,12 @@ class BrightnessSlider(ctk.CTkFrame):
             number_of_steps=100,
             command=command
         )
+        self.slider.pack(fill="x", padx=10, pady=10)
         
-        self.slider.pack(fill="x")
+        self.bear_icon = ctk.CTkLabel(
+            self,
+            text="🐻",
+            font=("Segoe UI Emoji", 16)
+        )
+        self.bear_icon.place(relx=0.0, rely=0.5, anchor="center")
+        self.bear_icon.place_forget()
