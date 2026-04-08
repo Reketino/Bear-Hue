@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Adding get bear color to change brightness
+- Refactor show_bear w/ same logic as on_slide
 
 ---
 
