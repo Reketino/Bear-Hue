@@ -19,7 +19,6 @@ class MainWindow(ctk.CTk):
         self.title("Bear Hue")
         self.geometry("400x500")
         self.minsize(300, 400)
-        self.attributes("-alpha", 0.92)
         
         self.configure(fg_color="#101010")
         
@@ -31,11 +30,9 @@ class MainWindow(ctk.CTk):
         
         # self.overlay = ctk.CTkFrame(self, fg_color="#111111")
         # self.overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
-                
-
+            
         self.ui_layer.lift()
       
-        
         ControlsBar(
             self.ui_layer, 
             self.turn_all_on, 
@@ -61,8 +58,7 @@ class MainWindow(ctk.CTk):
         self.lights_panel.pack(fill="both", expand=True, padx=15, pady=(5, 10))
         
         self.refresh()
-        
-        
+            
     def enable_bear_mode(self):
         self.update_idletasks()
         self.after(100,self._activate_bear_mode)
@@ -71,6 +67,7 @@ class MainWindow(ctk.CTk):
         self._set_background_image()
         self.ui_layer.lift()
         self.configure(fg_color="#000000")
+        self.brightness.show_bear()
         self.brightness.slider.configure(
             progress_color="#A3B18A",
             button_color="#588157"
@@ -82,6 +79,7 @@ class MainWindow(ctk.CTk):
     def disable_bear_mode(self):
         self.canvas.delete("all")
         self.configure(fg_color="#101010")
+        self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
             button_color="#FFC107"
@@ -124,8 +122,8 @@ class MainWindow(ctk.CTk):
     def turn_all_off(self):
         self.hue_service.turn_off_all()
         
-    def _get_bear_color(self, vaule: int) -> str:
-        intensity = int (40 + (vaule / 100) * 120)
+    def _get_bear_color(self, value: int) -> str:
+        intensity = int (40 + (value / 100) * 120)
         r = int(intensity * 0.3)
         g = intensity 
         b = int(intensity * 0.4)
@@ -151,6 +149,3 @@ class MainWindow(ctk.CTk):
         
         
         
-        
-        
-    
