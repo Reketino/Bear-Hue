@@ -117,6 +117,10 @@ class MainWindow(ctk.CTk):
         
     def _get_bear_color(self, vaule: int) -> str:
         intensity = int (40 + (vaule / 100) * 120)
+        r = int(intensity * 0.3)
+        g = intensity 
+        b = int(intensity * 0.4)
+        
     
     def _set_background_image(self):
         width = self.winfo_width()
