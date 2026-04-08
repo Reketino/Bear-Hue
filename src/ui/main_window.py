@@ -107,7 +107,16 @@ class MainWindow(ctk.CTk):
     
                                              
     def change_brightness(self, value):
-        self.hue_service.set_all_brightness(int(value))
+        value = int(value)
+        self.hue_service.set_all_brightness(value)
+        if self.bear_mode:
+            color = self._get_bear_color(value)
+            self.brightness.slider.configure(
+                progress_color=color,
+                button_color=color
+            )
+            for row in self.lights_panel.light_rows.values():
+                row.configure(fg_color=color)
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
