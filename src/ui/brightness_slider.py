@@ -21,6 +21,7 @@ class BrightnessSlider(ctk.CTkFrame):
             command=self._on_slide
         )
         self.slider.pack(fill="x", padx=10, pady=10)
+        self.slider.bind("<ButtonPress-1>")
         
         self.bear_icon = ctk.CTkLabel(
             self,
