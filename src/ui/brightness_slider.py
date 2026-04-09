@@ -6,6 +6,7 @@ class BrightnessSlider(ctk.CTkFrame):
         super().__init__(master)
         
         self.external_command = command
+        self.is_dragging = False
         
         self.pack(fill="x", padx=20, pady=20)
         
