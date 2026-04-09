@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor show_bear w/ same logic as on_slide
+- Fix icon on knob w/ is_dragging logic
 
 ---
 
