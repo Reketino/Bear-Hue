@@ -7,11 +7,9 @@ class BrightnessSlider(ctk.CTkFrame):
         
         self.external_command = command
         self.is_dragging = False
-        
-        self.pack(fill="x", padx=20, pady=20)
-        
-        label = ctk.CTkLabel(self, text="Brightness")
-        label.pack(pady=(0, 5))
+         
+        self.label = ctk.CTkLabel(self, text="Brightness")
+        self.label.pack(pady=(10, 0))
         
         self.slider = ctk.CTkSlider(
             self,
@@ -19,10 +17,10 @@ class BrightnessSlider(ctk.CTkFrame):
             to=100,
             number_of_steps=100,
             command=self._on_slide,
-            button_color="#101010",
-            button_hover_color="#101010",
+            button_length= 1,
+            height=20
         )
-        self.slider.pack(fill="x", padx=10, pady=10)
+        self.slider.pack(fill="x", padx=30, pady=20)
         self.slider.bind("<ButtonPress-1>", self._start_drag)
         self.slider.bind("<ButtonRelease-1>", self._stop_drag)
         
