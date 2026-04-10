@@ -20,7 +20,7 @@ class BrightnessSlider(ctk.CTkFrame):
             button_length= 1,
             height=20
         )
-        self.slider.pack(fill="x", padx=10, pady=10)
+        self.slider.pack(fill="x", padx=30, pady=20)
         self.slider.bind("<ButtonPress-1>", self._start_drag)
         self.slider.bind("<ButtonRelease-1>", self._stop_drag)
         
