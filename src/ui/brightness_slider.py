@@ -59,4 +59,7 @@ class BrightnessSlider(ctk.CTkFrame):
     def _start_drag(self, event):
         self.is_dragging = True
         
+    def _stop_drag(self, event):
+        self.is_dragging = False
+        
         
