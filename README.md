@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Fix icon on knob w/ is_dragging logic
+- Refactor brightness slider to finally implement bear as knob slider
 
 ---
 
