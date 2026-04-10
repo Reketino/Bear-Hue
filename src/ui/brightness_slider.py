@@ -37,6 +37,7 @@ class BrightnessSlider(ctk.CTkFrame):
     def _on_slide(self, value):
             slider_width = self.slider.winfo_width()
             if slider_width > 1:
+                knob_offset = 12
                x = 5 + (float(value) / 100) * (slider_width - 10)
                self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
                if self.external_command:
