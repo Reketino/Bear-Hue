@@ -18,16 +18,18 @@ class BrightnessSlider(ctk.CTkFrame):
             from_=0,
             to=100,
             number_of_steps=100,
-            command=self._on_slide
+            command=self._on_slide,
+            button_color="#101010",
+            button_hover_color="#101010",
         )
         self.slider.pack(fill="x", padx=10, pady=10)
-        self.slider.bind("<ButtonPress-1>",)
-        self.slider.bind("<ButtonRelease-1>",)
+        self.slider.bind("<ButtonPress-1>", self._start_drag)
+        self.slider.bind("<ButtonRelease-1>", self._stop_drag)
         
         self.bear_icon = ctk.CTkLabel(
             self,
             text="🐻",
-            font=("Segoe UI Emoji", 20)
+            font=("Segoe UI Emoji", 22)
         )
         self.bear_icon.place(relx=0.0, rely=0.5, anchor="center")
         self.bear_icon.place_forget()
@@ -35,25 +37,27 @@ class BrightnessSlider(ctk.CTkFrame):
     def _on_slide(self, value):
             slider_width = self.slider.winfo_width()
             if slider_width > 1:
-               x = 10 + (float(value) / 100) * (slider_width - 20)
-               slider_y = self.slider.winfo_y()
-               slider_height = self.slider.winfo_height()
-               y = slider_y + slider_height / 2
-               self.bear_icon.place(x=x, y=y, anchor="center")
+               x = 5 + (float(value) / 100) * (slider_width - 10)
+               self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
+               if self.external_command:
+                   self.external_command(value)
                
             
     def show_bear(self):
-        slider_width = self.slider.winfo_width()
         value = self.slider.get()
+        slider_width = self.slider.winfo_width()
         if slider_width > 1:
-            x = 10 + (value / 100) * (slider_width - 20)
-            slider_y = self.slider.winfo_y()
-            slider_height = self.slider.winfo_height()
-            y = slider_y + slider_height / 2
-            self.bear_icon.place(x=x, y=y, anchor="center")
+            x =  (value / 100) * slider_width 
+            self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
         self.after(50, lambda: self._on_slide(self.slider.get()))
             
     def hide_bear(self):
         self.bear_icon.place_forget()
+        
+    def _start_drag(self, event):
+        self.is_dragging = True
+        
+    def _stop_drag(self, event):
+        self.is_dragging = False
         
         

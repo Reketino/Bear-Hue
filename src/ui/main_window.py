@@ -100,7 +100,8 @@ class MainWindow(ctk.CTk):
         states = self.hue_service.get_all_light_state()
         self.lights_panel.update_lights(states)
         brightness = self.hue_service.get_average_brightness()
-        self.brightness.slider.set(brightness)
+        if not self.brightness.is_dragging:
+            self.brightness.slider.set(brightness)
         self.after(500, self.refresh)
     
                                              
