@@ -7,11 +7,9 @@ class BrightnessSlider(ctk.CTkFrame):
         
         self.external_command = command
         self.is_dragging = False
-        
-        self.pack(fill="x", padx=20, pady=20)
-        
-        label = ctk.CTkLabel(self, text="Brightness")
-        label.pack(pady=(0, 5))
+         
+        self.label = ctk.CTkLabel(self, text="Brightness")
+        self.label.pack(pady=(10, 0))
         
         self.slider = ctk.CTkSlider(
             self,
