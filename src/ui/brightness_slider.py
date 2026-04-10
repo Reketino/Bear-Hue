@@ -17,8 +17,6 @@ class BrightnessSlider(ctk.CTkFrame):
             to=100,
             number_of_steps=100,
             command=self._on_slide,
-            button_color="#101010",
-            button_hover_color="#101010",
         )
         self.slider.pack(fill="x", padx=10, pady=10)
         self.slider.bind("<ButtonPress-1>", self._start_drag)
