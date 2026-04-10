@@ -37,9 +37,10 @@ class BrightnessSlider(ctk.CTkFrame):
     def _on_slide(self, value):
             slider_width = self.slider.winfo_width()
             if slider_width > 1:
-               x = 5 + (float(value) / 100) * (slider_width - 10)
-               self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
-               if self.external_command:
+                knob_offset = 12
+                x = knob_offset + (float(value) / 100) * (slider_width - knob_offset * 2)
+                self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
+                if self.external_command:
                    self.external_command(value)
                
             
@@ -47,17 +48,18 @@ class BrightnessSlider(ctk.CTkFrame):
         value = self.slider.get()
         slider_width = self.slider.winfo_width()
         if slider_width > 1:
-            x =  (value / 100) * slider_width 
+            knob_offset = 12
+            x = knob_offset + (value / 100) * (slider_width - knob_offset * 2) 
             self.bear_icon.place(in_=self.slider, x=x, rely=0.5, anchor="center")
         self.after(50, lambda: self._on_slide(self.slider.get()))
             
     def hide_bear(self):
         self.bear_icon.place_forget()
         
-    def _start_drag(self, event):
+    def _start_drag(self, _event):
         self.is_dragging = True
         
-    def _stop_drag(self, event):
+    def _stop_drag(self, _event):
         self.is_dragging = False
         
         
