@@ -56,4 +56,7 @@ class BrightnessSlider(ctk.CTkFrame):
     def hide_bear(self):
         self.bear_icon.place_forget()
         
+    def _start_drag(self, event):
+        self.is_dragging = True
+        
         
