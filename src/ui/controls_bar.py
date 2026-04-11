@@ -8,6 +8,13 @@ class ControlsBar(ctk.CTkFrame):
         container = ctk.CTkFrame(self, fg_color="#232323", corner_radius=15)
         container.pack(fill="x", padx=15, pady=10)
         
+        self.bear_banner = ctk.CTkLabel(
+            container,
+            text="🐻Bear Mode",
+            font=("Segoe UI", 18, "bold"),
+            text_color="#A3B18A"
+        )
+        
         container.grid_columnconfigure(0, weight=1)
         container.grid_columnconfigure(1, weight=1)
         
