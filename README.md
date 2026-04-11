@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor brightness slider to finally implement bear as knob slider
+- Banner when bear mode is activated
 
 ---
 
