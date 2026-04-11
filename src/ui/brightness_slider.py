@@ -42,6 +42,8 @@ class BrightnessSlider(ctk.CTkFrame):
                    
     def update_bear_position(self):
         self.update_idletasks()
+        val = self.slider.get()
+        
                
             
     def show_bear(self):
