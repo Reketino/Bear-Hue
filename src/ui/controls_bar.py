@@ -59,4 +59,5 @@ class ControlsBar(ctk.CTkFrame):
             corner_radius=12,
             width=90
         )
-        bear_button.pack() 
+        bear_button.pack()
+        self.bear_banner.lift() 
