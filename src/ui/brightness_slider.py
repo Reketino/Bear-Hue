@@ -29,7 +29,7 @@ class BrightnessSlider(ctk.CTkFrame):
             text="🐻",
             font=("Segoe UI Emoji", 22)
         )
-        self.after
+        self.after(100, self.update_bear_position)
         
     def _on_slide(self, value):
             slider_width = self.slider.winfo_width()
