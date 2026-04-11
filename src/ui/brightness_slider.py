@@ -49,9 +49,13 @@ class BrightnessSlider(ctk.CTkFrame):
         offset = 12
         usable = width - (offset * 2)
         x = offset + (val / 100) * usable
-        
-               
-            
+        self.bear_icon.place(
+            in_=self.slider,
+            x=x,
+            rely=0.5,
+            anchor="center"
+        )
+          
     def show_bear(self):
         value = self.slider.get()
         slider_width = self.slider.winfo_width()
