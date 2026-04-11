@@ -46,6 +46,8 @@ class BrightnessSlider(ctk.CTkFrame):
         width = self.slider.winfo_width()
         if width <= 1:
             return
+        offset = 12
+        usable = width - (offset * 2)
         
                
             
