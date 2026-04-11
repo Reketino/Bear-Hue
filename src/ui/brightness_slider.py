@@ -48,6 +48,7 @@ class BrightnessSlider(ctk.CTkFrame):
             return
         offset = 12
         usable = width - (offset * 2)
+        x = offset + (val / 100) * usable
         
                
             
