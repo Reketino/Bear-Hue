@@ -38,7 +38,8 @@ class MainWindow(ctk.CTk):
             self.turn_all_on, 
             self.turn_all_off, 
             self.toggle_bear_mode
-        ).pack(fill="x", padx=15, pady=(10, 5))
+        )
+        self.controls.pack(fill="x", padx=15, pady=(10, 5))
         
         ScenesBar(
             self.ui_layer,
