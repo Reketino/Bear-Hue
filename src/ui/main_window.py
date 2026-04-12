@@ -33,12 +33,13 @@ class MainWindow(ctk.CTk):
             
         self.ui_layer.lift()
       
-        ControlsBar(
+        self.controls = ControlsBar(
             self.ui_layer, 
             self.turn_all_on, 
             self.turn_all_off, 
             self.toggle_bear_mode
-        ).pack(fill="x", padx=15, pady=(10, 5))
+        )
+        self.controls.pack(fill="x", padx=15, pady=(10, 5))
         
         ScenesBar(
             self.ui_layer,
@@ -63,10 +64,13 @@ class MainWindow(ctk.CTk):
         self.update_idletasks()
         self.after(100,self._activate_bear_mode)
         
+        
     def _activate_bear_mode(self):
         self._set_background_image()
         self.ui_layer.lift()
         self.configure(fg_color="#000000")
+        self.controls.bear_banner.place(relx=0.5, rely=0.3, anchor="center")
+        self.controls.bear_banner.lift()
         self.brightness.show_bear()
         self.brightness.slider.configure(
             progress_color="#A3B18A",
@@ -79,6 +83,7 @@ class MainWindow(ctk.CTk):
     def disable_bear_mode(self):
         self.canvas.delete("all")
         self.configure(fg_color="#101010")
+        self.controls.bear_banner.place_forget()
         self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
