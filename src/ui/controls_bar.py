@@ -18,7 +18,7 @@ class ControlsBar(ctk.CTkFrame):
         self.bear_banner.place_forget()
         
         container.grid_rowconfigure(0, weight=0)
-        container.grid_columnconfigure(1, weight=1)
+        container.grid_rowconfigure(1, weight=0)
         
         left = ctk.CTkFrame(container, fg_color="#1A1A1A")
         left.grid(row=0, column=0, sticky="w", padx=10, pady=10)
