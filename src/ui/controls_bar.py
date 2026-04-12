@@ -15,7 +15,7 @@ class ControlsBar(ctk.CTkFrame):
             text_color="#A3B18A"
         )
         self.bear_banner.grid(relx=0.5, rely=0.5, anchor="center")
-        self.bear_banner.place_forget()
+        self.bear_banner.grid_remove()
         
         container.grid_rowconfigure(0, weight=0)
         container.grid_rowconfigure(1, weight=0)
