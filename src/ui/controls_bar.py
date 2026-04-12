@@ -14,11 +14,11 @@ class ControlsBar(ctk.CTkFrame):
             font=("Segoe UI", 18, "bold"),
             text_color="#A3B18A"
         )
-        self.bear_banner.place(relx=0.5, rely=0.5, anchor="center")
-        self.bear_banner.place_forget()
+        self.bear_banner.grid(relx=0.5, rely=0.5, anchor="center")
+        self.bear_banner.grid_remove()
         
-        container.grid_columnconfigure(0, weight=1)
-        container.grid_columnconfigure(1, weight=1)
+        container.grid_rowconfigure(0, weight=0)
+        container.grid_rowconfigure(1, weight=0)
         
         left = ctk.CTkFrame(container, fg_color="#1A1A1A")
         left.grid(row=0, column=0, sticky="w", padx=10, pady=10)
