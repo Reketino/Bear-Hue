@@ -33,7 +33,7 @@ class MainWindow(ctk.CTk):
             
         self.ui_layer.lift()
       
-        ControlsBar(
+        self.controls = ControlsBar(
             self.ui_layer, 
             self.turn_all_on, 
             self.turn_all_off, 
@@ -62,6 +62,7 @@ class MainWindow(ctk.CTk):
     def enable_bear_mode(self):
         self.update_idletasks()
         self.after(100,self._activate_bear_mode)
+        
         
     def _activate_bear_mode(self):
         self._set_background_image()
