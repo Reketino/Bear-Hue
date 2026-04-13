@@ -14,14 +14,14 @@ class ControlsBar(ctk.CTkFrame):
             font=("Segoe UI", 18, "bold"),
             text_color="#A3B18A"
         )
-        self.bear_banner.grid(relx=0.5, rely=0.5, anchor="center")
+        self.bear_banner.grid(row=0, column=0, columnspan=2, pady=(5, 5))
         self.bear_banner.grid_remove()
         
         container.grid_rowconfigure(0, weight=0)
         container.grid_rowconfigure(1, weight=0)
         
         left = ctk.CTkFrame(container, fg_color="#1A1A1A")
-        left.grid(row=0, column=0, sticky="w", padx=10, pady=10)
+        left.grid(row=1, column=0, sticky="w", padx=10, pady=10)
         
         on_button = ctk.CTkButton(
             left,
@@ -48,7 +48,7 @@ class ControlsBar(ctk.CTkFrame):
         off_button.pack(side="left")
         
         right = ctk.CTkFrame(container, fg_color="transparent")
-        right.grid(row=0, column=1, sticky="e", padx=10, pady=10)
+        right.grid(row=1, column=1, sticky="e", padx=10, pady=10)
         
         bear_button = ctk.CTkButton(
             right,
