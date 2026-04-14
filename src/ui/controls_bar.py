@@ -17,6 +17,7 @@ class ControlsBar(ctk.CTkFrame):
         self.bear_banner.grid(row=0, column=0, columnspan=2, pady=(8, 2), sticky="n")
         self.bear_banner.grid_remove()
         
+        container.grid_columnconfigure(0, weight=1)
         container.grid_rowconfigure(0, weight=0)
         container.grid_rowconfigure(1, weight=0)
         container.grid_anchor("center")
