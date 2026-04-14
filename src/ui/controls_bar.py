@@ -5,7 +5,7 @@ class ControlsBar(ctk.CTkFrame):
     def __init__(self, master, on_all, off_all, toggle_bear_mode):
         super().__init__(master, fg_color="transparent")
         
-        container = ctk.CTkFrame(self, fg_color="#232323", corner_radius=15)
+        container = ctk.CTkFrame(self, fg_color="#1F1F1F", corner_radius=15)
         container.pack(fill="x", padx=15, pady=10)
         
         self.bear_banner = ctk.CTkLabel(
@@ -14,7 +14,7 @@ class ControlsBar(ctk.CTkFrame):
             font=("Segoe UI", 18, "bold"),
             text_color="#A3B18A"
         )
-        self.bear_banner.grid(row=0, column=0, columnspan=2, pady=(8, 2), sticky="n")
+        self.bear_banner.grid(row=0, column=0, columnspan=2, pady=(6, 6), sticky="n")
         self.bear_banner.grid_remove()
         
         container.grid_columnconfigure(0, weight=1)
