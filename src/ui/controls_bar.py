@@ -24,7 +24,7 @@ class ControlsBar(ctk.CTkFrame):
         container.grid_anchor("center")
         
         left = ctk.CTkFrame(container, fg_color="#1A1A1A")
-        left.grid(row=1, column=0, sticky="e", padx=10, pady=10)
+        left.grid(row=1, column=0, sticky="e", padx=5, pady=10)
         left.pack_propagate(False)
         
         on_button = ctk.CTkButton(
@@ -52,7 +52,7 @@ class ControlsBar(ctk.CTkFrame):
         off_button.pack(side="left")
         
         right = ctk.CTkFrame(container, fg_color="transparent")
-        right.grid(row=1, column=1, sticky="w", padx=10, pady=10)
+        right.grid(row=1, column=1, sticky="w", padx=5, pady=10)
         
         bear_button = ctk.CTkButton(
             right,
