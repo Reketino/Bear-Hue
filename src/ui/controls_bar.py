@@ -19,6 +19,7 @@ class ControlsBar(ctk.CTkFrame):
         
         container.grid_rowconfigure(0, weight=0)
         container.grid_rowconfigure(1, weight=0)
+        container.grid_anchor("center")
         
         left = ctk.CTkFrame(container, fg_color="#1A1A1A")
         left.grid(row=1, column=0, sticky="w", padx=10, pady=10)
