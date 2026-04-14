@@ -82,7 +82,7 @@ class MainWindow(ctk.CTk):
     def disable_bear_mode(self):
         self.canvas.delete("all")
         self.configure(fg_color="#101010")
-        self.controls.bear_banner.place_forget()
+        self.controls.bear_banner.grid_remove()
         self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
