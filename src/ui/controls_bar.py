@@ -5,8 +5,19 @@ class ControlsBar(ctk.CTkFrame):
     def __init__(self, master, on_all, off_all, toggle_bear_mode):
         super().__init__(master, fg_color="transparent")
         
-        container = ctk.CTkFrame(self, fg_color="#1F1F1F", corner_radius=15)
-        container.pack(fill="x", padx=15, pady=10)
+        self.glow = ctk.CTkFrame(
+            self,
+            fg_color="#1f3d2b",
+            corner_radius=20
+        )
+        self.glow.pack(fill="x", padx=10, pady=8)
+        
+        container = ctk.CTkFrame(
+            self.glow, 
+            fg_color="#232323", 
+            corner_radius=15
+            )
+        container.pack(fill="x", padx=3, pady=3)
         
         self.bear_banner = ctk.CTkLabel(
             container,
