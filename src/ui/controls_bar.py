@@ -8,6 +8,7 @@ class ControlsBar(ctk.CTkFrame):
         self.glow = ctk.CTkFrame(
             self,
             fg_color="#1f3d2b",
+            corner_radius=20
         )
         
         container = ctk.CTkFrame(
