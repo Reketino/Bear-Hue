@@ -17,7 +17,7 @@ class ControlsBar(ctk.CTkFrame):
             fg_color="#232323", 
             corner_radius=15
             )
-        container.pack(fill="x", padx=15, pady=10)
+        container.pack(fill="x", padx=3, pady=3)
         
         self.bear_banner = ctk.CTkLabel(
             container,
