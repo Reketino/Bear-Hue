@@ -74,3 +74,4 @@ class ControlsBar(ctk.CTkFrame):
             width=90
         )
         bear_button.pack()
+        self.glow.configure(fg_color="transparent")
