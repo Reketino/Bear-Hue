@@ -70,6 +70,7 @@ class MainWindow(ctk.CTk):
         self.ui_layer.lift()
         self.configure(fg_color="#000000")
         self.controls.bear_banner.grid()
+        self.controls.glow.configure(fg_color="#1f3d2b")
         self.brightness.show_bear()
         self.brightness.slider.configure(
             progress_color="#A3B18A",
