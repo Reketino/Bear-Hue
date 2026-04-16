@@ -84,6 +84,7 @@ class MainWindow(ctk.CTk):
         self.canvas.delete("all")
         self.configure(fg_color="#101010")
         self.controls.bear_banner.grid_remove()
+        self.controls.glow.configure(fg_color="transparent")
         self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
