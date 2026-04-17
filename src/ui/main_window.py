@@ -122,6 +122,7 @@ class MainWindow(ctk.CTk):
             )
             for row in self.lights_panel.light_rows.values():
                 row.configure(fg_color=color)
+            self.controls.glow.configure()
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
