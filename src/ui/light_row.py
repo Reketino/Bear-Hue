@@ -13,7 +13,7 @@ class LightRow(ctk.CTkFrame):
         self.hue_service = hue_service
         self.light_id = light_id
         
-        self.pack(fill="x", pady=6)
+        self.pack(fill="x",padx=10, pady=6)
         
         button = ctk.CTkButton(
             self,
