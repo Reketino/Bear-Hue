@@ -4,12 +4,16 @@ from src.services.hue_service import HueService
 class LightRow(ctk.CTkFrame):
     
     def __init__(self, master, hue_service: HueService, light_id: int, name: str):
-        super().__init__(master)
+        super().__init__(
+            master,
+            fg_color="#18201B",
+            corner_radius=12,
+            )
         
         self.hue_service = hue_service
         self.light_id = light_id
         
-        self.pack(fill="x", pady=6)
+        self.pack(fill="x",padx=10, pady=6)
         
         button = ctk.CTkButton(
             self,
@@ -17,7 +21,9 @@ class LightRow(ctk.CTkFrame):
             height=36,
             width=140,
             anchor="w",
-            command=self.toggle_light
+            command=self.toggle_light,
+            
+            fg_color="transparent",
         )
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
