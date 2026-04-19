@@ -25,7 +25,8 @@ class LightRow(ctk.CTkFrame):
             
             fg_color="transparent",
             hover_color="#22382D",
-            text_color="#E6F2EC"
+            text_color="#E6F2EC",
+            corner_radius=10
         )
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
