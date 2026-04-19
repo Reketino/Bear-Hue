@@ -24,6 +24,7 @@ class LightRow(ctk.CTkFrame):
             command=self.toggle_light,
             
             fg_color="transparent",
+            hover_color="#22382D",
         )
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
