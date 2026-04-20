@@ -31,7 +31,7 @@ class LightRow(ctk.CTkFrame):
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
         is_on = self.hue_service.get_light_state(light_id)   
-        color = "green" if is_on else "red"
+        color = "#6BAF92" if is_on else "#A94442"
             
         self.status = ctk.CTkLabel(
             self, 
@@ -45,7 +45,8 @@ class LightRow(ctk.CTkFrame):
         self.brightness_bar = ctk.CTkProgressBar(
             self, 
             width=80,
-            progress_color="#E48825"
+            progress_color="#6BAF92",
+            fg_color="#2A2A2A"
         )
         self.brightness_bar.pack(side="right", padx=10)
         self.brightness_bar.set(0)
