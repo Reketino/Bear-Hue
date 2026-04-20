@@ -31,7 +31,7 @@ class LightRow(ctk.CTkFrame):
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
         is_on = self.hue_service.get_light_state(light_id)   
-        color = "green" if is_on else "red"
+        color = "#6BAF92" if is_on else "red"
             
         self.status = ctk.CTkLabel(
             self, 
