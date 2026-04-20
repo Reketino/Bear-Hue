@@ -45,7 +45,7 @@ class LightRow(ctk.CTkFrame):
         self.brightness_bar = ctk.CTkProgressBar(
             self, 
             width=80,
-            progress_color="#E48825"
+            progress_color="#6BAF92"
         )
         self.brightness_bar.pack(side="right", padx=10)
         self.brightness_bar.set(0)
