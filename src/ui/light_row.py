@@ -61,6 +61,12 @@ class LightRow(ctk.CTkFrame):
         self.refresh_status()
         self.bind("<Enter>", lambda e: self.configure(fg_color="#1E2A22"))
         self.bind("<Leave>", lambda e: self.configure(fg_color="#18201B"))
+        
+        def _on_enter(self, _):
+            self.configure(fg_color= "#1E2A22")
+            
+        def _on_leave(self, _):
+            self.configure(fg_color= "#18201B")
      
         
     def toggle_light(self):
