@@ -59,6 +59,8 @@ class LightRow(ctk.CTkFrame):
         )
         self.brightness_label.pack(side="right", padx=10)
         self.refresh_status()
+        self.bind("<Enter>", self._on_enter)
+       
        
         
     def _on_enter(self, _):
