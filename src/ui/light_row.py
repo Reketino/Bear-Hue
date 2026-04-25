@@ -63,6 +63,8 @@ class LightRow(ctk.CTkFrame):
         self.bind("<Leave>", self._on_leave)
         
         for widget in self.winfo_children():
+            widget.bind("<Enter>", self._on_enter)
+            
             
        
        
