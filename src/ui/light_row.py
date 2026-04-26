@@ -66,10 +66,7 @@ class LightRow(ctk.CTkFrame):
             widget.bind("<Enter>", self._on_enter)
             widget.bind("<Leave>", self._on_leave)
             
-            
-       
-       
-        
+                  
     def _on_enter(self, _):
         self.configure(fg_color= "#1E2A22")
             
