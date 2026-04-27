@@ -76,6 +76,7 @@ class LightRow(ctk.CTkFrame):
         
     def toggle_light(self):
         self.hue_service.toggle(self.light_id)
+        self.refresh_status()
    
         
     def refresh_status(self):
