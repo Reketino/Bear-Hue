@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Updating toggle_light to use self.hue_service
+- Refactor toggle_light
 
 ---
 
