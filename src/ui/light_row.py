@@ -72,8 +72,8 @@ class LightRow(ctk.CTkFrame):
             
     def _on_leave(self, _):
         self.configure(fg_color= "#18201B")
-     
-        
+        self.after(100, self.refresh_status)
+                
     def toggle_light(self):
         self.hue_service.toggle(self.light_id)
         
