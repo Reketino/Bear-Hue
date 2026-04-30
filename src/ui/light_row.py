@@ -85,7 +85,7 @@ class LightRow(ctk.CTkFrame):
         self.status.configure(text_color=color)
         brightness = self.hue_service.get_brightness(self.light_id)
         self.brightness_label.configure(text=f"{brightness}%")
-        self.after(1000, self.refresh_status) 
+        self.after(3000, self.refresh_status) 
         
         
     def update_state(self, is_on: bool, brightness: int):
