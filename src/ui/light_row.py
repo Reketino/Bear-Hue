@@ -81,6 +81,8 @@ class LightRow(ctk.CTkFrame):
         
     def refresh_status(self):
         new_state = self.hue_service.get_light_state(self.light_id)
+        if new_state != getattr(self, "last_state", None):
+            self.last_state = new_state
         
         self.after(3000, self.refresh_status) 
         
