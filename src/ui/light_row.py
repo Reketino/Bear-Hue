@@ -83,6 +83,8 @@ class LightRow(ctk.CTkFrame):
         new_state = self.hue_service.get_light_state(self.light_id)
         if new_state != getattr(self, "last_state", None):
             self.last_state = new_state
+            color = "#6BAF92" if new_state else "#A94442"
+            self.status.configure(text_color=color)
         
         self.after(3000, self.refresh_status) 
         
