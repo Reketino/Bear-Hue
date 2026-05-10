@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Refactor refresh_status to update only if changed
+- Imnproving main_window in bearhue w/ improved layout, styling & more features
 
 ---
 

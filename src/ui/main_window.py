@@ -1,5 +1,4 @@
-import tkinter as tk
-from PIL import Image, ImageTk
+
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
@@ -22,14 +21,9 @@ class MainWindow(ctk.CTk):
         
         self.configure(fg_color="#101010")
         
-        self.canvas = tk.Canvas(self, highlightthickness=0)
-        self.canvas.place(relx=0, rely=0, relwidth=1, relheight=1)
         
         self.ui_layer = ctk.CTkFrame(self, fg_color="#000000")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
-        
-        # self.overlay = ctk.CTkFrame(self, fg_color="#111111")
-        # self.overlay.place(relx=0, rely=0, relwidth=1, relheight=1)
             
         self.ui_layer.lift()
       
@@ -66,7 +60,6 @@ class MainWindow(ctk.CTk):
         
         
     def _activate_bear_mode(self):
-        self._set_background_image()
         self.ui_layer.lift()
         self.configure(fg_color="#000000")
         self.controls.bear_banner.grid()
@@ -81,7 +74,6 @@ class MainWindow(ctk.CTk):
 
           
     def disable_bear_mode(self):
-        self.canvas.delete("all")
         self.configure(fg_color="#101010")
         self.controls.bear_banner.grid_remove()
         self.controls.glow.configure(fg_color="transparent")
@@ -136,24 +128,6 @@ class MainWindow(ctk.CTk):
         g = intensity 
         b = int(intensity * 0.4)
         return f"#{r:02x}{g:02x}{b:02x}"
-        
-    
-    def _set_background_image(self):
-        width = self.winfo_width()
-        height = self.winfo_height()
-        if width < 10 or height < 10:
-            return
-        img = Image.open(resource_path("src/assets/bearhue.png")).convert("RGBA")
-        img = img.resize((width, height))
-        r, g, b, a = img.split()
-        r = r.point(lambda p: p * 0.8)
-        g = g.point(lambda p: p * 0.8)
-        b = b.point(lambda p: p * 0.8)
-        img= Image.merge("RGBA", (r, g, b, a))
-        self.tk_image = ImageTk.PhotoImage(img)
-        self.canvas.delete("all")
-        self.canvas.create_image(0, 0, anchor="nw", image=self.tk_image)
-        print("SIZE:", width, height)
         
         
         
