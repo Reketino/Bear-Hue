@@ -21,12 +21,9 @@ class MainWindow(ctk.CTk):
         
         self.configure(fg_color="#101010")
         
-        
         self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
-        self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.ui_layer.pack(fill="both", expand=True)
             
-        self.ui_layer.lift()
-      
         self.controls = ControlsBar(
             self.ui_layer, 
             self.turn_all_on, 
