@@ -65,22 +65,23 @@ class MainWindow(ctk.CTk):
         self.refresh()
             
     def enable_bear_mode(self):
-        self.update_idletasks()
-        self.after(100,self._activate_bear_mode)
-        
-        
-    def _activate_bear_mode(self):
-        self.ui_layer.lift()
-        self.configure(fg_color="#000000")
+        self.configure(fg_color="#0F1512")
         self.controls.bear_banner.grid()
-        self.controls.glow.configure(fg_color="#1f3d2b")
-        self.brightness.show_bear()
+        self.controls.glow.configure(
+            fg_color="#1f3d2b"
+        )
+        bear_color = "#6BAF92"
         self.brightness.slider.configure(
-            progress_color="#A3B18A",
-            button_color="#588157"
-        ) 
+            progress_color=bear_color,
+            button_color=bear_color,
+            button_hover_color= "#81C7A6"
+        )
         for row in self.lights_panel.light_rows.values():
-            row.configure(fg_color="#292E1E")
+            row.configure(
+                fg_color="#18201B",
+                border_color=bear_color,
+                border_width=1
+            )
 
           
     def disable_bear_mode(self):
@@ -93,7 +94,9 @@ class MainWindow(ctk.CTk):
             button_color="#FFC107"
         ) 
         for row in self.lights_panel.light_rows.values():
-            row.configure(fg_color="#2B2B2B") 
+            row.configure(
+                fg_color="#2B2B2B"
+            ) 
         
         
     def toggle_bear_mode(self):
