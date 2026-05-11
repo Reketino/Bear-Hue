@@ -22,7 +22,7 @@ class MainWindow(ctk.CTk):
         self.configure(fg_color="#101010")
         
         
-        self.ui_layer = ctk.CTkFrame(self, fg_color="#000000")
+        self.ui_layer = ctk.CTkFrame(self, fg_color="transparent")
         self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
             
         self.ui_layer.lift()
