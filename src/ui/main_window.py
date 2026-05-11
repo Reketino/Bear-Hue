@@ -17,16 +17,15 @@ class MainWindow(ctk.CTk):
         self.bear_mode = False
         self.title("Bear Hue")
         self.geometry("400x500")
-        self.minsize(300, 400)
+        self.minsize(320, 420)
         
         self.configure(fg_color="#101010")
         
-        
-        self.ui_layer = ctk.CTkFrame(self, fg_color="#000000")
-        self.ui_layer.place(relx=0, rely=0, relwidth=1, relheight=1)
+        self.ui_layer = ctk.CTkFrame(
+            self, fg_color="transparent"
+        )
+        self.ui_layer.pack(fill="both", expand=True)
             
-        self.ui_layer.lift()
-      
         self.controls = ControlsBar(
             self.ui_layer, 
             self.turn_all_on, 
@@ -35,10 +34,11 @@ class MainWindow(ctk.CTk):
         )
         self.controls.pack(fill="x", padx=15, pady=(10, 5))
         
-        ScenesBar(
+        self.scenes = ScenesBar(
             self.ui_layer,
             self.hue_service
-        ).pack(fill="x", padx=15, pady=5)
+        )
+        self.scenes.pack(fill="x", padx=15, pady=5)
         
         self.brightness = BrightnessSlider(
             self.ui_layer, 
