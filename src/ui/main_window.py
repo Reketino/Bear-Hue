@@ -19,12 +19,15 @@ class MainWindow(ctk.CTk):
         self.geometry("400x500")
         self.minsize(320, 420)
         
+
         self.configure(fg_color="#101010")
+        
         
         self.ui_layer = ctk.CTkFrame(
             self, fg_color="transparent"
         )
         self.ui_layer.pack(fill="both", expand=True)
+        
             
         self.controls = ControlsBar(
             self.ui_layer, 
@@ -34,11 +37,13 @@ class MainWindow(ctk.CTk):
         )
         self.controls.pack(fill="x", padx=15, pady=(10, 5))
         
+        
         self.scenes = ScenesBar(
             self.ui_layer,
             self.hue_service
         )
         self.scenes.pack(fill="x", padx=15, pady=5)
+        
         
         self.brightness = BrightnessSlider(
             self.ui_layer, 
@@ -46,11 +51,17 @@ class MainWindow(ctk.CTk):
         )
         self.brightness.pack(fill="x", padx=15, pady=5)
         
+        
         self.lights_panel = LightsPanel(
             self.ui_layer, 
             self.hue_service
         ) 
-        self.lights_panel.pack(fill="both", expand=True, padx=15, pady=(5, 10))
+        self.lights_panel.pack(
+            fill="both", 
+            expand=True, 
+            padx=15, 
+            pady=(5, 10)
+        )
         
         self.refresh()
             
