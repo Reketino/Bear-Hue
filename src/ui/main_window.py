@@ -17,7 +17,7 @@ class MainWindow(ctk.CTk):
         self.bear_mode = False
         self.title("Bear Hue")
         self.geometry("400x500")
-        self.minsize(300, 400)
+        self.minsize(320, 420)
         
         self.configure(fg_color="#101010")
         
