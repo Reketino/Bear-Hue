@@ -113,7 +113,7 @@ class MainWindow(ctk.CTk):
         brightness = self.hue_service.get_average_brightness()
         if not self.brightness.is_dragging:
             self.brightness.slider.set(brightness)
-        self.after(500, self.refresh)
+        self.after(1000, self.refresh)
     
                                              
     def change_brightness(self, value):
