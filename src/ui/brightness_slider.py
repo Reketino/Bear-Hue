@@ -24,17 +24,12 @@ class BrightnessSlider(ctk.CTkFrame):
         self.slider.bind("<ButtonPress-1>", self._start_drag)
         self.slider.bind("<ButtonRelease-1>", self._stop_drag)
         
-        self.bear_icon = ctk.CTkLabel(
-            self,
-            text="🐻",
-            font=("Segoe UI Emoji", 22)
-        )
-        self.after(100, self.update_bear_position)
         
     def _on_slide(self, value):
         if self.external_command:
             self.external_command(value)
                    
+
     def _start_drag(self, _):
         self.is_dragging = True
         
