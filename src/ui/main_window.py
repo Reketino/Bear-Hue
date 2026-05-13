@@ -88,7 +88,6 @@ class MainWindow(ctk.CTk):
         self.configure(fg_color="#101010")
         self.controls.bear_banner.grid_remove()
         self.controls.glow.configure(fg_color="transparent")
-        self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
             button_color="#FFC107"
@@ -112,7 +111,9 @@ class MainWindow(ctk.CTk):
         self.lights_panel.update_lights(states)
         brightness = self.hue_service.get_average_brightness()
         if not self.brightness.is_dragging:
-            self.brightness.slider.set(brightness)
+            current = int(self.brightness.slider.get())
+            if abs(current - brightness) >= 1:
+                self.brightness.slider.set(brightness)
         self.after(1000, self.refresh)
     
                                              
@@ -126,8 +127,9 @@ class MainWindow(ctk.CTk):
                 button_color=color
             )
             for row in self.lights_panel.light_rows.values():
-                row.configure(fg_color=color)
-            self.controls.glow.configure(fg_color=color)
+                row.configure(border_color=color)
+            soft_glow = "#2E200E"
+            self.controls.glow.configure(fg_color=soft_glow)
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
