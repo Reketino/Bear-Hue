@@ -88,7 +88,6 @@ class MainWindow(ctk.CTk):
         self.configure(fg_color="#101010")
         self.controls.bear_banner.grid_remove()
         self.controls.glow.configure(fg_color="transparent")
-        self.brightness.hide_bear()
         self.brightness.slider.configure(
             progress_color="#FFD54F",
             button_color="#FFC107"
@@ -129,7 +128,6 @@ class MainWindow(ctk.CTk):
             )
             for row in self.lights_panel.light_rows.values():
                 row.configure(border_color=color)
-            self.controls.glow.configure(fg_color=color)
             soft_glow = "#2E200E"
             self.controls.glow.configure(fg_color=soft_glow)
                
