@@ -54,7 +54,7 @@ class LightRow(ctk.CTkFrame):
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
-            width=50,
+            width=60,
             anchor="e"
         )
         self.brightness_label.pack(side="right", padx=10)
@@ -80,13 +80,23 @@ class LightRow(ctk.CTkFrame):
    
         
     def refresh_status(self):
-        new_state = self.hue_service.get_light_state(self.light_id)
+        new_state = self.hue_service.get_light_state(
+            self.light_id
+        )
+        
         if new_state != getattr(self, "last_state", None):
             self.last_state = new_state
             color = "#6BAF92" if new_state else "#A94442"
-            self.status.configure(text_color=color)
-        brightness = self.hue_service.get_brightness(self.light_id)
-        self.brightness_label.configure(text=f"{brightness}")
+            self.status.configure(
+                text_color=color
+            )
+            
+        brightness = self.hue_service.get_brightness(
+            self.light_id
+        )
+        self.brightness_label.configure(
+            text=f"{brightness:>3}%"
+        )
         self.after(3000, self.refresh_status) 
         
         
