@@ -73,6 +73,7 @@ class HueService:
             })
         return sorted(result, key=lambda x: x["name"])
     
+    
     def get_scene_color(self, scene_id: str):
         scene = self.hue_api.get_scene(scene_id)
         if not scene:
@@ -126,7 +127,26 @@ class HueService:
                     self._log(f"USING LIGHT{light_id} COLOR:", hex_color)
                     return hex_color
         self._log("NO COLOR FOUND -> returning to default")
-        return "#888888"    
+        return "#888888"   
+    
+    
+    def get_gallery_scene(self):
+        scenes = self.hue_api.get_v2_scenes()
+        result = []
+        for scene in scenes.get("data", []):
+            metadata = scene.get("metadata", {})
+            palette = scene.get("palette", {})
+            colors = palette.get("color", [])
+            preview_color = "#888888"
+            
+            if colors:
+                xy = colors[0]["xy"]
+                preview_color = xy_to_hex(
+                    xy["x"],
+                    xy["y"],
+                    255
+                ) 
+         
                 
                 
     # -------- WRITE ON/OFF LOGIC --------
