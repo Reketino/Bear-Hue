@@ -46,6 +46,10 @@ class HueAPI:
             verify=False,
             timeout=5
         )
+        response.raise_for_status()
+        data = response.json()
+        self._log("V2 RESPONSE", data)
+        return data
     
     
     def _put(self, endpoint: str, payload: dict):
@@ -117,6 +121,9 @@ class HueAPI:
     
     def get_scenes(self):
         return self._get("scenes")
+    
+    def get_v2_scenes(self):
+        return self._get_v2("resource/scene")
     
     
     def get_scene(self, scene_id: str):
