@@ -153,7 +153,8 @@ class HueService:
                 "image": metadata.get("image"),
                 "color": preview_color
             }) 
-         
+            
+        return result
                 
                 
     # -------- WRITE ON/OFF LOGIC --------
