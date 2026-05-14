@@ -130,7 +130,10 @@ class HueService:
         return "#888888"   
     
     
-     
+    def get_gallery_scene(self):
+        scenes = self.hue_api.get_v2_scenes()
+        result = []
+         
                 
                 
     # -------- WRITE ON/OFF LOGIC --------
