@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Imnproving main_window in bearhue w/ improved layout, styling & more features
+- Setting up Hue API V2
 
 ---
 
