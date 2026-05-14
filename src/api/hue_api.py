@@ -14,6 +14,7 @@ class HueAPI:
         if not self.username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
+        self.v2_url = f"https://{self.bridge_ip}/clip/v2"
         self._cache = None
         self._cache_time = 0
         
@@ -31,6 +32,23 @@ class HueAPI:
         response.raise_for_status()
         data = response.json()
         self._log("RESPONSE", data)
+        return data
+    
+    
+    def _get_v2(self, endpoint: str):
+        url = f"{self.v2_url}/{endpoint}"
+        self._log("GET V2", endpoint)
+        response = requests.get(
+            url, 
+            headers={
+                "hue-application-key": self.username
+            },
+            verify=False,
+            timeout=5
+        )
+        response.raise_for_status()
+        data = response.json()
+        self._log("V2 RESPONSE", data)
         return data
     
     
@@ -103,6 +121,9 @@ class HueAPI:
     
     def get_scenes(self):
         return self._get("scenes")
+    
+    def get_v2_scenes(self):
+        return self._get_v2("resource/scene")
     
     
     def get_scene(self, scene_id: str):
