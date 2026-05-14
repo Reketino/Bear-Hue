@@ -145,7 +145,14 @@ class HueService:
                     xy["x"],
                     xy["y"],
                     255
-                ) 
+                )
+                
+            result.append({
+                "id": scene["id"],
+                "name": metadata.get("name", "unknown"),
+                "image": metadata.get("image"),
+                "color": preview_color
+            }) 
          
                 
                 
