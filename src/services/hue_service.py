@@ -133,6 +133,11 @@ class HueService:
     def get_gallery_scene(self):
         scenes = self.hue_api.get_v2_scenes()
         result = []
+        for scene in scenes.get("data", []):
+            metadata = scene.get("metadata", {})
+            palette = scene.get("palette", {})
+            colors = palette.get("color", [])
+            preview_color = "#888888"
          
                 
                 
