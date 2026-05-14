@@ -138,6 +138,14 @@ class HueService:
             palette = scene.get("palette", {})
             colors = palette.get("color", [])
             preview_color = "#888888"
+            
+            if colors:
+                xy = colors[0]["xy"]
+                preview_color = xy_to_hex(
+                    xy["x"],
+                    xy["y"],
+                    255
+                ) 
          
                 
                 
