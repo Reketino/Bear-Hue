@@ -63,7 +63,7 @@ curl -X POST http://<HUE_BRIDGE_IP>/api \
 
 ### 🟢 Working on:
 
-- Setting up Hue API V2
+- Refactor update_state logic
 
 ---
 
