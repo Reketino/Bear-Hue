@@ -6,7 +6,7 @@ class LightRow(ctk.CTkFrame):
     def __init__(self, master, hue_service: HueService, light_id: int, name: str):
         super().__init__(
             master,
-            fg_color="#18201B",
+            fg_color="#151A17",
             border_color="#22382D",
             border_width=1,
             corner_radius=12
