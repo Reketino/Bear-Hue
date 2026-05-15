@@ -26,7 +26,7 @@ class LightRow(ctk.CTkFrame):
             command=self.toggle_light,
             
             fg_color="transparent",
-            hover_color="#22382D",
+            hover_color="#1D2E25",
             text_color="#E6F2EC",
             corner_radius=10
         )
