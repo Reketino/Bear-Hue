@@ -6,8 +6,10 @@ class LightRow(ctk.CTkFrame):
     def __init__(self, master, hue_service: HueService, light_id: int, name: str):
         super().__init__(
             master,
-            fg_color="#18201B",
-            corner_radius=12,
+            fg_color="#151A17",
+            border_color="#22382D",
+            border_width=1,
+            corner_radius=12
             )
         
         self.hue_service = hue_service
@@ -24,9 +26,10 @@ class LightRow(ctk.CTkFrame):
             command=self.toggle_light,
             
             fg_color="transparent",
-            hover_color="#22382D",
+            hover_color="#1D2E25",
             text_color="#E6F2EC",
-            corner_radius=10
+            corner_radius=10,
+            font=("Segoe UI", 14, "bold")
         )
         button.pack(side="left", fill="x", expand=True, padx= 10)
         
@@ -40,22 +43,26 @@ class LightRow(ctk.CTkFrame):
             font=("Arial", 18)
             )
         
-        self.status.pack(side="right", padx=8)
+        self.status.pack(side="right", padx=(6, 14))
         
         self.brightness_bar = ctk.CTkProgressBar(
             self, 
             width=80,
+            corner_radius=100,
             progress_color="#6BAF92",
             fg_color="#2A2A2A"
         )
-        self.brightness_bar.pack(side="right", padx=10)
+        self.brightness_bar.pack(side="right", padx=(0, 10))
         self.brightness_bar.set(0)
         
         self.brightness_label = ctk.CTkLabel(
             self,
             text="0%",
             width=60,
-            anchor="e"
+            anchor="e",
+            
+            font=("Segoe UI", 13),
+            text_color="#B7C9BE"
         )
         self.brightness_label.pack(side="right", padx=10)
         self.refresh_status()
