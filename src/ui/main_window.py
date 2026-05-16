@@ -96,8 +96,12 @@ class MainWindow(ctk.CTk):
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#151A17",
-                border_color="#6BAF92",
+                border_color="#22382D",
                 border_width=1
+            )
+            row.brightness_bar.configure(
+                progress_color="#6BAF92",
+                fg_color="#2A2A2A"
             ) 
         
         
