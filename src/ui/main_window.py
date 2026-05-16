@@ -96,6 +96,7 @@ class MainWindow(ctk.CTk):
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#151A17",
+                border_color="#6BAF92",
                 border_width=1
             ) 
         
