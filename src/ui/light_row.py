@@ -112,5 +112,8 @@ class LightRow(ctk.CTkFrame):
         self.status.configure(
             text_color=status_color
         )
+        self.brightness_label.configure(
+            text=f"{brightness:>3}%"
+        )
         
         
