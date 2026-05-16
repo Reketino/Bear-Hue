@@ -49,7 +49,12 @@ class MainWindow(ctk.CTk):
             self.change_brightness
         )
         self.brightness.pack(fill="x", padx=15, pady=5)
-        
+        self._default_slider_style = {
+            "progress_color": self.brightness.slider._progress_color,
+            "button_color": self.brightness.slider._button_color,
+            "button_hover_color": self.brightness.slider._button_hover_color,
+            "fg_color": self.brightness.slider._fg_color,
+        }
         
         self.lights_panel = LightsPanel(
             self.ui_layer, 
@@ -89,14 +94,20 @@ class MainWindow(ctk.CTk):
         self.controls.bear_banner.grid_remove()
         self.controls.glow.configure(fg_color="transparent")
         self.brightness.slider.configure(
-            progress_color="#FFD54F",
-            button_color="#FFC107"
+            progress_color=self._default_slider_style["progress_color"],
+            button_color=self._default_slider_style["button_color"],
+            button_hover_color=self._default_slider_style["button_hover_color"],
+            fg_color=self._default_slider_style["fg_color"]
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#151A17",
                 border_color="#22382D",
                 border_width=1
+            )
+            row.brightness_bar.configure(
+                progress_color="#6BAF92",
+                fg_color="#2A2A2A"
             ) 
         
         
