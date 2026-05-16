@@ -86,7 +86,17 @@ class LightRow(ctk.CTkFrame):
    
         
     def refresh_status(self):
-        
+        is_on = self.hue_service.get_light_state(
+            self.light_id
+        )
+        status_color = (
+            "#6BAF92"
+            if is_on 
+            else "#A94442"
+        )
+        self.status.configure(
+            text_color=status_color
+        )
         
         
         
