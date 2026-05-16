@@ -89,13 +89,13 @@ class MainWindow(ctk.CTk):
         self.controls.bear_banner.grid_remove()
         self.controls.glow.configure(fg_color="transparent")
         self.brightness.slider.configure(
-            progress_color="#FFD54F",
-            button_color="#FFC107"
+            progress_color="#5A5A5A",
+            button_color="#707070",
+            button_hover_color="#90909090"
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#151A17",
-                border_color="#22382D",
                 border_width=1
             ) 
         
