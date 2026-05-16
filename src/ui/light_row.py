@@ -60,8 +60,7 @@ class LightRow(ctk.CTkFrame):
             text="0%",
             width=60,
             anchor="e",
-            
-            font=("Segoe UI", 13),
+            font=("Consolas", 13),
             text_color="#B7C9BE"
         )
         self.brightness_label.pack(side="right", padx=10)
