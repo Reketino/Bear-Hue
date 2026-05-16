@@ -108,10 +108,18 @@ class LightRow(ctk.CTkFrame):
         
         
     def update_state(self, is_on: bool, brightness: int):
-        color = "green" if is_on else "red"
-        self.status.configure(text_color=color)
-        self.brightness_label.configure(text=f"{brightness}%")
-        self.brightness_bar.set(brightness / 100)
-        
+        status_color = "#6BAF92" if is_on else "#A94442"
+        self.status.configure(
+            text_color=status_color
+        )
+        self.brightness_label.configure(
+            text=f"{brightness:>3}%"
+        )
+        self.brightness_bar.set(
+            brightness / 100
+        )
+        self.brightness_bar.configure(
+            progress_color="#6BAF92"
+        )
         
         
