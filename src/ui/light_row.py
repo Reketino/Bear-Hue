@@ -97,6 +97,9 @@ class LightRow(ctk.CTkFrame):
         self.status.configure(
             text_color=status_color
         )
+        brightness = self.hue_service.get_brightness(
+            self.light_id
+        )
         
         
         
