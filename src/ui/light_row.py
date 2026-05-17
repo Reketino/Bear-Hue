@@ -106,6 +106,10 @@ class LightRow(ctk.CTkFrame):
         self.brightness_bar.set(
             brightness / 100
         )
+        self.after(
+            1000,
+            self.refresh_status
+        )
         
         
         
