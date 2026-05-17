@@ -101,5 +101,9 @@ class LightRow(ctk.CTkFrame):
             self.light_id
         )
         
+        self.brightness_label.configure(
+            text=f"{brightness:>3}"
+        )
+        
         
         
