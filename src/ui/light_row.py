@@ -100,6 +100,17 @@ class LightRow(ctk.CTkFrame):
         brightness = self.hue_service.get_brightness(
             self.light_id
         )
+        self.brightness_label.configure(
+            text=f"{brightness:>3}"
+        )
+        self.brightness_bar.set(
+            brightness / 100
+        )
+        self.after(
+            1000,
+            self.refresh_status
+        )
+        
         
         
         
