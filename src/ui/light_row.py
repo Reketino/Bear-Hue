@@ -64,7 +64,6 @@ class LightRow(ctk.CTkFrame):
             text_color="#B7C9BE"
         )
         self.brightness_label.pack(side="right", padx=10)
-        self.refresh_status()
         self.bind("<Enter>", self._on_enter)
         self.bind("<Leave>", self._on_leave)
         
@@ -78,38 +77,11 @@ class LightRow(ctk.CTkFrame):
             
     def _on_leave(self, _):
         self.configure(fg_color= "#18201B")
-        self.after(100, self.refresh_status)
+        
                 
     def toggle_light(self):
         self.hue_service.toggle(self.light_id)
         
-   
-        
-    def refresh_status(self):
-        is_on = self.hue_service.get_light_state(
-            self.light_id
-        )
-        status_color = (
-            "#6BAF92"
-            if is_on 
-            else "#A94442"
-        )
-        self.status.configure(
-            text_color=status_color
-        )
-        brightness = self.hue_service.get_brightness(
-            self.light_id
-        )
-        self.brightness_label.configure(
-            text=f"{brightness:>3}%"
-        )
-        self.brightness_bar.set(
-            brightness / 100
-        )
-        self.after(
-            1000,
-            self.refresh_status
-        )
         
     def update_state(self, is_on: bool, brightness: int):
         status_color = (
