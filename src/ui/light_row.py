@@ -101,7 +101,7 @@ class LightRow(ctk.CTkFrame):
             self.light_id
         )
         self.brightness_label.configure(
-            text=f"{brightness:>3}"
+            text=f"{brightness:>3}%"
         )
         self.brightness_bar.set(
             brightness / 100
