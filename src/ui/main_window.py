@@ -70,7 +70,7 @@ class MainWindow(ctk.CTk):
         self.refresh()
             
     def enable_bear_mode(self):
-        self.configure(fg_color="#0F1512")
+        self.configure(fg_color="#0B0F0D")
         self.controls.bear_banner.grid()
         self.controls.glow.configure(
             fg_color="#1f3d2b"
