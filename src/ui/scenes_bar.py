@@ -27,7 +27,10 @@ class ScenesBar(ctk.CTkFrame):
                 height=85,
                 fg_color="#151A17",
                 hover_color=color,
+                
                 text_color="#D2EDE0",
+                font=("Segoe UI", 15, "bold"),
+                
                 corner_radius=18,
                 border_width=1,
                 border_color=color,
