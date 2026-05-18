@@ -8,6 +8,7 @@ class ScenesBar(ctk.CTkFrame):
         self.hue_service = hue_service
         self.active_scene = None
         self.buttons = {}
+        self.scene_colors = {}
         self.pack(fill="x", padx=20, pady=10)
        
         scenes = hue_service.get_scenes()
@@ -26,7 +27,7 @@ class ScenesBar(ctk.CTkFrame):
                 text=scene["name"],
                 height=85,
                 fg_color="#151A17",
-                hover_color=color,
+                hover_color=self._darken(color, 0.35),
                 
                 text_color="#D2EDE0",
                 font=("Segoe UI", 15, "bold"),
@@ -37,6 +38,7 @@ class ScenesBar(ctk.CTkFrame):
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+            self.scene_colors[scene["id"]] = color
             self.buttons[scene["id"]] = btn
         if scenes and len(self.buttons) > 0:
             self.set_active(scenes[0]["id"])
@@ -52,13 +54,18 @@ class ScenesBar(ctk.CTkFrame):
         for sid, btn in self.buttons.items():
             if sid == scene_id:
                 btn.configure(
-                    border_width=4,
-                    border_color=self._lighten(btn.cget("fg_color"), 1.4)
+                    fg_color=self._darken(btn.scene_color, 0.22),
+                    border_width=2,
+                    border_color=btn.scene_color
                 )
             else:
                 btn.configure(
-                    border_width=2,
-                    border_color=self._darken(btn.cget("fg_color"), 0.6)
+                    fg_color="#151A17",
+                    border_width=1,
+                    border_color=self._darken(
+                        btn.scene_color,
+                        0.55
+                    )
                 )
         
            
