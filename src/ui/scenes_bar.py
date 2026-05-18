@@ -8,6 +8,7 @@ class ScenesBar(ctk.CTkFrame):
         self.hue_service = hue_service
         self.active_scene = None
         self.buttons = {}
+        self.scene_colors = {}
         self.pack(fill="x", padx=20, pady=10)
        
         scenes = hue_service.get_scenes()
@@ -37,7 +38,7 @@ class ScenesBar(ctk.CTkFrame):
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
-            btn.scene_color = color
+            self.scene_colors[scene["id"]] = color
             self.buttons[scene["id"]] = btn
         if scenes and len(self.buttons) > 0:
             self.set_active(scenes[0]["id"])
