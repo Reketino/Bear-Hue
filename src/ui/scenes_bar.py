@@ -24,13 +24,16 @@ class ScenesBar(ctk.CTkFrame):
             btn = ctk.CTkButton(
                 self,
                 text=scene["name"],
-                height=70,
+                height=85,
                 fg_color="#151A17",
                 hover_color=color,
-                text_color="black" if self._is_light(color) else "white",
-                corner_radius=15,
-                border_width=2,
-                border_color=self._darken(color, 0.6),
+                
+                text_color="#D2EDE0",
+                font=("Segoe UI", 15, "bold"),
+                
+                corner_radius=18,
+                border_width=1,
+                border_color=color,
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
