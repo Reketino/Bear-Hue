@@ -52,8 +52,9 @@ class ScenesBar(ctk.CTkFrame):
         for sid, btn in self.buttons.items():
             if sid == scene_id:
                 btn.configure(
-                    border_width=4,
-                    border_color=self._lighten(btn.cget("fg_color"), 1.4)
+                    fg_color=self._darken(btn.scene_color, 0.22),
+                    border_width=2,
+                    border_color=btn.scene_color
                 )
             else:
                 btn.configure(
