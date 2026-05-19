@@ -38,7 +38,7 @@ class ScenesBar(ctk.CTkFrame):
                 font=("Segoe UI", 15, "bold"),
                 anchor="w",
                 
-                corner_radius=18,
+                corner_radius=20,
                 border_width=1,
                 border_color=self._darken(color, 0.55),
                 command=lambda s=scene["id"]: self._on_scene_click(s)
@@ -61,7 +61,7 @@ class ScenesBar(ctk.CTkFrame):
             scene_color = self.scene_colors[sid]
             if sid == scene_id:
                 btn.configure(
-                    fg_color=self._darken(scene_color, 0.22),
+                    fg_color=self._darken(scene_color, 0.12),
                     border_width=2,
                     border_color=scene_color
                 )
@@ -71,12 +71,11 @@ class ScenesBar(ctk.CTkFrame):
                     border_width=1,
                     border_color=self._darken(
                         scene_color,
-                        0.55
+                        0.75
                     )
                 )
         
-           
-        
+              
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
         if len(hex_color) != 6:
