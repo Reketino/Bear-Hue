@@ -70,9 +70,8 @@ class MainWindow(ctk.CTk):
         self.refresh()
         
     def default_theme(self):
-        self.configure(
-            fg_color="#101010"
-        )
+        self.configure(fg_color="#101010")
+        self.controls.glow.configure(fg_color="transparent")
             
     def enable_bear_mode(self):
         self.configure(fg_color="#0B0F0D")
