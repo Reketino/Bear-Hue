@@ -3,21 +3,26 @@ import customtkinter as ctk
 class ScenesBar(ctk.CTkFrame):
     
     def __init__(self, master, hue_service):
-        super().__init__(master)
+        super().__init__(
+            master,
+            fg_color="#101312",
+            corner_radius=20
+            )
         
         self.hue_service = hue_service
         self.active_scene = None
         self.buttons = {}
         self.scene_colors = {}
-        self.pack(fill="x", padx=20, pady=10)
+        self.pack(fill="x", padx=15, pady=10)
        
         scenes = hue_service.get_scenes()
-        columns = 2
+        columns = 3 if len(scenes) > 6 else 2
         
         for col in range(columns):
             self.grid_columnconfigure(col, weight=1)        
         for i, scene in enumerate(scenes):
-            color = hue_service.get_scene_color(scene["id"])
+            scene_id = scene["id"]
+            color = hue_service.get_scene_color(scene_id)
             
             row = i // columns
             col = i % columns
@@ -31,13 +36,14 @@ class ScenesBar(ctk.CTkFrame):
                 
                 text_color="#D2EDE0",
                 font=("Segoe UI", 15, "bold"),
+                anchor="w",
                 
                 corner_radius=18,
                 border_width=1,
-                border_color=color,
+                border_color=self._darken(color, 0.55),
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
-            btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
+            btn.grid(row=row, column=col, padx=8, pady=8, sticky="ew")
             self.scene_colors[scene["id"]] = color
             self.buttons[scene["id"]] = btn
         if scenes and len(self.buttons) > 0:
@@ -87,34 +93,5 @@ class ScenesBar(ctk.CTkFrame):
         b = max(int(b * factor), 0)
         return "#{:02x}{:02x}{:02x}".format(r, g, b)   
         
-        
-        
-    def _lighten(self, hex_color, factor=1.3):
-        hex_color = hex_color.lstrip("#")
-        if len(hex_color) != 6:
-            return "#AAAAAA"
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return "#AAAAAA"
-        r = min(int(r * factor), 255)
-        g = min(int(g * factor), 255)
-        b = min(int(b * factor), 255)
-        return "#{:02x}{:02x}{:02x}".format(r, g, b)
-    
-        
-    def _is_light(self, hex_color):
-        if not hex_color or len(hex_color) < 7:
-            return False
-        hex_color = hex_color.lstrip("#")
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return False
-        luminance = (0.299 * r + 0.587 * g + 0.114 * b)
-        return luminance > 140
+
         
