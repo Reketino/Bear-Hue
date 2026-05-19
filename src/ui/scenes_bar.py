@@ -3,13 +3,17 @@ import customtkinter as ctk
 class ScenesBar(ctk.CTkFrame):
     
     def __init__(self, master, hue_service):
-        super().__init__(master)
+        super().__init__(
+            master,
+            fg_color="#101312",
+            corner_radius=20
+            )
         
         self.hue_service = hue_service
         self.active_scene = None
         self.buttons = {}
         self.scene_colors = {}
-        self.pack(fill="x", padx=20, pady=10)
+        self.pack(fill="x", padx=15, pady=10)
        
         scenes = hue_service.get_scenes()
         columns = 3 if len(scenes) > 6 else 2
