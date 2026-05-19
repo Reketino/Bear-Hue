@@ -36,6 +36,7 @@ class ScenesBar(ctk.CTkFrame):
                 
                 text_color="#D2EDE0",
                 font=("Segoe UI", 15, "bold"),
+                anchor="w",
                 
                 corner_radius=18,
                 border_width=1,
