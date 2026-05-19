@@ -12,7 +12,7 @@ class ScenesBar(ctk.CTkFrame):
         self.pack(fill="x", padx=20, pady=10)
        
         scenes = hue_service.get_scenes()
-        columns = 2
+        columns = 3 if len(scenes) > 6 else 2
         
         for col in range(columns):
             self.grid_columnconfigure(col, weight=1)        
