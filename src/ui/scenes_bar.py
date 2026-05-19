@@ -87,34 +87,5 @@ class ScenesBar(ctk.CTkFrame):
         b = max(int(b * factor), 0)
         return "#{:02x}{:02x}{:02x}".format(r, g, b)   
         
-        
-        
-    def _lighten(self, hex_color, factor=1.3):
-        hex_color = hex_color.lstrip("#")
-        if len(hex_color) != 6:
-            return "#AAAAAA"
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return "#AAAAAA"
-        r = min(int(r * factor), 255)
-        g = min(int(g * factor), 255)
-        b = min(int(b * factor), 255)
-        return "#{:02x}{:02x}{:02x}".format(r, g, b)
-    
-        
-    def _is_light(self, hex_color):
-        if not hex_color or len(hex_color) < 7:
-            return False
-        hex_color = hex_color.lstrip("#")
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return False
-        luminance = (0.299 * r + 0.587 * g + 0.114 * b)
-        return luminance > 140
+
         
