@@ -40,7 +40,7 @@ class ScenesBar(ctk.CTkFrame):
                 
                 corner_radius=18,
                 border_width=1,
-                border_color=color,
+                border_color=self._darken(color, 0.55),
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
             btn.grid(row=row, column=col, padx=5, pady=5, sticky="ew")
