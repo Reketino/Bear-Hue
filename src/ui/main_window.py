@@ -68,6 +68,11 @@ class MainWindow(ctk.CTk):
         )
         
         self.refresh()
+        
+    def default_theme(self):
+        self.configure(
+            fg_color="#101010"
+        )
             
     def enable_bear_mode(self):
         self.configure(fg_color="#0B0F0D")
@@ -101,8 +106,8 @@ class MainWindow(ctk.CTk):
         ) 
         for row in self.lights_panel.light_rows.values():
             row.configure(
-                fg_color="#151A17",
-                border_color="#22382D",
+                fg_color="#17191D",
+                border_color="#2B3138",
                 border_width=1
             )
             row.brightness_bar.configure(
