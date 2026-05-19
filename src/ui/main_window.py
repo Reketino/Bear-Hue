@@ -76,6 +76,9 @@ class MainWindow(ctk.CTk):
             progress_color=self._default_slider_style[
                 "progress_color"
             ],
+            button_color=self._default_slider_style[
+                "button_color"
+            ],
         )
             
     def enable_bear_mode(self):
