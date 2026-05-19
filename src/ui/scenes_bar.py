@@ -38,7 +38,7 @@ class ScenesBar(ctk.CTkFrame):
                 font=("Segoe UI", 15, "bold"),
                 anchor="w",
                 
-                corner_radius=18,
+                corner_radius=20,
                 border_width=1,
                 border_color=self._darken(color, 0.55),
                 command=lambda s=scene["id"]: self._on_scene_click(s)
