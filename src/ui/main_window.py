@@ -124,6 +124,7 @@ class MainWindow(ctk.CTk):
           
     def disable_bear_mode(self):
         self.controls.bear_banner.grid_remove()
+        self.default_theme()
         
         
     def toggle_bear_mode(self):
