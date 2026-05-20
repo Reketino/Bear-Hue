@@ -67,6 +67,8 @@ class MainWindow(ctk.CTk):
             pady=(5, 10)
         )
         
+        self.default_theme()
+        
         self.refresh()
         
     def default_theme(self):
@@ -79,7 +81,26 @@ class MainWindow(ctk.CTk):
             button_color=self._default_slider_style[
                 "button_color"
             ],
+            button_hover_color=self._default_slider_style[
+                "button_hover_color"
+            ],
+            fg_color=self._default_slider_style[
+                "fg_color"
+            ]
         )
+        
+        for row in self.lights_panel.light_rows.values():
+            
+            row.configure(
+                fg_color="#17191D",
+                border_color="#2B3138",
+                border_width=1   
+            )
+            
+            row.brightness_bar.configure(
+                progress_color="#6BAF92",
+                fg_color="#2A2A2A"
+            )
             
     def enable_bear_mode(self):
         self.configure(fg_color="#0B0F0D")
@@ -102,25 +123,8 @@ class MainWindow(ctk.CTk):
 
           
     def disable_bear_mode(self):
-        self.configure(fg_color="#101010")
         self.controls.bear_banner.grid_remove()
-        self.controls.glow.configure(fg_color="transparent")
-        self.brightness.slider.configure(
-            progress_color=self._default_slider_style["progress_color"],
-            button_color=self._default_slider_style["button_color"],
-            button_hover_color=self._default_slider_style["button_hover_color"],
-            fg_color=self._default_slider_style["fg_color"]
-        ) 
-        for row in self.lights_panel.light_rows.values():
-            row.configure(
-                fg_color="#17191D",
-                border_color="#2B3138",
-                border_width=1
-            )
-            row.brightness_bar.configure(
-                progress_color="#6BAF92",
-                fg_color="#2A2A2A"
-            ) 
+        self.default_theme()
         
         
     def toggle_bear_mode(self):
