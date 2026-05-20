@@ -77,7 +77,7 @@ class MainWindow(ctk.CTk):
         self.brightness.slider.configure(
             progress_color="#5E81AC",
             button_color="#81A1C1",
-            button_hover_color="#A3BECC",
+            button_hover_color="#A3BECC"
             fg_color=self._default_slider_style[
                 "fg_color"
             ]
