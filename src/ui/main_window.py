@@ -67,6 +67,8 @@ class MainWindow(ctk.CTk):
             pady=(5, 10)
         )
         
+        self.default_theme()
+        
         self.refresh()
         
     def default_theme(self):
