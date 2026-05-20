@@ -75,18 +75,10 @@ class MainWindow(ctk.CTk):
         self.configure(fg_color="#101010")
         self.controls.glow.configure(fg_color="transparent")
         self.brightness.slider.configure(
-            progress_color=self._default_slider_style[
-                "progress_color"
-            ],
-            button_color=self._default_slider_style[
-                "button_color"
-            ],
-            button_hover_color=self._default_slider_style[
-                "button_hover_color"
-            ],
-            fg_color=self._default_slider_style[
-                "fg_color"
-            ]
+            progress_color="#5E81AC",
+            button_color="#81A1C1",
+            button_hover_color="#A3BECC",
+            fg_color="#1B2026",
         )
         
         for row in self.lights_panel.light_rows.values():
