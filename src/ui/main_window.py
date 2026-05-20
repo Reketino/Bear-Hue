@@ -95,6 +95,11 @@ class MainWindow(ctk.CTk):
                 border_width=1   
             )
             
+            row.brightness_bar.configure(
+                progress_color="#6BAF92",
+                fg_color="#2A2A2A"
+            )
+            
     def enable_bear_mode(self):
         self.configure(fg_color="#0B0F0D")
         self.controls.bear_banner.grid()
