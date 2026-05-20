@@ -79,6 +79,7 @@ class MainWindow(ctk.CTk):
             button_color="#81A1C1",
             button_hover_color="#A3BECC",
             fg_color="#1B2026",
+            border_width=0
         )
         
         for row in self.lights_panel.light_rows.values():
