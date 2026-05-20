@@ -82,7 +82,9 @@ class MainWindow(ctk.CTk):
             button_hover_color=self._default_slider_style[
                 "button_hover_color"
             ],
-            
+            fg_color=self._default_slider_style[
+                "fg_color"
+            ]
         )
             
     def enable_bear_mode(self):
