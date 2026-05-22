@@ -36,7 +36,7 @@ class ScenesBar(ctk.CTkFrame):
                 
                 text_color="#D2EDE0",
                 font=("Segoe UI", 15, "bold"),
-                anchor="w",
+                anchor="center",
                 
                 corner_radius=20,
                 border_width=1,
@@ -62,7 +62,7 @@ class ScenesBar(ctk.CTkFrame):
             if sid == scene_id:
                 btn.configure(
                     fg_color=self._darken(scene_color, 0.12),
-                    border_width=2,
+                    border_width=3,
                     border_color=scene_color
                 )
             else:
