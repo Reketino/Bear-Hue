@@ -30,7 +30,7 @@ class ScenesBar(ctk.CTkFrame):
             btn = ctk.CTkButton(
                 self,
                 text=scene["name"],
-                height=85,
+                height=70,
                 fg_color="#151A17",
                 hover_color=self._darken(color, 0.35),
                 
