@@ -104,13 +104,12 @@ class MainWindow(ctk.CTk):
         bear_color = "#6BAF92"
         self.brightness.slider.configure(
             progress_color=bear_color,
-            button_color=bear_color,
-            button_hover_color= "#81C7A6"
+            button_color="#506D06",
+            button_hover_color= "#354A00"
         )
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#18201B",
-                border_color=bear_color,
                 border_width=1
             )
 
