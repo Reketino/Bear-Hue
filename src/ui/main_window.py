@@ -112,6 +112,11 @@ class MainWindow(ctk.CTk):
                 fg_color="#18201B",
                 border_width=1
             )
+            
+            row.brightness_bar.configure(
+                fg_color="#0E1310",
+                progress_color="#6BAF92"
+            )
 
           
     def disable_bear_mode(self):
