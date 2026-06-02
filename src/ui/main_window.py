@@ -110,7 +110,7 @@ class MainWindow(ctk.CTk):
         for row in self.lights_panel.light_rows.values():
             row.configure(
                 fg_color="#18201B",
-                border_width=1
+                border_width=0
             )
             
             row.brightness_bar.configure(
