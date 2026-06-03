@@ -82,6 +82,13 @@ class LightRow(ctk.CTkFrame):
     def toggle_light(self):
         self.hue_service.toggle(self.light_id)
         
+    def set_bear_mode(self, enabled: bool):
+        
+        if enabled:
+            self.status.configure(
+                text="🐻"
+            )
+        
         
     def update_state(self, is_on: bool, brightness: int):
         status_color = (
