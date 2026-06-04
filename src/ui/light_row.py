@@ -88,6 +88,10 @@ class LightRow(ctk.CTkFrame):
             self.status.configure(
                 text="🐻"
             )
+        else:
+            self.status.configure(
+                text="●"
+            )
         
         
     def update_state(self, is_on: bool, brightness: int):
