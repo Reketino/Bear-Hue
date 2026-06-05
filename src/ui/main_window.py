@@ -108,6 +108,7 @@ class MainWindow(ctk.CTk):
             button_hover_color= "#354A00"
         )
         for row in self.lights_panel.light_rows.values():
+            row.set_bear_mode(True)
             row.configure(
                 fg_color="#18201B",
                 border_width=0
