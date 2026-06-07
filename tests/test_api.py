@@ -35,6 +35,26 @@ def run_test():
     for scene_id, data in scenes.items():
         name = data.get("name", "Unknown")
         print(f"{scene_id}: {name}")    
+        
+    # TEST 3: V2 Scene Gallery
+    
+    print("\nWe Founde V2 Scenes:\n")
+    
+    v2_scenes = hue.get_v2_scenes()
+    
+    for scene in v2_scenes.get("data", []):
+        
+        print(
+            "\n---",
+            scene["metadata"]["name"],
+            "---"
+        )
+        
+        print(
+            scene["palette"]
+        )
+        
+        break
     
         
 # Run script w/ python -m tests.test_api
