@@ -127,7 +127,39 @@ class HueService:
                     self._log(f"USING LIGHT{light_id} COLOR:", hex_color)
                     return hex_color
         self._log("NO COLOR FOUND -> returning to default")
-        return "#888888"   
+        return "#888888"  
+    
+    
+    def get_scene_palette(
+        self,
+        scene_name: str  
+    ):
+    
+        scenes = self.hue_api.get_v2_scenes()
+        for scene in scenes["data"]:
+            if (
+                scene["metadata"]["name"]
+                != scene_name
+            ):
+                continue
+            
+            colors = []
+            
+            for item in scene["palette"].get(
+                "color",
+                []
+            ):
+                xy = item["color"]["xy"]
+                
+                colors.append(
+                    xy_to_hex(
+                        xy["x"],
+                        xy["y"],
+                        255
+                    )
+                )  
+            return colors
+        return []
     
     
     def get_gallery_scene(self):
