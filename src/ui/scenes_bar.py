@@ -23,6 +23,7 @@ class ScenesBar(ctk.CTkFrame):
         for i, scene in enumerate(scenes):
             scene_id = scene["id"]
             color = hue_service.get_scene_color(scene_id)
+            palette = hue_service.get_scene_palette(scene["name"])
             
             row = i // columns
             col = i % columns
