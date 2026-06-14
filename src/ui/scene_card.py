@@ -16,3 +16,5 @@ class SceneCard(ctk.CTkFrame):
             border_width=1,
             border_color="#2B3138",
         )
+        
+        self.scene = scene
