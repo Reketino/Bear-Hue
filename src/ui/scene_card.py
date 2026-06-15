@@ -18,3 +18,4 @@ class SceneCard(ctk.CTkFrame):
         )
         
         self.scene = scene
+        self.palette = palette
