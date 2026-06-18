@@ -19,3 +19,14 @@ class SceneCard(ctk.CTkFrame):
         
         self.scene = scene
         self.palette = palette
+        
+        self.button = ctk.CTkButton(
+            self,
+            text=scene["name"],
+            fg_color="transparent",
+            hover_color="#1D2E25",
+            text_color="#D2EDE0",
+            font=("Segoe UI", 15, "bold"),
+            corner_radius=16,
+            command=command,
+        )
