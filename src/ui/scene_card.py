@@ -30,3 +30,9 @@ class SceneCard(ctk.CTkFrame):
             corner_radius=16,
             command=command,
         )
+        self.button.pack(
+            fill="both",
+            expand=True,
+            padx=8,
+            pady=(8, 4)
+        )
