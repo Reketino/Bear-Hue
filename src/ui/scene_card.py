@@ -42,3 +42,8 @@ class SceneCard(ctk.CTkFrame):
             fg_color="transparent",
             height=8,
         )
+        self.palette_bar.pack(
+            fill="x",
+            padx=10,
+            pady=(0,8),
+        )
