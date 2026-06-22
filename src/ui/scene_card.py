@@ -47,3 +47,13 @@ class SceneCard(ctk.CTkFrame):
             padx=10,
             pady=(0,8),
         )
+        
+        if palette:
+            for color in palette[:4]:
+                stripe = ctk.CTkFrame(
+                    self.palette_bar,
+                    fg_color=color,
+                    width=20,
+                    height=6,
+                    corner_radius=3,
+                )
