@@ -57,3 +57,9 @@ class SceneCard(ctk.CTkFrame):
                     height=6,
                     corner_radius=3,
                 )
+                stripe.pack(
+                    side="left",
+                    fill="x",
+                    expand=True,
+                    padx=1,
+                )
