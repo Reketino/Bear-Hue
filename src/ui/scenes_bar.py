@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from src.ui.scene_card import SceneCard
 
 class ScenesBar(ctk.CTkFrame):
     
