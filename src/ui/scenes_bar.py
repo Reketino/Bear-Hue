@@ -29,25 +29,15 @@ class ScenesBar(ctk.CTkFrame):
             row = i // columns
             col = i % columns
             
-            btn = ctk.CTkButton(
+            card = SceneCard(
                 self,
-                text=scene["name"],
-                height=70,
-                fg_color="#151A17",
-                hover_color=self._darken(color, 0.35),
-                
-                text_color="#D2EDE0",
-                font=("Segoe UI", 14, "bold"),
-                anchor="center",
-                
-                corner_radius=16,
-                border_width=1,
-                border_color=self._darken(color, 0.65),
+                scene=scene,
+                palette=palette,
                 command=lambda s=scene["id"]: self._on_scene_click(s)
             )
-            btn.grid(row=row, column=col, padx=6, pady=6, sticky="ew")
+            card.grid(row=row, column=col, padx=6, pady=6, sticky="ew")
             self.scene_colors[scene["id"]] = color
-            self.buttons[scene["id"]] = btn
+            self.buttons[scene["id"]] = card
         if scenes and len(self.buttons) > 0:
             self.set_active(scenes[0]["id"])
             
