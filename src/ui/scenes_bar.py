@@ -49,16 +49,16 @@ class ScenesBar(ctk.CTkFrame):
         
     def set_active(self, scene_id):
         self.active_scene = scene_id
-        for sid, btn in self.buttons.items():
+        for sid, card in self.buttons.items():
             scene_color = self.scene_colors[sid]
             if sid == scene_id:
-                btn.configure(
+                card.configure(
                     fg_color=self._darken(scene_color, 0.12),
                     border_width=3,
                     border_color=scene_color
                 )
             else:
-                btn.configure(
+                card.configure(
                     fg_color="#151A17",
                     border_width=1,
                     border_color=self._darken(
