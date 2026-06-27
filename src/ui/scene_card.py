@@ -63,3 +63,15 @@ class SceneCard(ctk.CTkFrame):
                     expand=True,
                     padx=1,
                 )
+                
+    def set_active(
+        self,
+        active: bool,
+        scene_color: str,
+    ):
+        
+        if active:
+            self.configure(
+                
+            )
+        
