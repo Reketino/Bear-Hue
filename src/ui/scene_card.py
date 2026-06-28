@@ -72,6 +72,8 @@ class SceneCard(ctk.CTkFrame):
         
         if active:
             self.configure(
-                
+                fg_color=self._darken(scene_color, 0.12),
+                border_width=3,
+                border_color=scene_color,   
             )
         
