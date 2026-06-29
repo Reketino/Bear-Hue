@@ -76,4 +76,14 @@ class SceneCard(ctk.CTkFrame):
                 border_width=3,
                 border_color=scene_color,   
             )
+            
+        else: 
+            self.configure(
+                fg_color="#151A17",
+                border_width=1,
+                border_color=self._darken(
+                    scene_color,
+                    0.75,
+                ),
+            )
         
