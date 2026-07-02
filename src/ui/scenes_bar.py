@@ -54,24 +54,7 @@ class ScenesBar(ctk.CTkFrame):
             card.set_active(
                 sid == scene_id,
                 self.scene_colors[sid]
-            )
-        
-              
-    def _darken(self, hex_color, factor =0.8):
-        hex_color = hex_color.lstrip("#")
-        if len(hex_color) != 6:
-            return "#333333"
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return "#333333"
-        
-        r = max(int(r * factor), 0)
-        g = max(int(g * factor), 0)
-        b = max(int(b * factor), 0)
-        return "#{:02x}{:02x}{:02x}".format(r, g, b)   
+            ) 
         
 
         
