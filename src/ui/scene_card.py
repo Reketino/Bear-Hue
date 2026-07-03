@@ -87,6 +87,18 @@ class SceneCard(ctk.CTkFrame):
                 ),
             )
             
+    def set_bear_mode(
+        self,
+        enabled: bool,  
+    ):
+        if enabled:
+            
+            self.configure(
+                fg_color="#18201B",
+                border_color="#6BAF92",
+            )
+            
+            
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
         if len(hex_color) != 6:
