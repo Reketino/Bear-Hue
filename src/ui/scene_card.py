@@ -92,10 +92,17 @@ class SceneCard(ctk.CTkFrame):
         enabled: bool,  
     ):
         if enabled:
-            
             self.configure(
                 fg_color="#18201B",
                 border_color="#6BAF92",
+            )
+        else: 
+            self.configure(
+                fg_color="#151A17",
+                border_color="#2B3138",
+            )
+            self.button.configure(
+                hover_color="#1D2E25",
             )
             
             
