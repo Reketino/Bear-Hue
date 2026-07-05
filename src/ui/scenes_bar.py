@@ -55,6 +55,13 @@ class ScenesBar(ctk.CTkFrame):
                 sid == scene_id,
                 self.scene_colors[sid]
             ) 
+            
+    def set_bear_mode(
+        self,
+        enabled: bool
+    ):
+        for card in self.buttons.values():
+            card.set_bear_mode(enabled)
         
 
         
