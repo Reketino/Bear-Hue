@@ -101,6 +101,7 @@ class MainWindow(ctk.CTk):
         self.controls.glow.configure(
             fg_color="#1f3d2b"
         )
+        self.scenes.set_bear_mode(True)
         bear_color = "#6BAF92"
         self.brightness.slider.configure(
             progress_color=bear_color,
