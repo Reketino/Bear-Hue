@@ -74,6 +74,7 @@ class MainWindow(ctk.CTk):
     def default_theme(self):
         self.configure(fg_color="#101010")
         self.controls.glow.configure(fg_color="transparent")
+        self.scenes.set_bear_mode(False)
         self.brightness.slider.configure(
             progress_color="#CFE6FD",
             button_color="#011120",
