@@ -17,6 +17,9 @@ class HueAPI:
         self.v2_url = f"https://{self.bridge_ip}/clip/v2"
         self._cache = None
         self._cache_time = 0
+        self._v2_cache = None
+        self._v2_cache_time = 0
+        
         
    # ------ Internal Helpers, when Superman needs help -------
    
