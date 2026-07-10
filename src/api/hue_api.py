@@ -126,7 +126,16 @@ class HueAPI:
         return self._get("scenes")
     
     def get_v2_scenes(self):
-        return self._get_v2("resource/scene")
+        now = time.time()
+        if (
+            self._v2_cache is not None
+            and (now - self._v2_cache_time) < 60
+        ):
+            return self._v2_cache
+        data = self._get_v2("resource/scene")
+        self._v2_cache = data
+        self._v2_cache_time = now
+        return data
     
     
     def get_scene(self, scene_id: str):
