@@ -68,6 +68,9 @@ class HueAPI:
     def _invalidate_cache(self):
         self._cache = None
         self._cache_time = 0
+        
+        self._v2_cache = None
+        self._v2_cache_time = 0
     
         
     # ------- Public API'S ----------
