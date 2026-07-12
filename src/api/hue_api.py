@@ -134,6 +134,7 @@ class HueAPI:
             self._v2_cache is not None
             and (now - self._v2_cache_time) < 60
         ):
+            self._log("Using V2 cache")
             return self._v2_cache
         data = self._get_v2("resource/scene")
         self._v2_cache = data
