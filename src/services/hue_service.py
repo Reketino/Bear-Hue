@@ -7,6 +7,7 @@ class HueService:
     def __init__(self, hue_api: HueAPI, debug: bool = False):
         self.hue_api = hue_api
         self.debug = debug
+        self._scene_palette_cache = {}
     
         
     # -------- INTERNAL HELPERS --------  
