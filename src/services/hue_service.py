@@ -135,6 +135,8 @@ class HueService:
         self,
         scene_name: str  
     ):
+        if scene_name in self._scene_palette_cache:
+            return self._scene_palette_cache[scene_name]
     
         scenes = self.hue_api.get_v2_scenes()
         for scene in scenes["data"]:
