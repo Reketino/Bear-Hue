@@ -161,6 +161,8 @@ class HueService:
                         255
                     )
                 )  
+                
+            self._scene_palette_cache[scene_name] = colors
             return colors
         return []
     
