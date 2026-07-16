@@ -164,6 +164,7 @@ class HueService:
                 
             self._scene_palette_cache[scene_name] = colors
             return colors
+        self._scene_palette_cache[scene_name] = []
         return []
     
     
