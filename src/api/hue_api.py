@@ -19,6 +19,8 @@ class HueAPI:
         self._cache_time = 0
         self._v2_cache = None
         self._v2_cache_time = 0
+        self._scenes_cache = None
+        self._scenes_cache_time = 0
         
         
    # ------ Internal Helpers, when Superman needs help -------
