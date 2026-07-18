@@ -128,6 +128,7 @@ class HueAPI:
     # ------- Philip's Hue Scenes ----------
     
     def get_scenes(self):
+        now = time.time()
         return self._get("scenes")
     
     def get_v2_scenes(self):
