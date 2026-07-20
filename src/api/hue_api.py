@@ -135,6 +135,11 @@ class HueAPI:
         ):
             self._log("Using scenes cache")
             return self._scenes_cache
+        
+        data = self._get("scenes")
+        
+        self._scenes_cache = data
+        self._scenes_cache_time = now
     
     def get_v2_scenes(self):
         now = time.time()
