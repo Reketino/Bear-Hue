@@ -140,6 +140,8 @@ class HueAPI:
         
         self._scenes_cache = data
         self._scenes_cache_time = now
+        
+        return data 
     
     def get_v2_scenes(self):
         now = time.time()
