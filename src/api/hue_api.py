@@ -71,8 +71,7 @@ class HueAPI:
         self._cache = None
         self._cache_time = 0
            
-    
-        
+           
     # ------- Public API'S ----------
     
         
@@ -156,7 +155,14 @@ class HueAPI:
     
     
     def get_scene(self, scene_id: str):
-        return self._get(f"scenes/{scene_id}")
+        scenes = self.get_scenes()
+        
+        scene = scenes.get(scene_id)
+        
+        if scene is None:
+            self._log("Scene not found:", scene_id)
+            
+            return scene
     
     
     def activate_scene(self, scene_id: str):
