@@ -167,11 +167,16 @@ class HueAPI:
     
     def activate_scene(self, scene_id: str):
         scene = self.get_scene(scene_id)
-        if isinstance(scene, list):
-            scene = scene[0]
+        
+        if scene is None:
+            self._log("Cannot activate scene:", scene_id)
+            return
+        
         group = scene.get("group")
         if not group:
+            self._log("Scene has no group:", scene_id)
             return
+        
         payload ={"scene": scene_id}
         self._put(f"groups/{group}/action", payload)
         self._invalidate_cache()
