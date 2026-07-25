@@ -162,7 +162,7 @@ class HueAPI:
         if scene is None:
             self._log("Scene not found:", scene_id)
             
-            return scene
+        return scene
     
     
     def activate_scene(self, scene_id: str):
