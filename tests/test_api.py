@@ -36,8 +36,7 @@ def run_test():
         name = data.get("name", "Unknown")
         print(f"{scene_id}: {name}")    
         
-    # TEST 3: V2 Scene Gallery
-    
+    # TEST 3: V2 Scene Gallery   
     print("\nWe Founde V2 Scenes:\n")
     
     v2_scenes = hue.get_v2_scenes()
@@ -55,6 +54,14 @@ def run_test():
         )
         
         break
+    
+    # TEST 4: Bridge Config
+    config = hue.get_config()
+    
+    print("\nBridge ID:")
+    print(config.get("bridgeid"))
+    
+    
     
         
 # Run script w/ python -m tests.test_api
