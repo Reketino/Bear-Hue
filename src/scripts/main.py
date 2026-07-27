@@ -12,7 +12,7 @@ def main():
             print("No Hue Bridge found on the network.")
             return
     
-        hue_api = HueAPI(bridge_ip)
+        hue_api = HueAPI(bridge_ip, debug=True)
         hue_service = HueService(hue_api)
     
         app = MainWindow(hue_service)

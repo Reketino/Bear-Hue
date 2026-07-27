@@ -1,28 +1,56 @@
 import time
 import os
 import requests
+from pathlib import Path
 from dotenv import load_dotenv
+from src.api.hue_https import HueHTTPS
+
 
 load_dotenv()
+
+CA_BUNDLE = (
+    Path(__file__).resolve().parents[1]
+    / "assets"
+    / "certificates"
+    / "huebridge_cacert_bundle.pem"
+)
 
 class HueAPI:
     
     def __init__(self, bridge_ip: str, debug: bool = False):
         self.bridge_ip = bridge_ip
         self.debug = debug
-        self.username = os.getenv("HUE_USERNAME")
-        if not self.username:
+        username = os.getenv("HUE_USERNAME")
+        if not username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
+        self.username = username
+        
         self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
         self.v2_url = f"https://{self.bridge_ip}/clip/v2"
+        
+        config_url = f"http://{self.bridge_ip}/api/{self.username}/config"
+        response = requests.get(config_url, timeout=5)
+        response.raise_for_status()
+        config = response.json()
+        self.bridge_id = config.get("bridgeid")
+        if not self.bridge_id:
+            raise ValueError("Could not determine your Hue Bridge ID")
+        self.bridge_id = self.bridge_id.lower()
+        self._log("Bridge ID:", self.bridge_id)
+        self.https = HueHTTPS(
+            bridge_ip=self.bridge_ip,
+            bridge_id=self.bridge_id,
+            ca_bundle=str(CA_BUNDLE),
+        )
+        
         self._cache = None
         self._cache_time = 0
         self._v2_cache = None
         self._v2_cache_time = 0
         self._scenes_cache = None
         self._scenes_cache_time = 0
-        
-        
+    
+    
    # ------ Internal Helpers, when Superman needs help -------
    
     def _log(self, *args):
@@ -39,20 +67,14 @@ class HueAPI:
     
     
     def _get_v2(self, endpoint: str):
-        url = f"{self.v2_url}/{endpoint}"
         self._log("GET V2", endpoint)
-        response = requests.get(
-            url, 
+
+        return self.https.get(
+            f"/clip/v2/{endpoint}",
             headers={
                 "hue-application-key": self.username
             },
-            verify=False,
-            timeout=5
         )
-        response.raise_for_status()
-        data = response.json()
-        self._log("V2 RESPONSE", data)
-        return data
     
     
     def _put(self, endpoint: str, payload: dict):
@@ -68,9 +90,13 @@ class HueAPI:
     def _invalidate_cache(self):
         self._cache = None
         self._cache_time = 0
+        
+        
+    def get_config(self):
+        return self._get("config")
            
            
-    # ------- Public API'S ----------
+    #------- Public API'S  -------#
     
         
     def get_all_lights_state(self):
