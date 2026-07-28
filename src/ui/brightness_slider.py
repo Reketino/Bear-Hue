@@ -53,4 +53,10 @@ class BrightnessSlider(ctk.CTkFrame):
     def _stop_drag(self, _):
         self.is_dragging = False
         
+        if self._debounce_id is not None:
+            self.after_cancel(self._debounce_id)
+            self._debounce_id = None
+            
+        self._send_brightness()
+        
         
