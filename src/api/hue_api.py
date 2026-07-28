@@ -1,6 +1,5 @@
 import time
 import os
-import requests
 from pathlib import Path
 from dotenv import load_dotenv
 from src.api.hue_https import HueHTTPS
