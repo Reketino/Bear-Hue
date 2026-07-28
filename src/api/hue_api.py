@@ -57,15 +57,13 @@ class HueAPI:
     def _log(self, *args):
         if self.debug:
             print("[HUEAPI]", *args)
-   
-        
+      
     def _get(self, endpoint: str):
-        url = f"{self.base_url}/{endpoint}"
         self._log("GET", endpoint)
-        response = requests.get(url, timeout=5)
-        response.raise_for_status()
-        return response.json()
-    
+        
+        return self.https.get(
+            f"/api/{self.username}/{endpoint}"
+        )
     
     def _get_v2(self, endpoint: str):
         self._log("GET V2", endpoint)
