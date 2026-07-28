@@ -24,20 +24,20 @@ class HueAPI:
     ):
         self.bridge_ip = bridge_ip
         self.debug = debug
+        
         username = os.getenv("HUE_USERNAME")
+        
         if not username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
+        
         self.username = username
         
+        bridge_id = os.getenv("HUE_BRIDGE_ID")
         
-        config_url = f"http://{self.bridge_ip}/api/{self.username}/config"
-        response = requests.get(config_url, timeout=5)
-        response.raise_for_status()
-        config = response.json()
-        self.bridge_id = config.get("bridgeid")
-        if not self.bridge_id:
-            raise ValueError("Could not determine your Hue Bridge ID")
-        self.bridge_id = self.bridge_id.lower()
+        if not bridge_id:
+            raise ValueError("Your HUE_BRIDGE_ID is not found in .env")
+        
+        self.bridge_id = bridge_id.lower()
         self._log("Bridge ID:", self.bridge_id)
         self.https = HueHTTPS(
             bridge_ip=self.bridge_ip,
@@ -51,7 +51,6 @@ class HueAPI:
         self._v2_cache_time = 0
         self._scenes_cache = None
         self._scenes_cache_time = 0
-    
     
    # ------ Internal Helpers, when Superman needs help -------
    
