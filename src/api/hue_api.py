@@ -57,6 +57,7 @@ class HueAPI:
     def _log(self, *args):
         if self.debug:
             print("[HUEAPI]", *args)
+   
       
     def _get(self, endpoint: str):
         self._log("GET", endpoint)
@@ -64,6 +65,7 @@ class HueAPI:
         return self.https.get(
             f"/api/{self.username}/{endpoint}"
         )
+ 
     
     def _get_v2(self, endpoint: str):
         self._log("GET V2", endpoint)
@@ -77,12 +79,15 @@ class HueAPI:
     
     
     def _put(self, endpoint: str, payload: dict):
-         url = f"{self.base_url}/{endpoint}"
          self._log("PUT", endpoint, payload)
-         response = requests.put(url, json=payload, timeout=5)
-         response.raise_for_status()
-         data = response.json()
+         
+         data = self.https.put(
+             f"/api/{self.username}/{endpoint}",
+             payload=payload,
+         )
+         
          self._log("RESPONSE", data)
+         
          return data
     
      
