@@ -1,6 +1,5 @@
 import time
 import os
-import requests
 from pathlib import Path
 from dotenv import load_dotenv
 from src.api.hue_https import HueHTTPS
@@ -17,25 +16,27 @@ CA_BUNDLE = (
 
 class HueAPI:
     
-    def __init__(self, bridge_ip: str, debug: bool = False):
+    def __init__(
+        self, 
+        bridge_ip: str, 
+        debug: bool = False
+    ):
         self.bridge_ip = bridge_ip
         self.debug = debug
+        
         username = os.getenv("HUE_USERNAME")
+        
         if not username:
             raise ValueError("Your HUE_USERNAME is not found in .env")
+        
         self.username = username
         
-        self.base_url = f"http://{self.bridge_ip}/api/{self.username}"
-        self.v2_url = f"https://{self.bridge_ip}/clip/v2"
+        bridge_id = os.getenv("HUE_BRIDGE_ID")
         
-        config_url = f"http://{self.bridge_ip}/api/{self.username}/config"
-        response = requests.get(config_url, timeout=5)
-        response.raise_for_status()
-        config = response.json()
-        self.bridge_id = config.get("bridgeid")
-        if not self.bridge_id:
-            raise ValueError("Could not determine your Hue Bridge ID")
-        self.bridge_id = self.bridge_id.lower()
+        if not bridge_id:
+            raise ValueError("Your HUE_BRIDGE_ID is not found in .env")
+        
+        self.bridge_id = bridge_id.lower()
         self._log("Bridge ID:", self.bridge_id)
         self.https = HueHTTPS(
             bridge_ip=self.bridge_ip,
@@ -50,21 +51,20 @@ class HueAPI:
         self._scenes_cache = None
         self._scenes_cache_time = 0
     
-    
    # ------ Internal Helpers, when Superman needs help -------
    
     def _log(self, *args):
         if self.debug:
             print("[HUEAPI]", *args)
    
-        
+      
     def _get(self, endpoint: str):
-        url = f"{self.base_url}/{endpoint}"
         self._log("GET", endpoint)
-        response = requests.get(url, timeout=5)
-        response.raise_for_status()
-        return response.json()
-    
+        
+        return self.https.get(
+            f"/api/{self.username}/{endpoint}"
+        )
+ 
     
     def _get_v2(self, endpoint: str):
         self._log("GET V2", endpoint)
@@ -78,12 +78,15 @@ class HueAPI:
     
     
     def _put(self, endpoint: str, payload: dict):
-         url = f"{self.base_url}/{endpoint}"
          self._log("PUT", endpoint, payload)
-         response = requests.put(url, json=payload, timeout=5)
-         response.raise_for_status()
-         data = response.json()
+         
+         data = self.https.put(
+             f"/api/{self.username}/{endpoint}",
+             payload=payload,
+         )
+         
          self._log("RESPONSE", data)
+         
          return data
     
      
