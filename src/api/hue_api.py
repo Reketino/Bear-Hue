@@ -44,8 +44,8 @@ class HueAPI:
             ca_bundle=str(CA_BUNDLE),
         )
         
-        self._cache = None
-        self._cache_time = 0
+        self._lights_cache = None
+        self._lights_cache_time = 0
         self._v2_cache = None
         self._v2_cache_time = 0
         self._scenes_cache = None
@@ -91,8 +91,8 @@ class HueAPI:
     
      
     def _invalidate_cache(self):
-        self._cache = None
-        self._cache_time = 0
+        self._lights_cache = None
+        self._lights_cache_time = 0
         
         
     def get_config(self):
@@ -104,11 +104,14 @@ class HueAPI:
         
     def get_all_lights_state(self):
         now = time.time()
-        if self._cache is not None and (now - self._cache_time) < 0.5:
-            return self._cache
+        if(
+            self._lights_cache is not None 
+            and (now - self._lights_cache_time) < 0.5
+            ):
+            return self._lights_cache
         data = self._get("lights")
-        self._cache = data
-        self._cache_time = now
+        self._lights_cache = data
+        self._lights_cache_time = now
         return data
         
         
@@ -132,20 +135,19 @@ class HueAPI:
     def set_brightness(self, light_id: int, bri: int):
         payload = {
             "bri": bri,
-            "transitiontime": 5
+            "transitiontime": 1
         }
         self._put(f"lights/{light_id}/state",payload)
         self._invalidate_cache()
     
         
     def set_group_brightness(self, bri: int):
-        lights = self.get_all_lights_state()
         payload = {
             "bri": bri,
-            "transitiontime": 5
+            "transitiontime": 1
         }
-        for light_id in lights:
-            self._put(f"lights/{light_id}/state", payload)
+        
+        self._put("groups/0/action", payload)
         self._invalidate_cache()
             
             

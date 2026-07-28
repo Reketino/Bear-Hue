@@ -10,6 +10,7 @@ class BrightnessSlider(ctk.CTkFrame):
         
         self._debounce_id = None
         self._pending_value = 0
+        self._last_sent_value = None
          
         self.label = ctk.CTkLabel(self, text="Brightness")
         self.label.pack(pady=(10, 0))
@@ -34,17 +35,22 @@ class BrightnessSlider(ctk.CTkFrame):
             self.after_cancel(self._debounce_id)
             
         self._debounce_id = self.after(
-            120,
+            50,
             self._send_brightness,
         )
         
     def _send_brightness(self):
         self._debounce_id = None
         
+        value = round(self._pending_value)
+        
+        if value == self._last_sent_value:
+            return
+        
+        self._last_sent_value = value
+        
         if self.external_command:
-            self.external_command(
-                self._pending_value
-            )
+            self.external_command(value)
                    
 
     def _start_drag(self, _):
