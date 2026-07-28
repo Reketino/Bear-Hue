@@ -37,6 +37,14 @@ class BrightnessSlider(ctk.CTkFrame):
             120,
             self._send_brightness,
         )
+        
+    def _send_brightness(self):
+        self._debounce_id = None
+        
+        if self.external_command:
+            self.external_command(
+                self._pending_value
+            )
                    
 
     def _start_drag(self, _):
