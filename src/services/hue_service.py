@@ -213,14 +213,10 @@ class HueService:
         self.hue_api.set_light(light_id, not is_on)
          
     def turn_all_on(self):
-        lights = self._get_lights()
-        for light_id in lights.keys():
-            self.hue_api.set_light(int(light_id), True)
+        self.hue_api.set_group_power(True)
               
     def turn_off_all(self):
-        lights = self._get_lights()
-        for light_id in lights.keys():
-            self.hue_api.set_light(int(light_id), False)
+        self.hue_api.set_group_power(False)
             
     # -------- WRITE BRIGHTNESS LOGIC --------
         
