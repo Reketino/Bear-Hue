@@ -48,16 +48,21 @@ class HueService:
         bri = lights[str(light_id)]["state"]["bri"]
         return int(bri / 2.54)   
    
-    def get_average_brightness(self) -> int:
-        lights = self._get_lights()
+    def get_average_brightness(
+        self,
+        states: dict[int, dict] | None = None,
+        ) -> int:
+        if states is None:
+            states = self.get_all_light_state()
+            
         values = [
-            data["state"]["bri"]
-            for data in lights.values() 
+            data["brightness"]
+            for data in states.values() 
         ]
         if not values:
             return 0
-        avg = sum(values) / len(values)
-        return int(avg / 2.54)
+        
+        return round(sum(values) / len(values))
     
     
       # -------- READ Scenes Logic --------
@@ -220,10 +225,10 @@ class HueService:
     # -------- WRITE BRIGHTNESS LOGIC --------
         
     def set_all_brightness(self, value: int):
-        bri = int(value * 2.54)
-        lights = self._get_lights()
-        for light_id in lights.keys():
-            self.hue_api.set_brightness(int(light_id), bri)
+        value = max(0, min(100, value))
+        bri = round(value * 2.54)
+        
+        self.hue_api.set_group_brightness(bri)
             
     # -------- WRITE SCENE LOGIC --------
     
