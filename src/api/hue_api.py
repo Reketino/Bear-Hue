@@ -140,6 +140,13 @@ class HueAPI:
         self._put(f"lights/{light_id}/state",payload)
         self._invalidate_lights_cache()
     
+    def set_group_power(self, on: bool):
+        payload = {
+            "on": on,
+        }
+        
+        self._put("groups/0/action", payload)
+        self._invalidate_lights_cache()
         
     def set_group_brightness(self, bri: int):
         payload = {
