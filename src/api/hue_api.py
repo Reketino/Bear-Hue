@@ -46,8 +46,8 @@ class HueAPI:
         
         self._lights_cache = None
         self._lights_cache_time = 0
-        self._v2_cache = None
-        self._v2_cache_time = 0
+        self._v2_scenes_cache = None
+        self._v2_scenes_cache_time = 0
         self._scenes_cache = None
         self._scenes_cache_time = 0
     
@@ -172,14 +172,14 @@ class HueAPI:
     def get_v2_scenes(self):
         now = time.time()
         if (
-            self._v2_cache is not None
-            and (now - self._v2_cache_time) < 60
+            self._v2_scenes_cache is not None
+            and (now - self._v2_scenes_cache_time) < 60
         ):
             self._log("Using V2 cache")
-            return self._v2_cache
+            return self._v2_scenes_cache
         data = self._get_v2("resource/scene")
-        self._v2_cache = data
-        self._v2_cache_time = now
+        self._v2_scenes_cache = data
+        self._v2_scenes_cache_time = now
         return data
     
     
