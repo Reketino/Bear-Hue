@@ -53,7 +53,7 @@ class HueService:
         states: dict[int, dict] | None = None,
         ) -> int:
         if states is None:
-            states = self.get_all_lights_state()
+            states = self.get_all_light_state()
             
         values = [
             data["brightness"]
