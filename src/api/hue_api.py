@@ -90,7 +90,7 @@ class HueAPI:
          return data
     
      
-    def _invalidate_cache(self):
+    def _invalidate_lights_cache(self):
         self._lights_cache = None
         self._lights_cache_time = 0
         
@@ -129,7 +129,7 @@ class HueAPI:
             "transitiontime": 2 if on else 6
         }
         self._put(f"lights/{light_id}/state", payload)
-        self._invalidate_cache()
+        self._invalidate_lights_cache()
         
     
     def set_brightness(self, light_id: int, bri: int):
@@ -138,7 +138,7 @@ class HueAPI:
             "transitiontime": 1
         }
         self._put(f"lights/{light_id}/state",payload)
-        self._invalidate_cache()
+        self._invalidate_lights_cache()
     
         
     def set_group_brightness(self, bri: int):
@@ -148,7 +148,7 @@ class HueAPI:
         }
         
         self._put("groups/0/action", payload)
-        self._invalidate_cache()
+        self._invalidate_lights_cache()
             
             
     # ------- Philip's Hue Scenes ----------
@@ -208,4 +208,4 @@ class HueAPI:
         
         payload ={"scene": scene_id}
         self._put(f"groups/{group}/action", payload)
-        self._invalidate_cache()
+        self._invalidate_lights_cache()
