@@ -52,10 +52,12 @@ class HueService:
         self,
         states: dict[int, dict] | None = None,
         ) -> int:
-        lights = self._get_lights()
+        if states is None:
+            states = self.get_all_lights_state()
+            
         values = [
-            data["state"]["bri"]
-            for data in lights.values() 
+            data["brightness"]
+            for data in states.values() 
         ]
         if not values:
             return 0
