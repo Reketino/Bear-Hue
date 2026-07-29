@@ -61,8 +61,8 @@ class HueService:
         ]
         if not values:
             return 0
-        avg = sum(values) / len(values)
-        return int(avg / 2.54)
+        
+        return round(sum(values) / len(values))
     
     
       # -------- READ Scenes Logic --------
