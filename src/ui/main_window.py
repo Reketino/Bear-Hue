@@ -140,7 +140,7 @@ class MainWindow(ctk.CTk):
     def refresh(self):
         states = self.hue_service.get_all_light_state()
         self.lights_panel.update_lights(states)
-        brightness = self.hue_service.get_average_brightness()
+        brightness = self.hue_service.get_average_brightness(states)
         if not self.brightness.is_dragging:
             current = int(self.brightness.slider.get())
             if abs(current - brightness) >= 1:
