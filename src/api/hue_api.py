@@ -55,7 +55,7 @@ class HueAPI:
    
     def _log(self, *args):
         if self.debug:
-            print("[HUEAPI]", *args)
+            print(f"[{time.strftime('%H:%M:%S')}]", "[HUEAPI]", *args)
    
       
     def _get(self, endpoint: str):
@@ -131,14 +131,6 @@ class HueAPI:
         self._put(f"lights/{light_id}/state", payload)
         self._invalidate_lights_cache()
         
-    
-    def set_brightness(self, light_id: int, bri: int):
-        payload = {
-            "bri": bri,
-            "transitiontime": 1
-        }
-        self._put(f"lights/{light_id}/state",payload)
-        self._invalidate_lights_cache()
     
     def set_group_power(self, on: bool):
         payload = {
