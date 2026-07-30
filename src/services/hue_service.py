@@ -43,11 +43,7 @@ class HueService:
    
      # -------- READ Brightness Logic --------
    
-    def get_brightness(self, light_id: int) -> int:
-        lights = self._get_lights()
-        bri = lights[str(light_id)]["state"]["bri"]
-        return int(bri / 2.54)   
-   
+      
     def get_average_brightness(
         self,
         states: dict[int, dict] | None = None,
