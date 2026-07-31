@@ -14,6 +14,13 @@ CA_BUNDLE = (
     / "huebridge_cacert_bundle.pem"
 )
 
+LIGHT_CACHE_SECONDS = 0.5
+SCENE_CACHE_SECONDS = 60
+
+LIGHT_ON_TRANSITION = 2
+LIGHT_OFF_TRANSITION = 6
+BRIGHTNESS_TRANSITION = 1
+
 class HueAPI:
     
     def __init__(
@@ -106,7 +113,7 @@ class HueAPI:
         now = time.time()
         if(
             self._lights_cache is not None 
-            and (now - self._lights_cache_time) < 0.5
+            and (now - self._lights_cache_time) < LIGHT_CACHE_SECONDS
             ):
             return self._lights_cache
         data = self._get("lights")
