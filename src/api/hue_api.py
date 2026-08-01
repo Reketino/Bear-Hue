@@ -133,7 +133,11 @@ class HueAPI:
     def set_light(self, light_id: int, on: bool):
         payload = {
             "on": on,
-            "transitiontime": 2 if on else 6
+            "transitiontime": (
+                LIGHT_ON_TRANSITION
+                if on
+                else LIGHT_OFF_TRANSITION
+            )
         }
         self._put(f"lights/{light_id}/state", payload)
         self._invalidate_lights_cache()
@@ -150,7 +154,7 @@ class HueAPI:
     def set_group_brightness(self, bri: int):
         payload = {
             "bri": bri,
-            "transitiontime": 1
+            "transitiontime": BRIGHTNESS_TRANSITION
         }
         
         self._put("groups/0/action", payload)
@@ -163,7 +167,7 @@ class HueAPI:
         now = time.time()
         if (
             self._scenes_cache is not None
-            and (now - self._scenes_cache_time) < 60
+            and (now - self._scenes_cache_time) < SCENE_CACHE_SECONDS
         ):
             self._log("Using scenes cache")
             return self._scenes_cache
@@ -179,7 +183,7 @@ class HueAPI:
         now = time.time()
         if (
             self._v2_scenes_cache is not None
-            and (now - self._v2_scenes_cache_time) < 60
+            and (now - self._v2_scenes_cache_time) < SCENE_CACHE_SECONDS
         ):
             self._log("Using V2 scenes cache")
             return self._v2_scenes_cache
