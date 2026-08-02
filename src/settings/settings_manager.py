@@ -28,7 +28,7 @@ class SettingsManager:
             self.save()
     
             
-    def save(self):
+    def save(self) -> None:
         with open(SETTINGS_FILE, "w", encoding="utf-8") as file:
             json.dump(
                 self.settings,
