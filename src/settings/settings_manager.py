@@ -39,3 +39,6 @@ class SettingsManager:
     def get(self, key: str):
         return self.settings.get(key)
     
+    def set(self, key: str, value):
+        self.settings[key] = value
+        self.save()
