@@ -37,7 +37,7 @@ class SettingsManager:
                 ensure_ascii=False,
             )
             
-    def get(self, key: str):
+    def get(self, key: str) -> Any:
         return self.settings.get(key)
     
     def set(self, key: str, value):
