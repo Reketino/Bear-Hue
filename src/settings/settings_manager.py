@@ -7,7 +7,7 @@ from src.settings.defaults import DEFAULT_SETTINGS
 SETTINGS_FILE = Path("settings.json")
 
 class SettingsManager:
-    def __init__(self):
+    def __init__(self) -> None:
         self.settings = DEFAULT_SETTINGS.copy()
         self.load()
     
