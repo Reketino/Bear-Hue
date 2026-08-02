@@ -35,3 +35,7 @@ class SettingsManager:
                 indent=4,
                 ensure_ascii=False,
             )
+            
+    def get(self, key: str):
+        return self.settings.get(key)
+    
