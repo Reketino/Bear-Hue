@@ -14,6 +14,9 @@ def main():
             return
     
         hue_api = HueAPI(bridge_ip, debug=False)
+        
+        settings = SettingsManager()
+        
         hue_service = HueService(hue_api)
     
         app = MainWindow(hue_service)
