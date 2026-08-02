@@ -1,17 +1,19 @@
 import json
 from pathlib import Path
+from typing import Any
 
 from src.settings.defaults import DEFAULT_SETTINGS
 
 SETTINGS_FILE = Path("settings.json")
 
+
 class SettingsManager:
-    def __init__(self):
+    def __init__(self) -> None:
         self.settings = DEFAULT_SETTINGS.copy()
         self.load()
     
         
-    def load(self):
+    def load(self) -> None:
         if not SETTINGS_FILE.exists():
             self.save()
             return
@@ -27,7 +29,7 @@ class SettingsManager:
             self.save()
     
             
-    def save(self):
+    def save(self) -> None:
         with open(SETTINGS_FILE, "w", encoding="utf-8") as file:
             json.dump(
                 self.settings,
@@ -35,3 +37,10 @@ class SettingsManager:
                 indent=4,
                 ensure_ascii=False,
             )
+            
+    def get(self, key: str) -> Any:
+        return self.settings.get(key)
+    
+    def set(self, key: str, value: Any) -> None:
+        self.settings[key] = value
+        self.save()
