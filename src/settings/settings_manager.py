@@ -40,6 +40,6 @@ class SettingsManager:
     def get(self, key: str) -> Any:
         return self.settings.get(key)
     
-    def set(self, key: str, value):
+    def set(self, key: str, value: Any) -> None:
         self.settings[key] = value
         self.save()
