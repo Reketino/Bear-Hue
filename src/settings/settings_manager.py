@@ -12,7 +12,7 @@ class SettingsManager:
         self.load()
     
         
-    def load(self):
+    def load(self) -> None:
         if not SETTINGS_FILE.exists():
             self.save()
             return
