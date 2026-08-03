@@ -1,6 +1,7 @@
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
+from src.settings.settings_manager import SettingsManager
 from src.ui.controls_bar import ControlsBar
 from src.ui.brightness_slider import BrightnessSlider
 from src.ui.lights_panel import LightsPanel

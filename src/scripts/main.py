@@ -19,7 +19,10 @@ def main():
         
         hue_service = HueService(hue_api)
     
-        app = MainWindow(hue_service)
+        app = MainWindow(
+            hue_service,
+            settings,
+            )
         app.mainloop()
         
     except Exception as e:
