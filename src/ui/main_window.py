@@ -1,6 +1,7 @@
 import customtkinter as ctk
 
 from src.services.hue_service import HueService
+from src.settings.settings_manager import SettingsManager
 from src.ui.controls_bar import ControlsBar
 from src.ui.brightness_slider import BrightnessSlider
 from src.ui.lights_panel import LightsPanel
@@ -9,11 +10,21 @@ from src.ui.scenes_bar import ScenesBar
 
 class MainWindow(ctk.CTk):
     
-    def __init__(self, hue_service: HueService) -> None:
+    def __init__(
+        self,
+        hue_service: HueService,
+        settings: SettingsManager,
+        ) -> None:
         super().__init__() 
         
         self.hue_service = hue_service
-        self.bear_mode = False
+        self.settings = settings
+        
+        if self.settings.get("remember_bear_mode"):
+            self.bear_mode = self.settings.get("bear_mode")
+        else:
+            self.bear_mode = False
+            
         self.title("Bear Hue")
         self.geometry("400x500")
         self.minsize(320, 420)
@@ -68,6 +79,9 @@ class MainWindow(ctk.CTk):
         )
         
         self.default_theme()
+        
+        if self.bear_mode:
+            self.enable_bear_mode()
         
         self.refresh()
         
@@ -131,6 +145,13 @@ class MainWindow(ctk.CTk):
         
     def toggle_bear_mode(self):
         self.bear_mode = not self.bear_mode
+       
+        if self.settings.get("remember_bear_mode"): 
+            self.settings.set(
+                "bear_mode",
+                self.bear_mode,
+            )
+            
         if self.bear_mode:
             self.enable_bear_mode()
         else:
