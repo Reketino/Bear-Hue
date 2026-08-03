@@ -145,11 +145,13 @@ class MainWindow(ctk.CTk):
         
     def toggle_bear_mode(self):
         self.bear_mode = not self.bear_mode
-        
-        self.settings.set(
-            "bear_mode",
-            self.bear_mode,
-        )
+       
+        if self.settings.get("remember_bear_mode"): 
+            self.settings.set(
+                "bear_mode",
+                self.bear_mode,
+            )
+            
         if self.bear_mode:
             self.enable_bear_mode()
         else:
