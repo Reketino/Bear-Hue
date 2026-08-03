@@ -18,6 +18,7 @@ class MainWindow(ctk.CTk):
         super().__init__() 
         
         self.hue_service = hue_service
+        self.settings = settings
         self.bear_mode = False
         self.title("Bear Hue")
         self.geometry("400x500")
