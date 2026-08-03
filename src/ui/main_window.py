@@ -10,7 +10,11 @@ from src.ui.scenes_bar import ScenesBar
 
 class MainWindow(ctk.CTk):
     
-    def __init__(self, hue_service: HueService) -> None:
+    def __init__(
+        self,
+        hue_service: HueService,
+        settings: SettingsManager,
+        ) -> None:
         super().__init__() 
         
         self.hue_service = hue_service
