@@ -75,6 +75,9 @@ class MainWindow(ctk.CTk):
         
         self.default_theme()
         
+        if self.bear_mode:
+            self.enable_bear_mode()
+        
         self.refresh()
         
     def default_theme(self):
