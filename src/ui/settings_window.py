@@ -10,3 +10,9 @@ class SettingsWindow(ctk.CTkToplevel):
         settings: SettingsManager,
     ) -> None:
         super().__init__(master)
+        
+        self.setting = settings
+        
+        self.title("Settings")
+        self.geometry("360x420")
+        self.resizable(False, False)
