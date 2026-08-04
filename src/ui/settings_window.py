@@ -16,3 +16,9 @@ class SettingsWindow(ctk.CTkToplevel):
         self.title("Settings")
         self.geometry("360x420")
         self.resizable(False, False)
+        
+        self.label = ctk.CTkLabel(
+            self,
+            text="⚙ Settings"
+            font=("Segoe UI", 22 "bold"),
+        )
