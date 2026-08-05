@@ -1,0 +1,11 @@
+{
+    "theme": "dark",
+    "bear_mode": false,
+    "animations": true,
+    "show_scene_colors": true,
+    "remember_bear_mode": true,
+    "refresh_interval": 1000,
+    "window_width": 400,
+    "window_height": 500,
+    "debug": false
+}

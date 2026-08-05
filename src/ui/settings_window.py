@@ -11,14 +11,22 @@ class SettingsWindow(ctk.CTkToplevel):
     ) -> None:
         super().__init__(master)
         
-        self.setting = settings
+        self.settings = settings
         
         self.title("Settings")
+        
+        self.remember_bear_mode = ctk.CTkCheckBox(
+            self,
+            text="Remember Bear Mode",
+            command=self.toggle_remember_bear_mode,
+        )
+        
         self.geometry("360x420")
         self.resizable(False, False)
         
         self.label = ctk.CTkLabel(
             self,
-            text="⚙ Settings"
-            font=("Segoe UI", 22 "bold"),
+            text="⚙ Settings",
+            font=("Segoe UI", 22, "bold"),
         )
+        self.label.pack(pady=(20, 25))

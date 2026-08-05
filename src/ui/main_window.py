@@ -6,6 +6,7 @@ from src.ui.controls_bar import ControlsBar
 from src.ui.brightness_slider import BrightnessSlider
 from src.ui.lights_panel import LightsPanel
 from src.ui.scenes_bar import ScenesBar
+from src.ui.settings_window import SettingsWindow
 
 
 class MainWindow(ctk.CTk):
@@ -84,6 +85,7 @@ class MainWindow(ctk.CTk):
             self.enable_bear_mode()
         
         self.refresh()
+        self.open_settings()
         
     def default_theme(self):
         self.configure(fg_color="#101010")
@@ -182,6 +184,12 @@ class MainWindow(ctk.CTk):
                 row.configure(border_color=color)
             soft_glow = "#1A221D"
             self.controls.glow.configure(fg_color=soft_glow)
+            
+    def open_settings(self):
+        SettingsWindow(
+            self,
+            self.settings,
+        )
                
     def turn_all_on(self):
         self.hue_service.turn_all_on()
