@@ -14,6 +14,8 @@ class SettingsWindow(ctk.CTkToplevel):
         self.settings = settings
         
         self.title("Settings")
+        self.geometry("360x420")
+        self.resizable(False, False)
         
         self.remember_bear_mode = ctk.CTkCheckBox(
             self,
@@ -21,12 +23,16 @@ class SettingsWindow(ctk.CTkToplevel):
             command=self.toggle_remember_bear_mode,
         )
         
-        self.geometry("360x420")
-        self.resizable(False, False)
-        
         self.label = ctk.CTkLabel(
             self,
             text="⚙ Settings",
             font=("Segoe UI", 22, "bold"),
         )
         self.label.pack(pady=(20, 25))
+        
+    
+    def toggle_remember_bear_mode(self) -> None:
+        self.settings.set(
+            "remember_bear_mode",
+            bool(self.remember_bear_mode.get()),
+        )
