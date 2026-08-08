@@ -2,6 +2,12 @@ import customtkinter as ctk
 
 from src.settings.settings_manager import SettingsManager
 
+REFRESH_INTERVAL_OPTIONS = [
+    500,
+    1000,
+    2000,
+    5000,
+]
 
 class SettingsWindow(ctk.CTkToplevel):
     def __init__(
