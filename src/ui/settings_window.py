@@ -2,6 +2,12 @@ import customtkinter as ctk
 
 from src.settings.settings_manager import SettingsManager
 
+REFRESH_INTERVAL_OPTIONS = [
+    500,
+    1000,
+    2000,
+    5000,
+]
 
 class SettingsWindow(ctk.CTkToplevel):
     def __init__(
@@ -28,6 +34,22 @@ class SettingsWindow(ctk.CTkToplevel):
             self,
             text="Remember Bear Mode",
             command=self.toggle_remember_bear_mode,
+        )
+        self.remember_bear_mode.pack(
+            anchor="w",
+            padx=30,
+            pady=10,
+        )
+        
+        if self.settings.get("remember_bear_mode"):
+            self.remember_bear_mode.select()
+        else:
+            self.remember_bear_mode.deselect()
+            
+        self.refresh_label = ctk.CTkLabel(
+            self,
+            text="Refresh interval",
+            font=("Segoe UI", 14),
         )
         
         
