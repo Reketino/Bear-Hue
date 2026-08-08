@@ -45,6 +45,12 @@ class SettingsWindow(ctk.CTkToplevel):
             self.remember_bear_mode.select()
         else:
             self.remember_bear_mode.deselect()
+            
+        self.refresh_label = ctk.CTkLabel(
+            self,
+            text="Refresh interval",
+            font=("Segoe UI", 14),
+        )
         
         
     def toggle_remember_bear_mode(self) -> None:
