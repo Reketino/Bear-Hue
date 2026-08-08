@@ -29,6 +29,11 @@ class SettingsWindow(ctk.CTkToplevel):
             text="Remember Bear Mode",
             command=self.toggle_remember_bear_mode,
         )
+        self.remember_bear_mode.pack(
+            anchor="w",
+            padx=30,
+            pady=10,
+        )
         
         
     def toggle_remember_bear_mode(self) -> None:
