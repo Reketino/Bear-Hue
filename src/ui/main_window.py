@@ -163,12 +163,17 @@ class MainWindow(ctk.CTk):
     def refresh(self):
         states = self.hue_service.get_all_light_state()
         self.lights_panel.update_lights(states)
+        
         brightness = self.hue_service.get_average_brightness(states)
+        
         if not self.brightness.is_dragging:
             current = int(self.brightness.slider.get())
+            
             if abs(current - brightness) >= 1:
                 self.brightness.slider.set(brightness)
-        self.after(1000, self.refresh)
+                
+        refresh_interval = self.settings.get("refresh_interval")
+        self.after(refresh_interval, self.refresh)
     
                                              
     def change_brightness(self, value):
