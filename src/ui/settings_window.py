@@ -57,6 +57,16 @@ class SettingsWindow(ctk.CTkToplevel):
             pady=(20, 5),
         )
         
+        self.refresh_interval = ctk.CTkOptionMenu(
+            self,
+            values=[
+                f"{value} ms"
+                for value in REFRESH_INTERVAL_OPTIONS
+            ],
+            command=self.change_refresh_interval,
+            width=140,
+        )
+        
         
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
