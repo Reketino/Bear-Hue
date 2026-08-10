@@ -66,6 +66,11 @@ class SettingsWindow(ctk.CTkToplevel):
             command=self.change_refresh_interval,
             width=140,
         )
+        self.refresh_interval.pack(
+            anchorr="w",
+            padx=30,
+            pady=5,
+        )
         
         
     def toggle_remember_bear_mode(self) -> None:
