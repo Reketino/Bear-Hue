@@ -67,7 +67,7 @@ class SettingsWindow(ctk.CTkToplevel):
             width=140,
         )
         self.refresh_interval.pack(
-            anchorr="w",
+            anchor="w",
             padx=30,
             pady=5,
         )
@@ -76,9 +76,22 @@ class SettingsWindow(ctk.CTkToplevel):
             "refresh_interval"
         )
         
-        
+        self.refresh_interval.set(
+            f"{current_interval} ms"
+        )
+             
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
             "remember_bear_mode",
             bool(self.remember_bear_mode.get()),
+        )
+        
+    def change_refresh_interval(self, value: str) -> None:
+        interval = int(
+            value.replace(" ms", "")
+        )
+        
+        self.settings.set(
+            "refresh_interval",
+            interval,
         )
