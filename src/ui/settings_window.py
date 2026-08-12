@@ -67,7 +67,7 @@ class SettingsWindow(ctk.CTkToplevel):
             width=140,
         )
         self.refresh_interval.pack(
-            anchorr="w",
+            anchor="w",
             padx=30,
             pady=5,
         )
