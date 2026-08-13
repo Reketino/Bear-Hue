@@ -48,28 +48,41 @@ class SceneCard(ctk.CTkFrame):
             pady=(0,8),
         )
         
-        if palette:
-            for color in palette[:4]:
-                stripe = ctk.CTkFrame(
-                    self.palette_bar,
-                    fg_color=color,
-                    width=20,
-                    height=6,
-                    corner_radius=3,
-                )
-                stripe.pack(
-                    side="left",
-                    fill="x",
-                    expand=True,
-                    padx=1,
-                )
+        self.palette_stripes = []
+        
+       
+        for color in palette[:4]:
+            stripe = ctk.CTkFrame(
+                self.palette_bar,
+                fg_color=color,
+                width=20,
+                height=6,
+                corner_radius=3,
+            )
+            stripe.pack(
+                side="left",
+                fill="x",
+                expand=True,
+                padx=1,
+            )
+            
+            self.palette_stripes.append(stripe)
+            
+    def set_palette_visible(self, visible: bool) -> None:
+        if visible:
+            self.palette_bar.pack(
+                fill="x",
+                padx=10,
+                pady=(0, 8),
+            )
+        else:
+            self.palette_bar.pack_forget()
                 
     def set_active(
         self,
         active: bool,
         scene_color: str,
-    ):
-        
+    ) -> None:
         if active:
             self.configure(
                 fg_color=self._darken(scene_color, 0.12),
