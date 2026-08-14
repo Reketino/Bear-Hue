@@ -84,7 +84,10 @@ class ScenesBar(ctk.CTkFrame):
         self.set_active(scene_id)
        
         
-    def set_active(self, scene_id):
+    def set_active(
+        self, 
+        scene_id
+        )-> None:
         self.active_scene = scene_id
         
         for sid, card in self.buttons.items():
@@ -96,7 +99,7 @@ class ScenesBar(ctk.CTkFrame):
     def set_bear_mode(
         self,
         enabled: bool
-    ):
+    ) -> None:
         for card in self.buttons.values():
             card.set_bear_mode(enabled)
         
