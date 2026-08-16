@@ -111,5 +111,7 @@ class ScenesBar(ctk.CTkFrame):
             "show_scene_colors",
             enabled,
         )    
-
+        
+        for card in self.buttons.values():
+            card.set_palette_visible(enabled)
         
