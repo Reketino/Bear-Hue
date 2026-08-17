@@ -51,7 +51,8 @@ class MainWindow(ctk.CTk):
         
         self.scenes = ScenesBar(
             self.ui_layer,
-            self.hue_service
+            self.hue_service,
+            self.settings,
         )
         self.scenes.pack(fill="x", padx=15, pady=5)
         
