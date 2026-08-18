@@ -86,7 +86,7 @@ class ScenesBar(ctk.CTkFrame):
         
     def set_active(
         self, 
-        scene_id
+        scene_id:  str,
         )-> None:
         self.active_scene = scene_id
         
