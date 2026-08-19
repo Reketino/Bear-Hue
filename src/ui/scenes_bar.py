@@ -72,8 +72,7 @@ class ScenesBar(ctk.CTkFrame):
             
         if scenes and len(self.buttons) > 0:
             self.set_active(scenes[0]["id"])
-            
-            
+                    
     def _on_scene_click(
         self, 
         scene_id: str,
@@ -82,8 +81,7 @@ class ScenesBar(ctk.CTkFrame):
             scene_id
         )
         self.set_active(scene_id)
-       
-        
+          
     def set_active(
         self, 
         scene_id:  str,
