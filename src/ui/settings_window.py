@@ -79,6 +79,12 @@ class SettingsWindow(ctk.CTkToplevel):
         self.refresh_interval.set(
             f"{current_interval} ms"
         )
+        
+        self.show_scene_colors = ctk.CTkCheckBox(
+            self,
+            text="Show Scene Colors",
+            command=self.toggle_show_scene_colors
+        )
              
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
