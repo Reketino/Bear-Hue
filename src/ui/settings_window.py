@@ -90,6 +90,11 @@ class SettingsWindow(ctk.CTkToplevel):
             padx=30,
             pady=10,
         )
+        
+        if self.settings.get("show_scene_colors"):
+            self.show_scene_colors.select()
+        else:
+            self.show_scene_colors.deselect()
              
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
