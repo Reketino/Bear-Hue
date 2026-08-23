@@ -111,3 +111,8 @@ class SettingsWindow(ctk.CTkToplevel):
             "refresh_interval",
             interval,
         )
+    
+    def toggle_show_scene_colors(self) -> None:
+        enabled = bool(
+            self.show_scene_colors.get()
+        )
