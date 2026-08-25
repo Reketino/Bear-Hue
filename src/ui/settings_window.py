@@ -116,10 +116,9 @@ class SettingsWindow(ctk.CTkToplevel):
         enabled = bool(
             self.show_scene_colors.get()
         )
-        
-        self.settings.set(
-            "show_scene_colors",
-            enabled,
+            
+        self.master.scenes.set_show_scene_colors(
+            enabled
         )
         
         
