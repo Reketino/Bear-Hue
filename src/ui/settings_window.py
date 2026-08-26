@@ -1,6 +1,8 @@
 import customtkinter as ctk
 
+from src.services.hue_service import HueService
 from src.settings.settings_manager import SettingsManager
+from src.ui.scenes_bar import ScenesBar
 
 REFRESH_INTERVAL_OPTIONS = [
     500,
@@ -14,10 +16,12 @@ class SettingsWindow(ctk.CTkToplevel):
         self,
         master,
         settings: SettingsManager,
+        scenes: ScenesBar,
     ) -> None:
         super().__init__(master)
         
         self.settings = settings
+        self.scenes = scenes
         
         self.title("Settings")
         self.geometry("360x420")
