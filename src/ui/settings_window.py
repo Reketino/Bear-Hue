@@ -121,7 +121,7 @@ class SettingsWindow(ctk.CTkToplevel):
             self.show_scene_colors.get()
         )
             
-        self.master.scenes.set_show_scene_colors(
+        self.scenes.set_show_scene_colors(
             enabled
         )
         
