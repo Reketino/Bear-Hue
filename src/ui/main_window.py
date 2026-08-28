@@ -195,6 +195,7 @@ class MainWindow(ctk.CTk):
         SettingsWindow(
             self,
             self.settings,
+            self.scenes
         )
                
     def turn_all_on(self):
