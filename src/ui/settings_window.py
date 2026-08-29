@@ -1,6 +1,5 @@
 import customtkinter as ctk
 
-from src.services.hue_service import HueService
 from src.settings.settings_manager import SettingsManager
 from src.ui.scenes_bar import ScenesBar
 
