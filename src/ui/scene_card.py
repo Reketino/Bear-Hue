@@ -50,7 +50,6 @@ class SceneCard(ctk.CTkFrame):
         
         self.palette_stripes = []
         
-       
         for color in palette[:4]:
             stripe = ctk.CTkFrame(
                 self.palette_bar,
@@ -117,8 +116,7 @@ class SceneCard(ctk.CTkFrame):
             self.button.configure(
                 hover_color="#1D2E25",
             )
-            
-            
+                  
     def _darken(self, hex_color, factor =0.8):
         hex_color = hex_color.lstrip("#")
         if len(hex_color) != 6:
