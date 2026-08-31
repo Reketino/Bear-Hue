@@ -98,6 +98,12 @@ class SettingsWindow(ctk.CTkToplevel):
             self.show_scene_colors.select()
         else:
             self.show_scene_colors.deselect()
+            
+        self.animations = ctk.CTkCheckBox(
+            self,
+            text="Animattions",
+            command=self.toggle_animations,
+        )
              
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
