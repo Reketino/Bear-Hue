@@ -109,6 +109,11 @@ class SettingsWindow(ctk.CTkToplevel):
             padx=30,
             pady=10,
         )
+        
+        if self.settings.get("animations"):
+            self.animations
+        else:
+            self.animations.deselect()
              
     def toggle_remember_bear_mode(self) -> None:
         self.settings.set(
