@@ -140,4 +140,10 @@ class SettingsWindow(ctk.CTkToplevel):
             enabled
         )
         
+    def toggle_animations(self) -> None:
+        enabled = bool(
+            self.animations.get()
+        )
+        
+        
         
