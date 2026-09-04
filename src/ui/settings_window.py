@@ -144,6 +144,9 @@ class SettingsWindow(ctk.CTkToplevel):
         enabled = bool(
             self.animations.get()
         )
-        
+        self.settings.set(
+            "animations",
+            enabled,
+        )
         
         
