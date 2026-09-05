@@ -111,7 +111,7 @@ class SettingsWindow(ctk.CTkToplevel):
         )
         
         if self.settings.get("animations"):
-            self.animations
+            self.animations.select()
         else:
             self.animations.deselect()
              
