@@ -101,7 +101,7 @@ class SettingsWindow(ctk.CTkToplevel):
             
         self.animations = ctk.CTkCheckBox(
             self,
-            text="Animattions",
+            text="Animations",
             command=self.toggle_animations,
         )
         self.animations.pack(
