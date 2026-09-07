@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from src.api.hue_https import HueHTTPS
+from src.settings.settings_manager import SettingsManager
 
 
 load_dotenv()
@@ -25,10 +26,12 @@ class HueAPI:
     
     def __init__(
         self, 
-        bridge_ip: str, 
+        bridge_ip: str,
+        settings: SettingsManager, 
         debug: bool = False
     ):
         self.bridge_ip = bridge_ip
+        self.settings = settings
         self.debug = debug
         
         username = os.getenv("HUE_USERNAME")
