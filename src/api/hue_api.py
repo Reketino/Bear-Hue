@@ -98,8 +98,13 @@ class HueAPI:
          self._log("RESPONSE", data)
          
          return data
-    
      
+    def _get_transition(self, value: int) -> int:
+        if not self.settings.get("animations"):
+            return 0
+        
+        return value
+    
     def _invalidate_lights_cache(self):
         self._lights_cache = None
         self._lights_cache_time = 0
