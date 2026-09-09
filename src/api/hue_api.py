@@ -139,6 +139,12 @@ class HueAPI:
         
         
     def set_light(self, light_id: int, on: bool):
+        transition = (
+            LIGHT_ON_TRANSITION
+            if on
+            else LIGHT_OFF_TRANSITION
+        )
+        
         payload = {
             "on": on,
             "transitiontime": (
