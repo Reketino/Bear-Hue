@@ -148,10 +148,8 @@ class HueAPI:
         payload = {
             "on": on,
             "transitiontime": (
-                LIGHT_ON_TRANSITION
-                if on
-                else LIGHT_OFF_TRANSITION
-            )
+             transition
+            ),
         }
         self._put(f"lights/{light_id}/state", payload)
         self._invalidate_lights_cache()
