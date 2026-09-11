@@ -166,7 +166,9 @@ class HueAPI:
     def set_group_brightness(self, bri: int):
         payload = {
             "bri": bri,
-            "transitiontime": BRIGHTNESS_TRANSITION
+            "transitiontime": self._get_transition( 
+                BRIGHTNESS_TRANSITION
+            ),
         }
         
         self._put("groups/0/action", payload)
