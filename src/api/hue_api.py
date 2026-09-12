@@ -156,6 +156,12 @@ class HueAPI:
         
     
     def set_group_power(self, on: bool):
+        transition = (
+            LIGHT_ON_TRANSITION
+            if on
+            else LIGHT_OFF_TRANSITION
+        )
+        
         payload = {
             "on": on,
         }
