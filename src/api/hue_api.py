@@ -161,9 +161,11 @@ class HueAPI:
             if on
             else LIGHT_OFF_TRANSITION
         )
-        
         payload = {
             "on": on,
+            "transitiontime": self._get_transition(
+                transition
+            ),
         }
         
         self._put("groups/0/action", payload)
