@@ -12,10 +12,14 @@ def main():
         if bridge_ip is None:
             print("No Hue Bridge found on the network.")
             return
-    
-        hue_api = HueAPI(bridge_ip, debug=False)
         
         settings = SettingsManager()
+    
+        hue_api = HueAPI(
+            bridge_ip, 
+            settings,
+            debug=False
+        )
         
         hue_service = HueService(hue_api)
     
