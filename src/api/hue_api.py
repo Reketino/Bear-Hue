@@ -147,7 +147,7 @@ class HueAPI:
         
         payload = {
             "on": on,
-            "transitiontime": (
+            "transitiontime": self._get_transition(
              transition
             ),
         }
