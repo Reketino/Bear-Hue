@@ -10,6 +10,11 @@ REFRESH_INTERVAL_OPTIONS = [
     5000,
 ]
 
+THEME_OPTIONS = [
+    "Dark",
+    "Light",
+]
+
 class SettingsWindow(ctk.CTkToplevel):
     def __init__(
         self,
