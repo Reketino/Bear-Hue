@@ -38,6 +38,12 @@ class SettingsWindow(ctk.CTkToplevel):
         )
         self.label.pack(pady=(20, 25))
         
+        self.theme_label = ctk.CTkLabel(
+            self,
+            text="Theme",
+            font=("Segoe UI", 14),
+        )
+        
         self.remember_bear_mode = ctk.CTkCheckBox(
             self,
             text="Remember Bear Mode",
