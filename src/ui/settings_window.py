@@ -50,6 +50,11 @@ class SettingsWindow(ctk.CTkToplevel):
         )
         
         current_theme = self.settings.get("theme")
+        
+        self.theme.set(
+            current_theme.captialize()
+        )
+        
         self.remember_bear_mode = ctk.CTkCheckBox(
             self,
             text="Remember Bear Mode",
