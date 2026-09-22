@@ -49,6 +49,13 @@ class SettingsWindow(ctk.CTkToplevel):
             pady=(0, 5),
         )
         
+        self.theme = ctk.CTkOptionMenu(
+            self,
+            values=THEME_OPTIONS,
+            command=self.change_theme,
+            width=140,
+        )
+        
         current_theme = self.settings.get("theme")
         
         self.theme.set(
