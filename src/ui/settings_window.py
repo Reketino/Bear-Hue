@@ -55,6 +55,11 @@ class SettingsWindow(ctk.CTkToplevel):
             command=self.change_theme,
             width=140,
         )
+        self.theme.pack(
+            anchor="w",
+            padx=30,
+            pady=5,
+        )
         
         current_theme = self.settings.get("theme")
         
