@@ -186,4 +186,10 @@ class SettingsWindow(ctk.CTkToplevel):
     def change_theme(self, value: str) -> None:
         theme = value.lower()
         
+        self.settings.set(
+            "theme",
+            theme
+        )
+        
+        
         
