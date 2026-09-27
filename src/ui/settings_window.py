@@ -193,5 +193,7 @@ class SettingsWindow(ctk.CTkToplevel):
         
         if theme == "dark":
             ctk.set_appearance_mode("dark")
+        else:
+            ctk.set_appearance_mode("light")
         
         
