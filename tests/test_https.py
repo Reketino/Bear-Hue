@@ -56,6 +56,5 @@ def run_test():
         metadata = scene.get("metadata", {})
         print("-", metadata.get("name", "Unknown"))
 
-
 if __name__ == "__main__":
     run_test()
