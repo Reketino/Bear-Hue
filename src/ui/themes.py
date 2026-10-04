@@ -5,3 +5,4 @@ class Theme:
     background: str
     panel: str
     card: str
+    card_hover: str
