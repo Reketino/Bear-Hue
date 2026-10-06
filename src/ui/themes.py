@@ -11,3 +11,6 @@ class Theme:
     
     text: str
     text_muted: str
+    
+    accent: str
+    accent_hover: str
