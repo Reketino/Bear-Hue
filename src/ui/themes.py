@@ -14,3 +14,8 @@ class Theme:
     
     accent: str
     accent_hover: str
+    
+    success: str
+    danger: str
+    
+    
