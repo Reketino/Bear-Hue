@@ -18,4 +18,7 @@ class Theme:
     success: str
     danger: str
     
+    slider_background: str
+    slider_progress: str
+    
     
