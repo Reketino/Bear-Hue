@@ -20,5 +20,6 @@ class Theme:
     
     slider_background: str
     slider_progress: str
-    
+    slider_button: str
+    slider_button_hover: str
     
