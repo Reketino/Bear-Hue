@@ -23,3 +23,5 @@ class Theme:
     slider_button: str
     slider_button_hover: str
     
+    glow: str
+    
