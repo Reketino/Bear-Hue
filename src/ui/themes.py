@@ -25,3 +25,9 @@ class Theme:
     
     glow: str
     
+
+DARK_THEME = Theme(
+    background="#101010",
+    panel="#101312",
+)
+    
