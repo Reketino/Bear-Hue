@@ -29,9 +29,11 @@ class Theme:
 DARK_THEME = Theme(
     background="#101010",
     panel="#101312",
-    card=
-    card_hover=
-    border=
-    border_active=
+    card="#151A17",
+    card_hover="#1D2E25",
+    border="#2B3138",
+    border_active="#6BAF92",
+    
+    
 )
     
