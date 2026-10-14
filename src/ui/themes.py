@@ -34,6 +34,8 @@ DARK_THEME = Theme(
     border="#2B3138",
     border_active="#6BAF92",
     
+    text="#D2EDE0",
+    text_muted="#9BA9A3",
     
 )
     
