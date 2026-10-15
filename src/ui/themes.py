@@ -37,5 +37,8 @@ DARK_THEME = Theme(
     text="#D2EDE0",
     text_muted="#9BA9A3",
     
+    accent="#6BAF92",
+    accent_hover="#9BA9A3",
+    
 )
     
