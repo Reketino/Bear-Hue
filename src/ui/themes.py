@@ -40,5 +40,9 @@ DARK_THEME = Theme(
     accent="#6BAF92",
     accent_hover="#9BA9A3",
     
+    success="#6BAF92",
+    danger="#6B2020",
+    
+    
 )
     
