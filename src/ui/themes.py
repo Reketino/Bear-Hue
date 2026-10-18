@@ -47,6 +47,6 @@ DARK_THEME = Theme(
     slider_button="#011120",
     slider_button_hover="#A3BECC",
     
-    
+    glow="#1A221D",
 )
     
