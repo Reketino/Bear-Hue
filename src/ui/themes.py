@@ -25,7 +25,6 @@ class Theme:
     
     glow: str
     
-
 DARK_THEME = Theme(
     background="#101010",
     panel="#101312",
@@ -42,6 +41,11 @@ DARK_THEME = Theme(
     
     success="#6BAF92",
     danger="#6B2020",
+    
+    slider_background="#4F4F4F",
+    slider_progress="#CFE6FD",
+    slider_button="#011120",
+    slider_button_hover="#A3BECC",
     
     
 )
