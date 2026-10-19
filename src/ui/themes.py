@@ -49,4 +49,8 @@ DARK_THEME = Theme(
     
     glow="#1A221D",
 )
+
+LIGHT_THEME = Theme(
+    background="#F2F2F2",
+)
     
