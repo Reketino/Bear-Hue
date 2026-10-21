@@ -52,5 +52,12 @@ DARK_THEME = Theme(
 
 LIGHT_THEME = Theme(
     background="#F2F2F2",
+    panel="#E7E7E7",
+    card="#FFFFFF",
+    card_hover="#E8F2EC",
+    border="#D0D5D2",
+    border_active="#4F8F70",
+    
+    
 )
     
