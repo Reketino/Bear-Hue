@@ -58,6 +58,9 @@ LIGHT_THEME = Theme(
     border="#D0D5D2",
     border_active="#4F8F70",
     
+    text="#17211C",
+    text_muted="#667168",
+    
     
 )
     
