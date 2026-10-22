@@ -61,6 +61,11 @@ LIGHT_THEME = Theme(
     text="#17211C",
     text_muted="#667168",
     
+    accent="#4F8F70",
+    accent_hover="#67A585",
+    
+    
+    
     
 )
     
