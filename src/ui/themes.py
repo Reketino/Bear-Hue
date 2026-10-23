@@ -64,7 +64,8 @@ LIGHT_THEME = Theme(
     accent="#4F8F70",
     accent_hover="#67A585",
     
-    
+    success="#4F8F70",
+    danger="#A33A3A"
     
     
 )
