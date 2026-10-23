@@ -1,0 +1,84 @@
+name: PR Bot
+
+on:
+    pull_request:
+      types: [opened, edited, synchronize]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  validate-and-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 
+
+      - name: Validate PR title + apply label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const labels = JSON.parse(
+              fs.readFileSync(".github/config/labels.json", "utf8")
+            );
+
+            const types = labels.map(label => label.name);
+            
+            const title = context.payload.pull_request.title;
+
+            // Supports:
+            // feat:
+            // feat(auth):
+            const match = title.match(/^(\w+)(\(.+\))?:/);
+
+            if (!match || !types.includes(match[1])) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: context.issue.number,
+                body: [ 
+                "Invalid PR title format hombre.",
+                "",            
+                "Use:",
+                "feat: add login",
+                "fix: resolve crash",
+                "refactor(auth): simplify logic",
+                "",
+                `Allowed types: ${types.join(", ")}`
+                ].join("\n")
+              });
+
+              core.setFailed("Invalid PR title format");
+
+              return;
+            }
+             
+            const type = match[1];
+
+            const existingLabels = context.payload.pull_request.labels.map(
+              label => label.name
+            );
+            
+            if (!existingLabels.includes(type)) {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: context.issue.number,
+                labels: [type]
+              });
+            
+            console.log(`Added label: ${type}`);
+            } else {
+             console.log(`Label already exists: ${type}`);
+            }
+
+
+            
+
