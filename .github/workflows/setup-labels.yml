@@ -1,0 +1,53 @@
+name: Setup Labels
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs: 
+  setup-labels:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create or update labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = [
+              { name: "build", color: "8b5cf6", description: "build system or dependency changes" },
+              { name: "chore", color: "6b7280", description: "tooling, deps, cleanup" },
+              { name: "ci", color: "0ea5e9", description: "CI/CD changes" },
+              { name: "docs", color: "3b82f6", description: "documentation only" },
+              { name: "feat", color: "22c55e", description: "new feature" },
+              { name: "fix", color: "ef4444", description: "bug fix" },
+              { name: "perf", color: "f97316", description: "performance improvements" },
+              { name: "refactor", color: "a855f7", description: "code change that improves structure" },
+              { name: "style", color: "eab308", description: "formatting, no logic changes" },
+              { name: "test", color: "14b8a6", description: "adding or updating tests" }
+            ];
+
+            for (const label of labels) {
+              try {
+                // Try update first
+                await github.rest.issues.updateLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description
+                });
+                console.log(`Updated label: ${label.name}`);
+              } catch (error) {
+                // If not exists -> create it
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label.name,
+                  color: label.color,
+                  description: label.description
+                });
+                console.log(`Created label: ${label.name}`); 
+              }
+            }
