@@ -1,0 +1,107 @@
+[
+  {
+    "name": "build",
+    "color": "8b5cf6",
+    "description": "build system or dependency changes",
+    "priority": 5,
+    "emoji": "📦"
+  },
+  {
+    "name": "chore",
+    "color": "6b7280",
+    "description": "tooling, deps, cleanup",
+    "priority": 10,
+    "emoji": "🧹"
+  },
+  {
+    "name": "ci",
+    "color": "0ea5e9",
+    "description": "CI/CD changes",
+    "priority": 6,
+    "emoji": "🤖"
+  },
+  {
+    "name": "docs",
+    "color": "3b82f6",
+    "description": "documentation only",
+    "priority": 7,
+    "emoji": "📚"
+  },
+  {
+    "name": "feat",
+    "color": "22c55e",
+    "description": "new feature",
+    "priority": 1,
+    "emoji": "✨"
+  },
+  {
+    "name": "fix",
+    "color": "ef4444",
+    "description": "bug fix",
+    "priority": 2,
+    "emoji": "🐛"
+  },
+  {
+    "name": "perf",
+    "color": "f97316",
+    "description": "performance improvements",
+    "priority": 3,
+    "emoji": "⚡"
+  },
+  {
+    "name": "refactor",
+    "color": "a855f7",
+    "description": "code change that improves structure",
+    "priority": 4,
+    "emoji": "♻️"
+  },
+  {
+    "name": "style",
+    "color": "eab308",
+    "description": "formatting no logic change",
+    "priority": 8,
+    "emoji": "🎨"
+  },
+  {
+    "name": "test",
+    "color": "14b8a6",
+    "description": "adding or updating test",
+    "priority": 9,
+    "emoji": "🧪"
+  },
+  {
+  "name": "size/xs",
+  "color": "22c55e",
+  "description": "extra small pull request",
+  "emoji": "🟢",
+  "max": 9
+  },
+  {
+  "name": "size/s",
+  "color": "84cc16",
+  "description": "small pull request",
+  "emoji": "🟩",
+  "max": 49
+  },
+  {
+  "name": "size/m",
+  "color": "eab308",
+  "description": "medium pull request",
+  "emoji": "🟡",
+  "max": 199
+  },
+  {
+  "name": "size/l",
+  "color": "f97316",
+  "description": "large pull request",
+  "emoji": "🟠",
+  "max": 499
+  },
+  {
+  "name": "size/xl",
+  "color": "ef4444",
+  "description": " extra large pull request",
+  "emoji": "🔴",
+  "max": null
+  }
+]
