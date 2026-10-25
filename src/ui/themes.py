@@ -71,5 +71,9 @@ LIGHT_THEME = Theme(
     slider_progress="#A9D0BC",
     slider_button="#183326",
     slider_button_hover="#315C46",
+    
+    glow="#DCEBE2",
 )
+
+
     
