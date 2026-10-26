@@ -75,5 +75,16 @@ LIGHT_THEME = Theme(
     glow="#DCEBE2",
 )
 
+BEAR_DARK_THEME = Theme(
+    background="#0B0F0D",
+    panel="#101612",
+    card="#18201B",
+    card_hover="#203529",
+    border="#355443",
+    border_active="#6BAF92",
+    
+    
+)
+
 
     
