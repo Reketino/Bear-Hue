@@ -83,6 +83,10 @@ BEAR_DARK_THEME = Theme(
     border="#355443",
     border_active="#6BAF92",
     
+    text="#D2EDE0",
+    text_muted="#9BB2A5",
+    
+    
     
 )
 
