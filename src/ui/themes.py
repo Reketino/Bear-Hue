@@ -89,6 +89,11 @@ BEAR_DARK_THEME = Theme(
     accent="#6BAF92",
     accent_hover="#86C8A6",
     
+    success="#79C49A",
+    danger="#7A2929",
+    
+    
+    
 )
 
 
