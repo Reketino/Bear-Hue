@@ -92,8 +92,10 @@ BEAR_DARK_THEME = Theme(
     success="#79C49A",
     danger="#7A2929",
     
-    
-    
+    slider_background="#26332C",
+    slider_progress="#6BAF92",
+    slider_button="#506D06",
+    slider_button_hover="#6F8F18",
 )
 
 
