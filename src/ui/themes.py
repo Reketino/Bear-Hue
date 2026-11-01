@@ -96,6 +96,8 @@ BEAR_DARK_THEME = Theme(
     slider_progress="#6BAF92",
     slider_button="#506D06",
     slider_button_hover="#6F8F18",
+    
+    glow="#1A2B20",
 )
 
 
