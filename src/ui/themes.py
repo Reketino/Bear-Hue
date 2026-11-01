@@ -100,5 +100,9 @@ BEAR_DARK_THEME = Theme(
     glow="#1A2B20",
 )
 
+BEAR_LIGHT_THEME = Theme(
+    
+)
+
 
     
