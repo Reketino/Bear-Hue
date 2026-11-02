@@ -101,6 +101,8 @@ BEAR_DARK_THEME = Theme(
 )
 
 BEAR_LIGHT_THEME = Theme(
+    background="#EDF4F0",
+    panel="#E2ECE6"
     
 )
 
