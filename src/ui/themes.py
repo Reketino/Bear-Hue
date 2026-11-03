@@ -102,7 +102,13 @@ BEAR_DARK_THEME = Theme(
 
 BEAR_LIGHT_THEME = Theme(
     background="#EDF4F0",
-    panel="#E2ECE6"
+    panel="#E2ECE6",
+    card="#F8FBF9",
+    card_hover="#E0EFE6",
+    border="#88CFC1",
+    border_active="#4F8F70",
+    
+    
     
 )
 
