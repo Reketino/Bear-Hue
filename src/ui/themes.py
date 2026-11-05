@@ -110,6 +110,9 @@ BEAR_LIGHT_THEME = Theme(
     
     text="#17211C",
     text_muted="#607269",
+    
+    accent="#4F8F70",
+    accent_hover="#67A585",
 )
 
 
