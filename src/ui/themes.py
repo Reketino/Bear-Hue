@@ -116,6 +116,11 @@ BEAR_LIGHT_THEME = Theme(
     
     success="#4F8F70",
     danger="#A33A3A",
+    
+    slider_background="#C5D2CA",
+    slider_progress="#5F9F7C",
+    slider_button="#234A35",
+    slider_button_hover="#376B4E",
 )
 
 
