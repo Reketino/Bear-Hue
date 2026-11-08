@@ -121,6 +121,8 @@ BEAR_LIGHT_THEME = Theme(
     slider_progress="#5F9F7C",
     slider_button="#234A35",
     slider_button_hover="#376B4E",
+    
+    glow="#D5E8DC",
 )
 
 
