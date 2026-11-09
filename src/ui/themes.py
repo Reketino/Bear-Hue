@@ -125,5 +125,10 @@ BEAR_LIGHT_THEME = Theme(
     glow="#D5E8DC",
 )
 
+def get_theme(
+    appearance: str,
+    bear_mode: bool,
+) -> Theme:
+    appearance = appearance.lower()
 
     
