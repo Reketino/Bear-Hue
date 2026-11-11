@@ -134,5 +134,9 @@ def get_theme(
     if bear_mode:
         if appearance == "light":
             return BEAR_LIGHT_THEME
+        
+        return BEAR_DARK_THEME
+    
+    
 
     
