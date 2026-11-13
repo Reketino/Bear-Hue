@@ -140,6 +140,8 @@ def get_theme(
     if appearance == "light":
         return LIGHT_THEME
     
+    return DARK_THEME
+    
     
     
     
