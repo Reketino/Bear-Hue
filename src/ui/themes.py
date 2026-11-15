@@ -135,10 +135,11 @@ def get_theme(
         raise ValueError(f"Unsupported theme: {appearance}")
     
     if bear_mode:
-        if appearance == "light":
-            return BEAR_LIGHT_THEME
-        
-        return BEAR_DARK_THEME
+        return (
+            BEAR_LIGHT_THEME
+            if appearance == "light"    
+            else BEAR_DARK_THEME
+        )
     
     if appearance == "light":
         return LIGHT_THEME
