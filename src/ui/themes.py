@@ -68,7 +68,7 @@ LIGHT_THEME = Theme(
     success="#4F8F70",
     danger="#A33A3A",
     
-    slider_background= "#C7CBC9",
+    slider_background="#C7CBC9",
     slider_progress="#A9D0BC",
     slider_button="#183326",
     slider_button_hover="#315C46",
