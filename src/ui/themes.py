@@ -127,7 +127,7 @@ BEAR_LIGHT_THEME = Theme(
 )
 
 def get_theme(
-    appearance: str,
+    appearance: Literal["dark", "light"],
     bear_mode: bool,
 ) -> Theme:
     appearance = appearance.lower()
