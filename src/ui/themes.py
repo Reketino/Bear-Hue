@@ -130,8 +130,6 @@ def get_theme(
     appearance: Literal["dark", "light"],
     bear_mode: bool,
 ) -> Theme:
-    appearance = appearance.lower()
-    
     if appearance not in {"dark", "light"}:
         raise ValueError(f"Unsupported theme: {appearance}")
     
