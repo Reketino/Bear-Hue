@@ -141,9 +141,9 @@ def get_theme(
         )
     
     return( 
-         LIGHT_THEME
-         if appearance == "light"
-         else DARK_THEME
+        LIGHT_THEME
+        if appearance == "light"
+        else DARK_THEME
         )
     
     
