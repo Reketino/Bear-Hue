@@ -81,7 +81,7 @@ class MainWindow(ctk.CTk):
             pady=(5, 10)
         )
         
-        self.default_theme()
+        self.apply_theme()
         
         if self.bear_mode:
             self.enable_bear_mode()
@@ -89,7 +89,7 @@ class MainWindow(ctk.CTk):
         self.refresh()
         self.open_settings()
         
-    def default_theme(self):
+    def apply_theme(self) -> None:
         self.configure(fg_color="#101010")
         self.controls.glow.configure(fg_color="transparent")
         self.scenes.set_bear_mode(False)
@@ -144,7 +144,7 @@ class MainWindow(ctk.CTk):
         self.controls.bear_banner.grid_remove()
         for row in self.lights_panel.light_rows.values():
             row.set_bear_mode(False)
-        self.default_theme()
+        self.apply_theme()
         
         
     def toggle_bear_mode(self):
