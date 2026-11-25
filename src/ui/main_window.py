@@ -28,6 +28,11 @@ class MainWindow(ctk.CTk):
             self.bear_mode = False
             
         appearance = self.settings.get("theme")
+        
+        self.theme = get_theme(
+            appearance=appearance,
+            bear_mode=self.bear_mode,
+        )
             
         self.title("Bear Hue")
         self.geometry("400x500")
