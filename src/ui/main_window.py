@@ -61,19 +61,12 @@ class MainWindow(ctk.CTk):
         )
         self.scenes.pack(fill="x", padx=15, pady=5)
         
-        
         self.brightness = BrightnessSlider(
             self.ui_layer, 
             self.change_brightness
         )
         self.brightness.pack(fill="x", padx=15, pady=5)
-        self._default_slider_style = {
-            "progress_color": self.brightness.slider._progress_color,
-            "button_color": self.brightness.slider._button_color,
-            "button_hover_color": self.brightness.slider._button_hover_color,
-            "fg_color": self.brightness.slider._fg_color,
-        }
-        
+
         self.lights_panel = LightsPanel(
             self.ui_layer, 
             self.hue_service
